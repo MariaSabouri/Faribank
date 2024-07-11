@@ -58,7 +58,9 @@ public class MWelcome extends Menu<MWelcome.Role> {
                     case ADMIN -> {
 
                     }
-                    case EXIT -> {}
+                    case EXIT -> {
+                        ScannerWrapper.getInstance().close();
+                    }
                 }
             } catch (InvalidInputExeption e) {
                 e.printStackTrace();
