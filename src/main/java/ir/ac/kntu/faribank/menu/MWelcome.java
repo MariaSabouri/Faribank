@@ -1,11 +1,11 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.bank.client.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class MWelcome {
+public class MWelcome implements Menu<MWelcome.Role> {
     public enum Role {
-        CUSTOMER, BANK_ASSISTANT, EXIT
+        CLIENT, ADMIN, EXIT
     };
 
     private static MWelcome instance = new MWelcome();
@@ -15,14 +15,13 @@ public class MWelcome {
     }
 
     public void printMenu() {
-        System.out.println("*****************************************************************");
+        System.out.println("****************************************************************");
         System.out.println("*                   Welcome To Online Bank!                    *\n");
         System.out.println("Roles:");
-        System.out.println("1-Customer");
-        System.out.println("2-Bank Assistant");
-        System.out.println("2-Exit");
-        System.out.println("*****************************************************************");
-        System.out.print("Please select your choice: ");
+        System.out.println("1. Customer");
+        System.out.println("2. Bank Assistant");
+        System.out.println("2. Exit");
+        System.out.print("\nPlease select your choice: ");
     };
 
     public Role getOption() throws InvalidInputExeption {

@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.bank.client.Errors;
+package ir.ac.kntu.faribank.bank.Errors;
 
 public class InvalidInputExeption extends Exception {
     public InvalidInputExeption() {
