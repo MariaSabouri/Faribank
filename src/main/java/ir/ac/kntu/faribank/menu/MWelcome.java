@@ -1,9 +1,13 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.enums.Role;
+import ir.ac.kntu.faribank.bank.client.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
 public class MWelcome {
+    public enum Role {
+        CUSTOMER, BANK_ASSISTANT, EXIT
+    };
+
     private static MWelcome instance = new MWelcome();
 
     public static MWelcome getInstance() {
@@ -21,7 +25,7 @@ public class MWelcome {
         System.out.print("Please select your choice: ");
     };
 
-    public Role getOption() {
+    public Role getOption() throws InvalidInputExeption {
         Role[] roles = Role.values();
 
         while (true) {
@@ -31,7 +35,7 @@ public class MWelcome {
                 return roles[userInput];
             }
 
-            System.out.print("EER: Wrong number. Please try again: ");
+            throw new InvalidInputExeption();
         }
     };
 }
