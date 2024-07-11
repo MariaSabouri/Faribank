@@ -3,10 +3,10 @@ package ir.ac.kntu.faribank.menu;
 import ir.ac.kntu.faribank.enums.Role;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class WelcomeMenu {
-    private static WelcomeMenu instance = new WelcomeMenu();
+public class MWelcome {
+    private static MWelcome instance = new MWelcome();
 
-    public static WelcomeMenu getInstance() {
+    public static MWelcome getInstance() {
         return instance;
     }
 
