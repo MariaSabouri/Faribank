@@ -3,6 +3,6 @@ module ir.ac.kntu.faribank {
     requires javafx.fxml;
 
 
-    opens ir.ac.kntu.faribank to javafx.fxml;
-    exports ir.ac.kntu.faribank;
+    opens ir to javafx.fxml;
+    exports ir;
 }

@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank;
+package ir;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
