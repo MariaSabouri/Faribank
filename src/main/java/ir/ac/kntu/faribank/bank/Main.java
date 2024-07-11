@@ -13,10 +13,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        // launch();
-        MWelcome.Role option = null;
+        launch();
         MWelcome.getInstance().handle();
-        ScannerWrapper.getInstance().close();
     }
 
     @Override
