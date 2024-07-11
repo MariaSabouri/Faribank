@@ -1,4 +1,4 @@
-package ir;
+package ir.ac.kntu.faribank;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

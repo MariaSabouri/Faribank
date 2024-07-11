@@ -1,7 +1,7 @@
-package ir.ac.kntu.menu;
+package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.enums.Role;
-import ir.ac.kntu.util.ScannerWrapper;
+import ir.ac.kntu.faribank.enums.Role;
+import ir.ac.kntu.faribank.util.ScannerWrapper;
 
 public class WelcomeMenu {
     private static WelcomeMenu instance = new WelcomeMenu();
