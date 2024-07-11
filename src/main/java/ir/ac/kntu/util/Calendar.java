@@ -1,4 +1,4 @@
-package org.example.faribank.ir.ac.kntu.util;
+package ir.ac.kntu.util;
 
 import java.time.Instant;
 

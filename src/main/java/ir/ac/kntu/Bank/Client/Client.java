@@ -1,4 +1,4 @@
-package org.example.faribank.ir.ac.kntu.Bank.Client;
+package ir.ac.kntu.Bank.Client;
 
 import java.util.Objects;
 

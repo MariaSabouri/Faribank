@@ -1,4 +1,4 @@
-package org.example.faribank.ir.ac.kntu.Bank;
+package ir.ac.kntu.Bank;
 
 public class Accounts {
 
