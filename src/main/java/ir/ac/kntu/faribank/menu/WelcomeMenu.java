@@ -11,13 +11,13 @@ public class WelcomeMenu {
     }
 
     public void printMenu() {
-        System.out.println("****************************************************************");
+        System.out.println("*****************************************************************");
         System.out.println("*                   Welcome To Online Bank!                    *\n");
         System.out.println("Roles:");
         System.out.println("1-Customer");
         System.out.println("2-Bank Assistant");
         System.out.println("2-Exit");
-        System.out.println("****************************************************************");
+        System.out.println("*****************************************************************");
         System.out.print("Please select your choice: ");
     };
 
