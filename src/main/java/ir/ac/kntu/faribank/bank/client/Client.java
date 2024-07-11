@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.Bank.Client;
+package ir.ac.kntu.faribank.bank.client;
 
 import java.util.Objects;
 

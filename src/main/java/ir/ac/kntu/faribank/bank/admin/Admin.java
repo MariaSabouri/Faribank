@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.Bank.Admin;
+package ir.ac.kntu.faribank.bank.admin;
 
 import java.util.Objects;
 
