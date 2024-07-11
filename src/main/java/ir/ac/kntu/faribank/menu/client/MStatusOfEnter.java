@@ -4,21 +4,21 @@ import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.menu.Menu;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class MLoginClient implements Menu<MLoginClient.Option> {
+public class MStatusOfEnter extends Menu<MStatusOfEnter.Option> {
     public enum Option {
         LOGIN,
         SIGNUP,
         BACK,
     }
 
-    private static MLoginClient instance = new MLoginClient();
+    private static MStatusOfEnter instance = new MStatusOfEnter();
 
-    public static MLoginClient getInstance() {
+    public static MStatusOfEnter getInstance() {
         return instance;
     }
 
     @Override
-    public void printMenu() {
+    protected void printMenu() {
         System.out.println("****************************************************************");
         System.out.println("1. Login");
         System.out.println("2. SignUp");
@@ -27,7 +27,7 @@ public class MLoginClient implements Menu<MLoginClient.Option> {
     };
 
     @Override
-    public Option getOption() throws InvalidInputExeption {
+    protected Option getOption() throws InvalidInputExeption {
         Option[] option = Option.values();
 
         while (true) {
@@ -38,6 +38,31 @@ public class MLoginClient implements Menu<MLoginClient.Option> {
             }
 
             throw new InvalidInputExeption();
+        }
+    }
+
+    @Override
+    public void handle() {
+        Option option = null;
+  
+        while (option != MStatusOfEnter.Option.BACK) {
+            printMenu();
+
+            try {
+                option = getOption();
+
+                switch (option) {
+                    case LOGIN -> {
+                        
+                    }
+                    case SIGNUP -> {
+
+                    }
+                    case BACK -> {}
+                }
+            } catch (InvalidInputExeption e) {
+                e.printStackTrace();
+            }
         }
     }    
 }
