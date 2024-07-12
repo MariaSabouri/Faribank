@@ -72,7 +72,7 @@ public class SignUpController implements Initializable {
 
         
         try {
-            MSignUp.getInstance().handle(new Client(Name, LastName, phoneNumber, nationalID, password));
+            MSignUp.getInstance().handle(new Client(phoneNumber, password, LastName, LastName, nationalID));
         } catch (InvalidInputException e) {
             e.getMessage();
         } catch (DuplicatedItemException e) {
