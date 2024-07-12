@@ -2,7 +2,9 @@ package ir.ac.kntu.faribank.menu.client;
 
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.duplicatedItemException;
 import ir.ac.kntu.faribank.menu.Menu;
 
 public class MSignUp implements Menu {
@@ -14,7 +16,7 @@ public class MSignUp implements Menu {
     }
 
     @Override
-    public void handle(Person client) throws InvalidInputException {
+    public void handle(Person client) throws InvalidInputException, duplicatedItemException  {
         if (client.getPhoneNumber().length() != 11) {
             throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!client.getPhoneNumber().matches("[0-9]{11}")) {
@@ -28,8 +30,11 @@ public class MSignUp implements Menu {
                     "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
         }
 
+        FariBank.getInstance().add(client);
+
         SignUpController.changeSceneToHome();
 
+        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
         System.out.println(toString());
     }
 }
