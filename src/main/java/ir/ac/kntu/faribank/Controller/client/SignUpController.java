@@ -50,6 +50,7 @@ public class SignUpController implements Initializable {
     private static Stage stage;
 
     public static void changeSceneToHome() {
+        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
     }
 
     @Override
@@ -70,13 +71,15 @@ public class SignUpController implements Initializable {
         String phoneNumber = PhoneNumber.getText();
         String password = passwordField.getText();
 
+
         
         try {
             MSignUp.getInstance().handle(new Client(Name, LastName, phoneNumber, nationalID, password));
+
         } catch (InvalidInputException e) {
-            e.getMessage();
+            e.printStackTrace();
         } catch (duplicatedItemException e) {
-            e.getMessage();
+            e.printStackTrace();
         }
 
     }

@@ -63,6 +63,13 @@
             <artifactId>batik-svggen</artifactId>
             <version>1.14</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>23-ea+22</version>
+        </dependency>
+
     </dependencies>
 
     <build>

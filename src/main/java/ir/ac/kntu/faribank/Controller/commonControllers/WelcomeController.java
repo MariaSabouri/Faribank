@@ -6,10 +6,13 @@ import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class WelcomeController implements Initializable {
@@ -22,6 +25,8 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private Button customerButton;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ExitButton.setOnMouseClicked(mouseEvent -> ExitButtonHandler());
