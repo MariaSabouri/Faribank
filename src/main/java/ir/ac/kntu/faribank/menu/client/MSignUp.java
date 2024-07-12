@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.menu.client;
 
+import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.menu.MEnter;
 
@@ -67,5 +68,6 @@ public class MSignUp extends MEnter {
         }
 
         System.out.println(toString());
+        SignUpController.changeSceneToHome();
     }
 }

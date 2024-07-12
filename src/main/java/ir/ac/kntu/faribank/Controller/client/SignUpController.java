@@ -2,6 +2,8 @@ package ir.ac.kntu.faribank.Controller.client;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.menu.client.MSignUp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -44,6 +46,10 @@ public class SignUpController implements Initializable {
     private Button signUpButton;
 
     private static Stage stage;
+
+    public static void changeSceneToHome() {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginButton.setOnMouseClicked(mouseEvent -> loginButtonHandler());
@@ -63,7 +69,13 @@ public class SignUpController implements Initializable {
         String phoneNumber=PhoneNumber.getText();
         String password=passwordField.getText();
 
-        //todo
+        MSignUp mSignUp=new MSignUp(Name,LastName,nationalID,phoneNumber,password);
+        try {
+            mSignUp.check();
+        }catch (InvalidInputExeption e){
+            e.getMessage();
+        }
+
 
     }
 
