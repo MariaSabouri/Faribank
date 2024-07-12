@@ -29,21 +29,21 @@ public class WelcomeController implements Initializable {
         BanckAssistantButton.setOnMouseClicked(mouseEvent -> BanckAssistantButtonHandler());
         customerButton.setOnMouseClicked(mouseEvent -> customerButtonHandler());
 
-
-
-
     }
 
     private void customerButtonHandler() {
-        stage=(Stage) BanckAssistantButton.getScene().getWindow();
+        stage=(Stage) customerButton.getScene().getWindow();
+        LoginController.setLoginLabel(customerButton.getText());
         ProjectFX.changingscene(stage,"login-view.fxml");
-
 
     }
 
     private void BanckAssistantButtonHandler() {
         stage=(Stage) BanckAssistantButton.getScene().getWindow();
+        LoginController.setLoginLabel(BanckAssistantButton.getText());
         ProjectFX.changingscene(stage,"login-view.fxml");
+
+
     }
 
     private void ExitButtonHandler() {
