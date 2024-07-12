@@ -38,7 +38,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mywe.setPageFill(Color.TRANSPARENT);
-        mywe.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("ir/ac/kntu/faribank/images/user-svgrepo-com.svg")).toExternalForm());
+        mywe.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("D:\\Maria\\Dada\\FariBank\\src\\main\\resources\\ir\\ac\\kntu\\faribank\\images\\user-svgrepo-com.svg")).toExternalForm());
 
     }
 }
