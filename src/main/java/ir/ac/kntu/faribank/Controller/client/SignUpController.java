@@ -7,6 +7,7 @@ import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -49,7 +50,13 @@ public class SignUpController implements Initializable {
 
     private static Stage stage;
 
-    public static void changeSceneToHome(String firstName, String lastName, String cardNumber, String accountNumber) {
+    public static void changeSceneToHome() {
+
+        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+
+
+
+
     }
 
     @Override
@@ -74,9 +81,18 @@ public class SignUpController implements Initializable {
         try {
             MSignUp.getInstance().handle(new Client(phoneNumber, password, firstName, lastName, nationalID));
         } catch (InvalidInputException e) {
-            e.getMessage();
+            Alert.showingError(e.getMessage());
+            System.out.println(e.getMessage());
+
         } catch (DuplicatedItemException e) {
-            e.getMessage();
+            Alert.showingError(e.getMessage());
+
+        }finally {
+            NameField.clear();
+            LastNameField.clear();
+            NationalID.clear();
+            passwordField.clear();
+            PhoneNumber.clear();
         }
 
     }

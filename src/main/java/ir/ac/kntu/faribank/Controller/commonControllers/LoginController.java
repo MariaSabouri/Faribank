@@ -4,6 +4,7 @@ import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.MLogin;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -85,12 +86,15 @@ public class LoginController implements Initializable {
         try {
             MLogin.getInstance().handle(new Client(phoneNumber, password, "", "", ""));
         } catch (NotFoundException e) {
-            e.printStackTrace();
+            Alert.showingError(e.getMessage());
+        }finally {
+            PhoneNumber.clear();
+            passwordField.clear();
         }
     }
 
-    public static void changeSceneToHome(String firstName, String lastName, String cardNumber, String accountNumber) {
-        
+    public static void changeSceneToHome() {
+        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
     }
 
     private void signUpButtonHandler() {

@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.menu;
 
 import java.util.ArrayList;
 
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
@@ -27,13 +28,14 @@ public class MLogin implements Menu {
         }
     
         Client foundClient = clients.get(index);
-    
-        LoginController.changeSceneToHome(
-            foundClient.getFirstName(),
-            foundClient.getLastName(),
-            foundClient.getCardNumber(),
-            foundClient.getAccountNumber()
+
+        HomeController.SetingUserInfo(
+                foundClient.getFirstName(),
+                foundClient.getLastName(),
+                foundClient.getCardNumber(),
+                foundClient.getAccountNumber()
         );
+        LoginController.changeSceneToHome();
 
         System.out.println("Login successfully!");
         System.out.println(clients.get(index).toString());

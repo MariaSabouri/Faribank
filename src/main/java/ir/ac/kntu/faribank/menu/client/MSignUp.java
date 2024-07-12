@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.menu.client;
 
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.FariBank;
@@ -35,12 +36,13 @@ public class MSignUp implements Menu {
         // Authen ???
         FariBank.getInstance().addClient(client);
 
-        SignUpController.changeSceneToHome(
-            client.getFirstName(),
-            client.getLastName(),
-            client.getCardNumber(),
-            client.getAccountNumber()
-        ); // GUI
+        HomeController.SetingUserInfo(
+                client.getFirstName(),
+                client.getLastName(),
+                client.getCardNumber(),
+                client.getAccountNumber()
+        );
+        SignUpController.changeSceneToHome(); // GUI
 
         System.out.println("Client added successfully!");
         System.out.println(client.toString());
