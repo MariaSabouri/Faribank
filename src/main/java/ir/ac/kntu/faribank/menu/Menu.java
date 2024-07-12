@@ -1,7 +1,9 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.duplicatedItemException;
 
 public interface Menu {
-    void check() throws InvalidInputExeption;
+    void handle(Person p) throws InvalidInputException, duplicatedItemException;
 }

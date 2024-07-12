@@ -1,22 +1,20 @@
 package ir.ac.kntu.faribank.menu;
 
-public class MLogin extends MEnter {
+import ir.ac.kntu.faribank.Controller.client.SignUpController;
+import ir.ac.kntu.faribank.bank.Person;
 
-    public MLogin(String phoneNumber, String password) {
-        setPassword(password);
-        setPhoneNumber(phoneNumber);
+public class MLogin implements Menu {
+
+    private static MLogin instance = new MLogin();
+
+    public static MLogin getInstance() {
+        return instance;
     }
 
     @Override
-    public String toString() {
-        return "MLogin {" +
-                "\nphoneNumber: '" + getPhoneNumber() +
-                "\'\npassword: '" + getPassword() +
-                "\'\n'}";
-    }
+    public void handle(Person admin) {
+        SignUpController.changeSceneToHome();
 
-    @Override
-    public void check() {
         System.out.println(toString());
     }
 

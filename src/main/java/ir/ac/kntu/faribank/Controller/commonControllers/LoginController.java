@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.commonControllers;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.MLogin;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -80,9 +81,7 @@ public class LoginController implements Initializable {
         String phoneNumber=PhoneNumber.getText();
         String password=passwordField.getText();
 
-        MLogin mLogin=new MLogin(phoneNumber,password);
-        mLogin.check();
-
+        MLogin.getInstance().handle(new Client(password, password, phoneNumber, phoneNumber, password));
     }
     public static void changeSceneToHome() {
         try {
