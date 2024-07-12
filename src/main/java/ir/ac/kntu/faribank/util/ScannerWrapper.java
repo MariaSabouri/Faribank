@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.util;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ScannerWrapper {
@@ -15,7 +16,14 @@ public class ScannerWrapper {
 	}
 	
 	public String next() {
-		return scanner.next();
+		String input = null;
+		try {
+			input = scanner.next();
+		} catch (InputMismatchException e) {
+			e.printStackTrace();
+			scanner = new Scanner(System.in);
+		}
+		return input;
 	}
 	
 	public Double nextDouble() {
@@ -23,7 +31,13 @@ public class ScannerWrapper {
 	}
 
 	public Integer nextInt() {
-		return scanner.nextInt();
+		Integer input = 0;
+		try {
+			input = scanner.nextInt();
+		} catch (InputMismatchException e) {
+			scanner = new Scanner(System.in);
+		}
+		return input;
 	}
 	
 	public void close() {

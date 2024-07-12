@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.menu.client;
 
 import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
+import ir.ac.kntu.faribank.menu.MLogin;
 import ir.ac.kntu.faribank.menu.Menu;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
@@ -27,7 +28,7 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
     };
 
     @Override
-    protected Option getOption() throws InvalidCommandExeption {
+    protected Option getCommand() throws InvalidCommandExeption {
         Option[] option = Option.values();
 
         while (true) {
@@ -49,17 +50,16 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
             printMenu();
 
             try {
-                option = getOption();
+                option = getCommand();
 
                 switch (option) {
                     case LOGIN -> {
-
+                        MLogin.getInstance().handle();
                     }
                     case SIGNUP -> {
-
+                        MSignUp.getInstance().handle();
                     }
-                    case BACK -> {
-                    }
+                    case BACK -> {}
                 }
             } catch (InvalidCommandExeption e) {
                 e.printStackTrace();

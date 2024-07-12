@@ -1,5 +1,7 @@
 package ir.ac.kntu.faribank.menu;
 
+import java.util.InputMismatchException;
+
 import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
 import ir.ac.kntu.faribank.menu.client.MStatusOfEntryClient;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
@@ -27,7 +29,7 @@ public class MWelcome extends Menu<MWelcome.Role> {
     };
 
     @Override
-    protected Role getOption() throws InvalidCommandExeption {
+    protected Role getCommand() throws InvalidCommandExeption {
         Role[] roles = Role.values();
 
         while (true) {
@@ -49,15 +51,13 @@ public class MWelcome extends Menu<MWelcome.Role> {
             printMenu();
 
             try {
-                option = getOption();
+                option = getCommand();
 
                 switch (option) {
                     case CLIENT -> {
                         MStatusOfEntryClient.getInstance().handle();
                     }
-                    case ADMIN -> {
-
-                    }
+                    case ADMIN -> {}
                     case EXIT -> {
                         ScannerWrapper.getInstance().close();
                     }
