@@ -1,10 +1,8 @@
 package ir.ac.kntu.faribank.menu;
 
-public abstract class MEnter extends Menu<MEnter.Option> {
+public abstract class MEnter implements Menu {
     private String phoneNumber;
     private String password;
-    public enum Option {
-    };
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

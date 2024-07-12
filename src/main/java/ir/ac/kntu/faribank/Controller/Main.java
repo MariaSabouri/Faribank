@@ -1,7 +1,6 @@
 package ir.ac.kntu.faribank.Controller;
 
 import ir.ac.kntu.faribank.FXML_Loader;
-import ir.ac.kntu.faribank.menu.MWelcome;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) {
-         launch();
-//        MWelcome.getInstance().handle();
+        launch();
     }
 
     @Override

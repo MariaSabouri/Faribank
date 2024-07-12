@@ -81,7 +81,7 @@ public class LoginController implements Initializable {
         String password=passwordField.getText();
 
         MLogin mLogin=new MLogin(phoneNumber,password);
-        mLogin.handle();
+        mLogin.check();
 
     }
     public static void changeSceneToHome() {

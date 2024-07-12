@@ -1,70 +1,70 @@
-package ir.ac.kntu.faribank.menu;
+// package ir.ac.kntu.faribank.menu;
 
-import java.util.InputMismatchException;
+// import java.util.InputMismatchException;
 
-import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
-import ir.ac.kntu.faribank.menu.client.MStatusOfEntryClient;
-import ir.ac.kntu.faribank.util.ScannerWrapper;
+// import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
+// import ir.ac.kntu.faribank.menu.client.MStatusOfEntryClient;
+// import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class MWelcome extends Menu<MWelcome.Role> {
-    public enum Role {
-        CLIENT, ADMIN, EXIT
-    };
+// public class MWelcome extends Menu<MWelcome.Role> {
+//     public enum Role {
+//         CLIENT, ADMIN, EXIT
+//     };
 
-    private static MWelcome instance = new MWelcome();
+//     private static MWelcome instance = new MWelcome();
 
-    public static MWelcome getInstance() {
-        return instance;
-    }
+//     public static MWelcome getInstance() {
+//         return instance;
+//     }
 
-    @Override
-    protected void printMenu() {
-        System.out.println("****************************************************************");
-        System.out.println("*                   Welcome To Online Bank!                    *\n");
-        System.out.println("Roles:");
-        System.out.println("1. Customer");
-        System.out.println("2. Bank Assistant");
-        System.out.println("3. Exit");
-        System.out.print("\nPlease, select your choice: ");
-    };
+//     @Override
+//     protected void printMenu() {
+//         System.out.println("****************************************************************");
+//         System.out.println("*                   Welcome To Online Bank!                    *\n");
+//         System.out.println("Roles:");
+//         System.out.println("1. Customer");
+//         System.out.println("2. Bank Assistant");
+//         System.out.println("3. Exit");
+//         System.out.print("\nPlease, select your choice: ");
+//     };
 
-    @Override
-    protected Role getCommand() throws InvalidCommandExeption {
-        Role[] roles = Role.values();
+//     @Override
+//     protected Role getCommand() throws InvalidCommandExeption {
+//         Role[] roles = Role.values();
 
-        while (true) {
-            int userInput = ScannerWrapper.getInstance().nextInt() - 1;
+//         while (true) {
+//             int userInput = ScannerWrapper.getInstance().nextInt() - 1;
 
-            if (userInput >= 0 && userInput < roles.length) {
-                return roles[userInput];
-            }
+//             if (userInput >= 0 && userInput < roles.length) {
+//                 return roles[userInput];
+//             }
 
-            throw new InvalidCommandExeption();
-        }
-    }
+//             throw new InvalidCommandExeption();
+//         }
+//     }
 
-    @Override
-    public void handle() {
-        Role option = null;
+//     @Override
+//     public void handle() {
+//         Role option = null;
 
-        while (option != MWelcome.Role.EXIT) {
-            printMenu();
+//         while (option != MWelcome.Role.EXIT) {
+//             printMenu();
 
-            try {
-                option = getCommand();
+//             try {
+//                 option = getCommand();
 
-                switch (option) {
-                    case CLIENT -> {
-                        MStatusOfEntryClient.getInstance().handle();
-                    }
-                    case ADMIN -> {}
-                    case EXIT -> {
-                        ScannerWrapper.getInstance().close();
-                    }
-                }
-            } catch (InvalidCommandExeption e) {
-                e.printStackTrace();
-            }
-        }
-    };
-}
+//                 switch (option) {
+//                     case CLIENT -> {
+//                         MStatusOfEntryClient.getInstance().handle();
+//                     }
+//                     case ADMIN -> {}
+//                     case EXIT -> {
+//                         ScannerWrapper.getInstance().close();
+//                     }
+//                 }
+//             } catch (InvalidCommandExeption e) {
+//                 e.printStackTrace();
+//             }
+//         }
+//     };
+// }
