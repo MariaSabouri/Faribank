@@ -1,7 +1,7 @@
 package ir.ac.kntu.faribank.Controller.commonControllers;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
-import ir.ac.kntu.faribank.bank.Errors.NotFooundException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.MLogin;
 import javafx.fxml.FXML;
@@ -84,16 +84,13 @@ public class LoginController implements Initializable {
 
         try {
             MLogin.getInstance().handle(new Client(phoneNumber, password, "", "", ""));
-        } catch (NotFooundException e) {
+        } catch (NotFoundException e) {
             e.printStackTrace();
         }
     }
-    public static void changeSceneToHome() {
-        try {
 
-        }catch (Exception e){
-            e.getMessage();
-        }
+    public static void changeSceneToHome(String firstName, String lastName, String cardNumber, String accountNumber) {
+        
     }
 
     private void signUpButtonHandler() {

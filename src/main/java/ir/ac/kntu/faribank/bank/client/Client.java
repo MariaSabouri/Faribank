@@ -7,6 +7,8 @@ import ir.ac.kntu.faribank.bank.Person;
 public class Client extends Person {
     private String nationalCodeID;
     private String aminAuthenText;
+    private String cardNumber;
+    private String accountNumber;
 
     public Client(String phoneNumber, String password, String firstName, String lastName,  String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -27,6 +29,28 @@ public class Client extends Person {
 
     public String getAminAuthenText() {
         return aminAuthenText;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        // TODO Auto-generated method stub
+        super.setPassword(password);
     }
 
     @Override

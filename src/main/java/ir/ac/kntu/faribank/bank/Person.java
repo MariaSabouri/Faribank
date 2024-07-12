@@ -8,9 +8,6 @@ public abstract class Person {
     private String phoneNumber;
     private String password;
 
-    private Integer cardNumber;
-    private Integer acountNumber;
-
     public Person(String firstName, String lastName, String phoneNumber, String password) {
         setFirstName(firstName);
         setLastName(lastName);
@@ -48,22 +45,6 @@ public abstract class Person {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setAcountNumber(Integer acountNumber) {
-        this.acountNumber = acountNumber;
-    }
-
-    public Integer getAcountNumber() {
-        return acountNumber;
-    }
-    
-    public void setCardNumber(Integer cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public Integer getCardNumber() {
-        return cardNumber;
     }
 
     @Override
