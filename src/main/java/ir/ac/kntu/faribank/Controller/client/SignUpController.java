@@ -3,7 +3,7 @@ package ir.ac.kntu.faribank.Controller.client;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
-import ir.ac.kntu.faribank.bank.Errors.duplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
@@ -50,7 +50,6 @@ public class SignUpController implements Initializable {
     private static Stage stage;
 
     public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
     }
 
     @Override
@@ -71,15 +70,13 @@ public class SignUpController implements Initializable {
         String phoneNumber = PhoneNumber.getText();
         String password = passwordField.getText();
 
-
         
         try {
             MSignUp.getInstance().handle(new Client(Name, LastName, phoneNumber, nationalID, password));
-
         } catch (InvalidInputException e) {
-            e.printStackTrace();
-        } catch (duplicatedItemException e) {
-            e.printStackTrace();
+            e.getMessage();
+        } catch (DuplicatedItemException e) {
+            e.getMessage();
         }
 
     }

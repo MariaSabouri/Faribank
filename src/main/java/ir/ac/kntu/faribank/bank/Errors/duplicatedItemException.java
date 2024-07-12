@@ -1,19 +1,19 @@
 package ir.ac.kntu.faribank.bank.Errors;
 
-public class duplicatedItemException extends Exception {
-    public duplicatedItemException() {
+public class DuplicatedItemException extends Exception {
+    public DuplicatedItemException() {
         super("Doublicated item has found.");
     }
 
-    public duplicatedItemException(String errorMessage) {
+    public DuplicatedItemException(String errorMessage) {
         super(errorMessage);
     }
 
-    public duplicatedItemException(String errorMessage, Throwable t) {
+    public DuplicatedItemException(String errorMessage, Throwable t) {
         super(errorMessage, t);
     }
 
-    public duplicatedItemException(Throwable t) {
+    public DuplicatedItemException(Throwable t) {
         super(t);
     }
 }
