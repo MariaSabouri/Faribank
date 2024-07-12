@@ -2,11 +2,12 @@ package ir.ac.kntu.faribank.bank;
 
 import java.util.ArrayList;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
+import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.util.GenerateUniqueNumber;
 
 public class FariBank implements Bank {
-    private static FariBank instance = new FariBank();
+    private static final FariBank instance = new FariBank();
     private ArrayList<Client> clients = new ArrayList<Client>();
 
     public static FariBank getInstance() {
@@ -18,16 +19,20 @@ public class FariBank implements Bank {
     }
 
     @Override
-    public void add(Person p) throws DuplicatedItemException {
-        Client client = (Client) p; // Person: Admin - Client
-
+    public void addClient(Client client) throws DuplicatedItemException {
         if (clients.contains(client)) {
             throw new DuplicatedItemException();
-        } else {
-            client.setAccountNumber(GenerateUniqueNumber.generate(10));
-            client.setCardNumber(GenerateUniqueNumber.generate(16));
-            clients.add(client);
         }
+
+        client.setAccountNumber(GenerateUniqueNumber.generate(10));
+        client.setCardNumber(GenerateUniqueNumber.generate(16));
+        clients.add(client);
+    }
+
+    @Override
+    public void addAdmin(Admin admin) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addAdmin'");
     }
 
 }

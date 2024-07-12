@@ -20,15 +20,20 @@ public class MLogin implements Menu {
     public void handle(Person p) throws NotFoundException {
         Client c = (Client) p; // Person: Admin - Client
         ArrayList<Client> clients = FariBank.getInstance().getClients();
-        int index = clients.indexOf(c);
 
+        int index = clients.indexOf(c);
         if (index == -1) {
             throw new NotFoundException();
-        } else {
-            Client Client = clients.get(index);
-            // LoginController.changeSceneToHome(client); // GUI
         }
-
+    
+        Client foundClient = clients.get(index);
+    
+        LoginController.changeSceneToHome(
+            foundClient.getFirstName(),
+            foundClient.getLastName(),
+            foundClient.getCardNumber(),
+            foundClient.getAccountNumber()
+        );
 
         System.out.println("Login successfully!");
         System.out.println(clients.get(index).toString());

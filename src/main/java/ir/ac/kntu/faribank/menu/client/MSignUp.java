@@ -4,6 +4,7 @@ import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.menu.Menu;
 
@@ -16,7 +17,8 @@ public class MSignUp implements Menu {
     }
 
     @Override
-    public void handle(Person client) throws InvalidInputException, DuplicatedItemException  {
+    public void handle(Person p) throws InvalidInputException, DuplicatedItemException  {
+        Client client = (Client) p; // Person: Admin - Client
         if (client.getPhoneNumber().length() != 11) {
             throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!client.getPhoneNumber().matches("[0-9]{11}")) {
@@ -30,9 +32,15 @@ public class MSignUp implements Menu {
                     "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
         }
 
-        FariBank.getInstance().add(client);
+        // Authen ???
+        FariBank.getInstance().addClient(client);
 
-        SignUpController.changeSceneToHome(); // GUI
+        SignUpController.changeSceneToHome(
+            client.getFirstName(),
+            client.getLastName(),
+            client.getCardNumber(),
+            client.getAccountNumber()
+        ); // GUI
 
         System.out.println("Client added successfully!");
         System.out.println(client.toString());
