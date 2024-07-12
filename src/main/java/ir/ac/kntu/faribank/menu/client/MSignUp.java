@@ -20,11 +20,11 @@ public class MSignUp extends MEnter {
 
     private String nationalCodeID;
 
-    private static MSignUp instance = new MSignUp();
+//    private static MSignUp instance = new MSignUp();
 
-    public static MSignUp getInstance() {
-        return instance;
-    }
+//    public static MSignUp getInstance() {
+//        return instance;
+//    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
