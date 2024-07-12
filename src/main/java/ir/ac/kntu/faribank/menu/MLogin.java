@@ -1,27 +1,43 @@
 package ir.ac.kntu.faribank.menu;
 
 import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class MLogin extends Menu<MLogin.Option> {
-    public enum Option {
-    };
+public class MLogin extends MEnter {
 
-    @Override
-    protected void printMenu() {
-        System.out.println("******************************** Client ********************************");
-        System.out.print("\nPlease, write your phone number: ");
+    private static MLogin instance = new MLogin();
+
+    public static MLogin getInstance() {
+        return instance;
     }
 
     @Override
-    protected Option getOption() throws InvalidCommandExeption {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getOption'");
+    protected void printMenu() throws InvalidInputExeption {
+        System.out.println("****************************** Client - Login ******************************");
+
+        System.out.print("\nPlease, write your Phone number: ");
+        setPhoneNumber(ScannerWrapper.getInstance().next());
+
+        System.out.print("\nPlease, write your password: ");
+        setPassword(ScannerWrapper.getInstance().next());
+    }
+
+    @Override
+    protected Option getCommand() throws InvalidCommandExeption {
+        return null;
     }
 
     @Override
     public void handle() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handle'");
+        try {
+            printMenu();
+            System.out.println("Login Done");
+        } catch (InvalidInputExeption e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

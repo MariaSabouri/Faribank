@@ -5,15 +5,15 @@ import java.util.Objects;
 public class Client {
     private String firstName;
     private String lastName;
-    private int phoneNumber;
-    private int ID;
+    private String nationalCodeID;
+    private String phoneNumber;
     private String password;
 
-    public Client(String firstName, String lastName, int phoneNumber, int ID, String password) {
+    public Client(String firstName, String lastName, String phoneNumber, String nationalCodeID, String password) {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
-        setID(ID);
+        setID(nationalCodeID);
         setPassword(password);
     } 
 
@@ -33,20 +33,20 @@ public class Client {
         return lastName;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(String nationalCodeID) {
+        this.nationalCodeID = nationalCodeID;
     }
 
-    public int getID() {
-        return ID;
+    public String getID() {
+        return nationalCodeID;
     }
 
     public void setPassword(String password) {
@@ -68,14 +68,14 @@ public class Client {
                 "\nfirstName=\'" + firstName +
                 "\n\', lastName=\'" + lastName +
                 "\n\', phoneNumber=" + phoneNumber +
-                "\n, ID=" + ID +
+                "\n, ID=" + nationalCodeID +
                 "\n, phoneNumber=\'" + phoneNumber +
                 "\n\'}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, ID, password);
+        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, nationalCodeID, password);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Client {
         if (other instanceof Client otherCustomer) {
             if (this.phoneNumber == otherCustomer.phoneNumber)
                 return true;
-            if (this.ID == otherCustomer.ID)
+            if (this.nationalCodeID == otherCustomer.nationalCodeID)
                 return true;
         }
         return false;
