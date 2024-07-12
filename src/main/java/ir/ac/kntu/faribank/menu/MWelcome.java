@@ -1,7 +1,7 @@
 package ir.ac.kntu.faribank.menu;
 
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
-import ir.ac.kntu.faribank.menu.client.MStatusOfEnter;
+import ir.ac.kntu.faribank.menu.client.MStatusOfEntryClient;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
 public class MWelcome extends Menu<MWelcome.Role> {
@@ -53,7 +53,7 @@ public class MWelcome extends Menu<MWelcome.Role> {
 
                 switch (option) {
                     case CLIENT -> {
-                        MStatusOfEnter.getInstance().handle();
+                        MStatusOfEntryClient.getInstance().handle();
                     }
                     case ADMIN -> {
 

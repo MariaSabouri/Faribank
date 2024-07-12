@@ -2,7 +2,6 @@ package ir.ac.kntu.faribank.bank;
 
 import ir.ac.kntu.faribank.FXML_Loader;
 import ir.ac.kntu.faribank.menu.MWelcome;
-import ir.ac.kntu.faribank.util.ScannerWrapper;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +12,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        launch();
+        // launch();
         MWelcome.getInstance().handle();
     }
 

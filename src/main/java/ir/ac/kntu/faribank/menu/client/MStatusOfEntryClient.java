@@ -4,16 +4,16 @@ import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.menu.Menu;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
-public class MStatusOfEnter extends Menu<MStatusOfEnter.Option> {
+public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
     public enum Option {
         LOGIN,
         SIGNUP,
         BACK,
     }
 
-    private static MStatusOfEnter instance = new MStatusOfEnter();
+    private static MStatusOfEntryClient instance = new MStatusOfEntryClient();
 
-    public static MStatusOfEnter getInstance() {
+    public static MStatusOfEntryClient getInstance() {
         return instance;
     }
 
@@ -45,7 +45,7 @@ public class MStatusOfEnter extends Menu<MStatusOfEnter.Option> {
     public void handle() {
         Option option = null;
   
-        while (option != MStatusOfEnter.Option.BACK) {
+        while (option != MStatusOfEntryClient.Option.BACK) {
             printMenu();
 
             try {
