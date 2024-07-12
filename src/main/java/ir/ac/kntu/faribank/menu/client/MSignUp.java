@@ -92,7 +92,7 @@ public class MSignUp extends MEnter {
 
     @Override
     public void handle() {
-        LoginController.changeSceneToHome(true);
+        LoginController.changeSceneToHome();
 //        try {
 //            printMenu();
 //        System.out.println(se);
