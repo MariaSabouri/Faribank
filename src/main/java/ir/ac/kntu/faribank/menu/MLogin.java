@@ -1,7 +1,12 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.Controller.client.SignUpController;
+import java.util.ArrayList;
+
+import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
+import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.client.Client;
 
 public class MLogin implements Menu {
 
@@ -12,10 +17,22 @@ public class MLogin implements Menu {
     }
 
     @Override
-    public void handle(Person admin) {
-        SignUpController.changeSceneToHome();
+    public void handle(Person p) throws NotFoundException {
+        Client c = (Client) p; // Person: Admin - Client
+        ArrayList<Client> clients = FariBank.getInstance().getClients();
+        int index = clients.indexOf(c);
 
-        System.out.println(toString());
+        if (index == -1) {
+            throw new NotFoundException();
+        } else {
+            Client Client = clients.get(index);
+            // LoginController.changeSceneToHome(client); // GUI
+        }
+
+
+        System.out.println("Login successfully!");
+        System.out.println(clients.get(index).toString());
+        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
     }
 
 }

@@ -2,9 +2,9 @@ package ir.ac.kntu.faribank.util;
 
 import java.security.SecureRandom;
 
-public class generateUniqueNumber {
+public class GenerateUniqueNumber {
 
-    public static String generateUniqueCartNumbers(int cartNumberLength) {
+    public static String generate(int cartNumberLength) {
         SecureRandom secureRandom = new SecureRandom();
 
         StringBuilder cartNumber = new StringBuilder();

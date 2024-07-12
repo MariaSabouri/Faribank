@@ -32,9 +32,10 @@ public class MSignUp implements Menu {
 
         FariBank.getInstance().add(client);
 
-        SignUpController.changeSceneToHome();
+        SignUpController.changeSceneToHome(); // GUI
 
+        System.out.println("Client added successfully!");
+        System.out.println(client.toString());
         System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
-        System.out.println(toString());
     }
 }
