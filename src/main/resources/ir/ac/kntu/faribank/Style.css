@@ -1,0 +1,10 @@
+.button {
+    /*-fx-background-color: #7DA3FF; !* Original background color *!*/
+    /*-fx-text-fill: #000000; !* Original text color *!*/
+    -fx-cursor: hand
+}
+
+.button:hover {
+    -fx-background-color: #5F82E6; /* Background color on hover */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0.0, 0, 4);
+}
