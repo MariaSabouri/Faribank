@@ -27,7 +27,7 @@ public class LoginController implements Initializable {
     private Label LoginLabel;
 
     @FXML
-    private TextField UsernameField;
+    private TextField PhoneNumber;
 
     @FXML
     private BorderPane loginBorderPane;
@@ -54,6 +54,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackButton.setOnMouseClicked(mouseEvent -> BackButtonHandler());
         signUpButton.setOnMouseClicked(mouseEvent -> signUpButtonHandler());
+        loginButton.setOnMouseClicked(mouseEvent -> loginButtonHandler());
 
 
         if (LabelText.equals("Customer")){
@@ -65,6 +66,16 @@ public class LoginController implements Initializable {
             loginBorderPane.setBackground(new Background(new BackgroundFill(Color.web("4F51a5"), null, null)));
             LoginLabel.setText("Admin - Login");
         }
+
+
+
+    }
+
+    private void loginButtonHandler() {
+        stage=(Stage) loginButton.getScene().getWindow();
+
+        String phoneNumber=PhoneNumber.getText();
+        String password=passwordField.getText();
 
 
 

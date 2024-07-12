@@ -1,57 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.client.SignUpController">
-    <padding>
-        <Insets bottom="25" left="25" right="25" top="25" />
-    </padding>
-    <TextField fx:id="usernameField" prefHeight="39.0" style="-fx-pref-width: 200px; -fx-pref-height: 40;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-    <Label text="Password:" GridPane.rowIndex="2">
-      <font>
-         <Font name="System Bold" size="17.0" />
-      </font></Label>
-    <PasswordField fx:id="passwordField" prefHeight="44.0" style="-fx-pref-width: 200px; -fx-pref-height: 40;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-    <Button fx:id="signUpButton" prefWidth="81.0" style="-fx-background-color: #ff0000; -fx-text-fill: white;" text="Sign Up" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
-      <font>
-         <Font name="System Bold" size="16.0" />
-      </font></Button>
-
-    <Label text="Already have an account?" GridPane.rowIndex="6">
-      <font>
-         <Font size="13.0" />
-      </font></Label>
-    <Button fx:id="loginButton" style="-fx-background-color: transparent; -fx-text-fill: #ff0000; -fx-underline: true;" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="6">
-      <font>
-         <Font size="13.0" />
-      </font></Button>
-   <Label text="Username:" GridPane.rowIndex="1">
-      <font>
-         <Font name="System Bold" size="17.0" />
-      </font>
-   </Label>
-   <Label text="Name:">
-      <font>
-         <Font name="System Bold" size="17.0" />
-      </font>
-   </Label>
-   <PasswordField fx:id="NameField" prefHeight="44.0" style="-fx-pref-width: 200px; -fx-pref-height: 40;" GridPane.columnIndex="1" />
-    <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-    </rowConstraints>
-</GridPane>
+<BorderPane fx:id="signUpBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.client.SignUpController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="center" hgap="10" prefHeight="400.0" prefWidth="600.0" vgap="10">
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="PhoneNumber" prefHeight="41.0" style="-fx-pref-width: 200px; -fx-pref-height: 40;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Password:" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" prefHeight="41.0" style="-fx-pref-width: 200px; -fx-pref-height: 40;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button fx:id="signUpButton" prefWidth="81.0" style="-fx-background-color: #37a671; -fx-text-fill: white;" text="Sign Up" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label text="Already have an account?" textFill="#c0d6e4" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="loginButton" style="-fx-background-color: transparent; -fx-underline: true;" text="Login" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label text="Phone Number:" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Name:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="37.0" prefWidth="92.0" text="Last Name:" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="LastNameField" prefHeight="41.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="National ID:" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="NationalID" prefHeight="41.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="NameField" prefHeight="41.0" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <VBox alignment="CENTER" prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Client - SignUp" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
