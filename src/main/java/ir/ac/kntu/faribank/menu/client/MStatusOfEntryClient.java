@@ -54,7 +54,7 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
 
                 switch (option) {
                     case LOGIN -> {
-                        MLogin.getInstance().handle();
+                        // MLogin.getInstance().handle();
                     }
                     case SIGNUP -> {
                         MSignUp.getInstance().handle();
