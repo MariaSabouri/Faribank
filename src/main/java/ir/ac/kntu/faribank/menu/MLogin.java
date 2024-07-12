@@ -6,10 +6,15 @@ import ir.ac.kntu.faribank.util.ScannerWrapper;
 
 public class MLogin extends MEnter {
 
-    private static MLogin instance = new MLogin();
+    // private static MLogin instance = new MLogin("", "");
 
-    public static MLogin getInstance() {
-        return instance;
+    // public static MLogin getInstance() {
+    //     return instance;
+    // }
+
+    public MLogin(String phoneNumber, String password) {
+        setPassword(password);
+        setPhoneNumber(phoneNumber);
     }
 
     @Override
@@ -30,14 +35,12 @@ public class MLogin extends MEnter {
 
     @Override
     public void handle() {
-        try {
-            printMenu();
+        // try {
+        //     printMenu();
             System.out.println("Login Done");
-        } catch (InvalidInputExeption e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // } catch (InvalidInputExeption e) {
+        //     e.printStackTrace();
+        // }
     }
 
 }
