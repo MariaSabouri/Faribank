@@ -8,7 +8,7 @@ public class Client extends Person {
     private String nationalCodeID;
     private String aminAuthenText;
 
-    public Client(String firstName, String lastName, String phoneNumber, String nationalCodeID, String password) {
+    public Client(String phoneNumber, String password, String firstName, String lastName,  String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
         setNationalCodeID(nationalCodeID);
     }
@@ -55,7 +55,7 @@ public class Client extends Person {
         if (other instanceof Client otherCustomer) {
             if (getPhoneNumber() == otherCustomer.getPhoneNumber())
                 return true;
-            if (this.getNationalCodeID() == otherCustomer.getNationalCodeID())
+            if (this.getPassword() == otherCustomer.getPassword())
                 return true;
         }
         return false;
