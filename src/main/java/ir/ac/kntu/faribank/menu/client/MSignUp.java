@@ -4,7 +4,7 @@ import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
-import ir.ac.kntu.faribank.bank.Errors.duplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.menu.Menu;
 
 public class MSignUp implements Menu {
@@ -16,7 +16,7 @@ public class MSignUp implements Menu {
     }
 
     @Override
-    public void handle(Person client) throws InvalidInputException, duplicatedItemException  {
+    public void handle(Person client) throws InvalidInputException, DuplicatedItemException  {
         if (client.getPhoneNumber().length() != 11) {
             throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!client.getPhoneNumber().matches("[0-9]{11}")) {

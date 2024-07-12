@@ -1,7 +1,7 @@
 package ir.ac.kntu.faribank.bank;
 
-import ir.ac.kntu.faribank.bank.Errors.duplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 
 public interface Bank {
-    void add(Person p) throws duplicatedItemException;
+    void add(Person p) throws DuplicatedItemException;
 }
