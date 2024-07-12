@@ -49,8 +49,7 @@ public class SignUpController implements Initializable {
 
     private static Stage stage;
 
-    public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+    public static void changeSceneToHome(String firstName, String lastName, String cardNumber, String accountNumber) {
     }
 
     @Override
@@ -65,19 +64,19 @@ public class SignUpController implements Initializable {
     private void signUpButtonHandler() {
         stage = (Stage) signUpButton.getScene().getWindow();
 
-        String Name = NameField.getText();
-        String LastName = LastNameField.getText();
+        String firstName = NameField.getText();
+        String lastName = LastNameField.getText();
         String nationalID = NationalID.getText();
         String phoneNumber = PhoneNumber.getText();
         String password = passwordField.getText();
 
         
         try {
-            MSignUp.getInstance().handle(new Client(phoneNumber, password, LastName, LastName, nationalID));
+            MSignUp.getInstance().handle(new Client(phoneNumber, password, firstName, lastName, nationalID));
         } catch (InvalidInputException e) {
-            e.printStackTrace();
+            e.getMessage();
         } catch (DuplicatedItemException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
 
     }
