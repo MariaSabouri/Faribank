@@ -2,7 +2,7 @@ package ir.ac.kntu.faribank.Controller.client;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +19,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
-
 
     @FXML
     private TextField LastNameField;
@@ -57,33 +56,31 @@ public class SignUpController implements Initializable {
 
         signUpBorderPane.setBackground(new Background(new BackgroundFill(Color.web("3387CC"), null, null)));
 
-
     }
 
     private void signUpButtonHandler() {
-        stage=(Stage) signUpButton.getScene().getWindow();
+        stage = (Stage) signUpButton.getScene().getWindow();
 
-        String Name=NameField.getText();
-        String LastName=LastNameField.getText();
-        String nationalID=NationalID.getText();
-        String phoneNumber=PhoneNumber.getText();
-        String password=passwordField.getText();
+        String Name = NameField.getText();
+        String LastName = LastNameField.getText();
+        String nationalID = NationalID.getText();
+        String phoneNumber = PhoneNumber.getText();
+        String password = passwordField.getText();
 
-        MSignUp mSignUp=new MSignUp(Name,LastName,nationalID,phoneNumber,password);
+        MSignUp mSignUp = new MSignUp(Name, LastName, nationalID, phoneNumber, password);
         try {
             mSignUp.check();
-        }catch (InvalidInputExeption e){
+        } catch (InvalidInputException e) {
             e.getMessage();
         }
-
 
     }
 
     private void loginButtonHandler() {
-        stage=(Stage) loginButton.getScene().getWindow();
+        stage = (Stage) loginButton.getScene().getWindow();
 
         LoginController.setLoginLabel("Customer");
-        ProjectFX.changingscene(stage,"login-view.fxml");
+        ProjectFX.changingscene(stage, "login-view.fxml");
 
     }
 }

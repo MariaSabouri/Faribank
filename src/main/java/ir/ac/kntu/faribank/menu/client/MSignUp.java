@@ -1,7 +1,7 @@
 package ir.ac.kntu.faribank.menu.client;
 
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.menu.MEnter;
 
 public class MSignUp extends MEnter {
@@ -53,22 +53,22 @@ public class MSignUp extends MEnter {
     }
 
     @Override
-    public void check() throws InvalidInputExeption {
+    public void check() throws InvalidInputException {
         if (getPhoneNumber().length() != 11) {
-            throw new InvalidInputExeption("Phone Number'length must be 11 digits.");
+            throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!getPhoneNumber().matches("[0-9]{11}")) {
-            throw new InvalidInputExeption("Phone Number should only contain digits (0-9).");
+            throw new InvalidInputException("Phone Number should only contain digits (0-9).");
         }
 
         if (getPassword().matches("\\s")) {
-            throw new InvalidInputExeption("Invalid password, because it has space (' ') character.");
+            throw new InvalidInputException("Invalid password, because it has space (' ') character.");
         } else if (!getPassword().matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\W_]).+$")) {
-            throw new InvalidInputExeption(
+            throw new InvalidInputException(
                     "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
         }
 
         SignUpController.changeSceneToHome();
-        
+
         System.out.println(toString());
     }
 }

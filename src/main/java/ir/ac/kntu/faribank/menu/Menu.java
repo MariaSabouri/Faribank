@@ -1,7 +1,7 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 
 public interface Menu {
-    void check() throws InvalidInputExeption;
+    void check() throws InvalidInputException;
 }
