@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.menu.client;
 
+import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
 import ir.ac.kntu.faribank.menu.MEnter;
@@ -8,6 +9,15 @@ import ir.ac.kntu.faribank.util.ScannerWrapper;
 public class MSignUp extends MEnter {
     private String firstName;
     private String lastName;
+
+    public MSignUp(String firstName, String lastName, String nationalCodeID, String phoneNumber, String password) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setNationalCode(nationalCodeID);
+        setPhoneNumber(phoneNumber);
+        setPassword(password);
+    }
+
     private String nationalCodeID;
 
     private static MSignUp instance = new MSignUp();
@@ -82,13 +92,15 @@ public class MSignUp extends MEnter {
 
     @Override
     public void handle() {
-        try {
-            printMenu();
+        LoginController.changeSceneToHome(true);
+//        try {
+//            printMenu();
+//        System.out.println(se);
             System.out.println("SignUp Done");
-        } catch (InvalidInputExeption e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (InvalidInputExeption e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

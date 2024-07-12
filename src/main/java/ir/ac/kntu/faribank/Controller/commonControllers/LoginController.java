@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.commonControllers;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.menu.MLogin;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -50,6 +51,8 @@ public class LoginController implements Initializable {
         LabelText=text;
     }
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackButton.setOnMouseClicked(mouseEvent -> BackButtonHandler());
@@ -77,8 +80,16 @@ public class LoginController implements Initializable {
         String phoneNumber=PhoneNumber.getText();
         String password=passwordField.getText();
 
+        MLogin mLogin=new MLogin(phoneNumber,password);
+        mLogin.handle();
 
+    }
+    public static void changeSceneToHome() {
+        try {
 
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
     private void signUpButtonHandler() {

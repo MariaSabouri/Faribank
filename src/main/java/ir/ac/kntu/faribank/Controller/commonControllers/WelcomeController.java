@@ -36,6 +36,7 @@ public class WelcomeController implements Initializable {
         LoginController.setLoginLabel(customerButton.getText());
         ProjectFX.changingscene(stage,"login-view.fxml");
 
+
     }
 
     private void BanckAssistantButtonHandler() {

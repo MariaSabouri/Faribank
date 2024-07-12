@@ -37,7 +37,8 @@ public class MLogin extends MEnter {
     public void handle() {
         // try {
         //     printMenu();
-            System.out.println("Login Done");
+        System.out.println("Login Done");
+        System.out.println(getPhoneNumber() + ", " + getPassword());
         // } catch (InvalidInputExeption e) {
         //     e.printStackTrace();
         // }
