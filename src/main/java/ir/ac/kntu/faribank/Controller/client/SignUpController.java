@@ -3,6 +3,8 @@ package ir.ac.kntu.faribank.Controller.client;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.admin.Admin;
+import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,9 +69,9 @@ public class SignUpController implements Initializable {
         String phoneNumber = PhoneNumber.getText();
         String password = passwordField.getText();
 
-        MSignUp mSignUp = new MSignUp(Name, LastName, nationalID, phoneNumber, password);
+        
         try {
-            mSignUp.check();
+            MSignUp.getInstance().handle(new Client(Name, LastName, phoneNumber, nationalID, password));
         } catch (InvalidInputException e) {
             e.getMessage();
         }
