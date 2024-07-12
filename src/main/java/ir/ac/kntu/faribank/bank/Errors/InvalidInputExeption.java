@@ -2,7 +2,7 @@ package ir.ac.kntu.faribank.bank.Errors;
 
 public class InvalidInputExeption extends Exception {
     public InvalidInputExeption() {
-        super("Invalid input.");
+        super("Invalid Input.");
     }
 
     public InvalidInputExeption(String errorMessage) {

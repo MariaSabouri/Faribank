@@ -1,6 +1,6 @@
 package ir.ac.kntu.faribank.menu;
 
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
 import ir.ac.kntu.faribank.menu.client.MStatusOfEntryClient;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
@@ -23,11 +23,11 @@ public class MWelcome extends Menu<MWelcome.Role> {
         System.out.println("1. Customer");
         System.out.println("2. Bank Assistant");
         System.out.println("3. Exit");
-        System.out.print("\nPlease select your choice: ");
+        System.out.print("\nPlease, select your choice: ");
     };
 
     @Override
-    protected Role getOption() throws InvalidInputExeption {
+    protected Role getOption() throws InvalidCommandExeption {
         Role[] roles = Role.values();
 
         while (true) {
@@ -37,7 +37,7 @@ public class MWelcome extends Menu<MWelcome.Role> {
                 return roles[userInput];
             }
 
-            throw new InvalidInputExeption();
+            throw new InvalidCommandExeption();
         }
     }
 
@@ -62,7 +62,7 @@ public class MWelcome extends Menu<MWelcome.Role> {
                         ScannerWrapper.getInstance().close();
                     }
                 }
-            } catch (InvalidInputExeption e) {
+            } catch (InvalidCommandExeption e) {
                 e.printStackTrace();
             }
         }

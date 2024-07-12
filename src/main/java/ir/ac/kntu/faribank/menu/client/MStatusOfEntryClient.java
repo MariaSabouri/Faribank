@@ -1,6 +1,6 @@
 package ir.ac.kntu.faribank.menu.client;
 
-import ir.ac.kntu.faribank.bank.Errors.InvalidInputExeption;
+import ir.ac.kntu.faribank.bank.Errors.InvalidCommandExeption;
 import ir.ac.kntu.faribank.menu.Menu;
 import ir.ac.kntu.faribank.util.ScannerWrapper;
 
@@ -19,15 +19,15 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
 
     @Override
     protected void printMenu() {
-        System.out.println("****************************************************************");
+        System.out.println("******************************** Client ********************************");
         System.out.println("1. Login");
         System.out.println("2. SignUp");
         System.out.println("3. Back <");
-        System.out.print("\nPlease select your choice: ");
+        System.out.print("\nPlease, select your choice: ");
     };
 
     @Override
-    protected Option getOption() throws InvalidInputExeption {
+    protected Option getOption() throws InvalidCommandExeption {
         Option[] option = Option.values();
 
         while (true) {
@@ -37,14 +37,14 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
                 return option[userInput];
             }
 
-            throw new InvalidInputExeption();
+            throw new InvalidCommandExeption();
         }
     }
 
     @Override
     public void handle() {
         Option option = null;
-  
+
         while (option != MStatusOfEntryClient.Option.BACK) {
             printMenu();
 
@@ -53,16 +53,17 @@ public class MStatusOfEntryClient extends Menu<MStatusOfEntryClient.Option> {
 
                 switch (option) {
                     case LOGIN -> {
-                        
+
                     }
                     case SIGNUP -> {
 
                     }
-                    case BACK -> {}
+                    case BACK -> {
+                    }
                 }
-            } catch (InvalidInputExeption e) {
+            } catch (InvalidCommandExeption e) {
                 e.printStackTrace();
             }
         }
-    }    
+    }
 }
