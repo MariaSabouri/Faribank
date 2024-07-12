@@ -2,80 +2,48 @@ package ir.ac.kntu.faribank.bank.client;
 
 import java.util.Objects;
 
-public class Client {
-    private String firstName;
-    private String lastName;
+import ir.ac.kntu.faribank.bank.Person;
+
+public class Client extends Person {
     private String nationalCodeID;
-    private String phoneNumber;
-    private String password;
+    private String aminAuthenText;
 
     public Client(String firstName, String lastName, String phoneNumber, String nationalCodeID, String password) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNumber(phoneNumber);
-        setID(nationalCodeID);
-        setPassword(password);
-    } 
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        super(firstName, lastName, phoneNumber, password);
+        setNationalCodeID(nationalCodeID);
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setID(String nationalCodeID) {
+    public void setNationalCodeID(String nationalCodeID) {
         this.nationalCodeID = nationalCodeID;
     }
 
-    public String getID() {
+    public String getNationalCodeID() {
         return nationalCodeID;
     }
 
-    public void setPassword(String password) {
-        // if (password.matches(".")) {
-        this.password = password;
-        // } else {
-        // System.out.println("The password is weak.");
-        // }
+    public void setAminAuthenText(String aminAuthenText) {
+        this.aminAuthenText = aminAuthenText;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAminAuthenText() {
+        return aminAuthenText;
     }
 
     @Override
     public String toString() {
-        return "\nCustomer{" +
-                "\nBankAssistant=" + super.toString() +
-                "\nfirstName=\'" + firstName +
-                "\n\', lastName=\'" + lastName +
-                "\n\', phoneNumber=" + phoneNumber +
-                "\n, ID=" + nationalCodeID +
-                "\n, phoneNumber=\'" + phoneNumber +
-                "\n\'}";
+        return "Client{" +
+                "\nphoneNumber: '" + getPhoneNumber() +
+                "\'\npassword: '" + getPassword() +
+                "\'\nfirstName: '" + getFirstName() +
+                "\'\nlastName: '" + getLastName() +
+                "\'\nnationalCodeID: '" + getNationalCodeID() +
+                "\'\naminAuthenText: '" + getAminAuthenText() +
+                "\'\n'}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, phoneNumber, nationalCodeID, password);
+        return Objects.hash(super.hashCode(), nationalCodeID, aminAuthenText);
     }
 
     @Override
@@ -85,9 +53,9 @@ public class Client {
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Client otherCustomer) {
-            if (this.phoneNumber == otherCustomer.phoneNumber)
+            if (getPhoneNumber() == otherCustomer.getPhoneNumber())
                 return true;
-            if (this.nationalCodeID == otherCustomer.nationalCodeID)
+            if (this.getNationalCodeID() == otherCustomer.getNationalCodeID())
                 return true;
         }
         return false;

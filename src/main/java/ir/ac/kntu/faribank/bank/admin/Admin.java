@@ -1,38 +1,19 @@
 package ir.ac.kntu.faribank.bank.admin;
 
-import java.util.Objects;
+import ir.ac.kntu.faribank.bank.Person;
 
-public class Admin {
-    private boolean confirmation = false;
-    private String comment;
-
-    public void setConfirmation(boolean confirmation) {
-        this.confirmation = confirmation;
-    }
-
-    public boolean getConfirmation() {
-        return confirmation;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getComment() {
-        return comment;
+public class Admin extends Person {
+    public Admin(String firstName, String lastName, String phoneNumber, String password) {
+        super(firstName, lastName, phoneNumber, password);
     }
 
     @Override
     public String toString() {
-        return "BankAssistant{" +
-                "confirmation=" + confirmation +
-                ", comment='" + comment +
-                "\'}";
-    }
-
-    @Override
-    public int hashCode() {
-        // TODO Auto-generated method stub
-        return Objects.hash(confirmation, comment);
+        return "Admin{" +
+                "\nphoneNumber: '" + getPhoneNumber() +
+                "\'\npassword: '" + getPassword() +
+                "\'\nfirstName: '" + getFirstName() +
+                "\'\nlastName: '" + getLastName() +
+                "\'\n'}";
     }
 }

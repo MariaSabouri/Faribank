@@ -67,7 +67,8 @@ public class MSignUp extends MEnter {
                     "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
         }
 
-        System.out.println(toString());
         SignUpController.changeSceneToHome();
+        
+        System.out.println(toString());
     }
 }
