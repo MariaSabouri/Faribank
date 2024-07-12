@@ -85,9 +85,9 @@
    <center>
       <VBox prefHeight="195.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+            <HBox prefHeight="95.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane prefHeight="115.0" prefWidth="190.0" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                            <children>
@@ -100,17 +100,14 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="mywe" prefHeight="29.0" prefWidth="156.0" styleClass="AccountManagement" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <WebView fx:id="AccountManagerWeb" prefHeight="79.0" prefWidth="190.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <center>
-                        <AnchorPane prefHeight="71.0" prefWidth="194.0" styleClass="money" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
-                     </center>
+                  <BorderPane prefHeight="98.0" prefWidth="194.0">
                      <bottom>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="ContactsLabel" text="Contacts" textFill="WHITE" underline="true">
+                              <Label fx:id="ContactsLabel" prefHeight="12.0" prefWidth="65.0" text="Contacts" textFill="WHITE" underline="true">
                                  <font>
                                     <Font name="Arial Bold Italic" size="15.0" />
                                  </font>
@@ -118,10 +115,13 @@
                            </children>
                         </HBox>
                      </bottom>
+                     <center>
+                        <WebView fx:id="ContactsWeb" prefHeight="70.0" prefWidth="194.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                     </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <bottom>
-                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
                               <Label fx:id="TransferLabel" text="Transfer" textFill="WHITE" underline="true">
                                  <font>
@@ -131,19 +131,22 @@
                            </children>
                         </HBox>
                      </bottom>
+                     <center>
+                        <WebView fx:id="TransferWeb" prefHeight="200.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                     </center>
                   </BorderPane>
                </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@CardSVGStyle.css">
-                     <center>
-                        <AnchorPane maxWidth="86.0" minHeight="72.0" minWidth="86.0" prefHeight="72.0" prefWidth="86.0" BorderPane.alignment="CENTER" />
-                     </center>
                      <bottom>
-                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <HBox alignment="CENTER" prefHeight="18.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="AccountmanagementLabel1" alignment="CENTER" prefHeight="8.0" prefWidth="194.0" text="Support" textFill="WHITE" underline="true">
+                              <Label fx:id="AccountmanagementLabel1" alignment="CENTER" prefHeight="15.0" prefWidth="194.0" text="Support" textFill="WHITE" underline="true">
                                  <font>
                                     <Font name="System Bold Italic" size="15.0" />
                                  </font>
@@ -151,6 +154,9 @@
                            </children>
                         </HBox>
                      </bottom>
+                     <center>
+                        <WebView fx:id="SupportWeb" prefHeight="50.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                     </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <bottom>
@@ -164,15 +170,18 @@
                            </children>
                         </HBox>
                      </bottom>
+                     <center>
+                        <WebView fx:id="SettingsWeb" prefHeight="200.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                     </center>
                   </BorderPane>
                </children>
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets top="30.0" />
+            <Insets top="5.0" />
          </BorderPane.margin>
          <padding>
-            <Insets top="30.0" />
+            <Insets top="10.0" />
          </padding>
       </VBox>
    </center>

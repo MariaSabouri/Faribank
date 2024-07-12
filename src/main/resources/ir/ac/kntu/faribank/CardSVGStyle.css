@@ -15,5 +15,8 @@
     -fx-max-width: 25;
     -fx-max-height: 50;
 }
+.ClientHome {
+    -fx-background-color: #000;
+    -fx-alignment: center;
 
-
+}
