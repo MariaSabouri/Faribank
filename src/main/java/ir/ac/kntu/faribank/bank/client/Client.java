@@ -6,7 +6,7 @@ import ir.ac.kntu.faribank.bank.Person;
 
 public class Client extends Person {
     private String nationalCodeID;
-    private String aminAuthenText;
+    private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
 
@@ -23,12 +23,12 @@ public class Client extends Person {
         return nationalCodeID;
     }
 
-    public void setAminAuthenText(String aminAuthenText) {
-        this.aminAuthenText = aminAuthenText;
+    public void setAdminAuthenText(String adminAuthenText) {
+        this.adminAuthenText = adminAuthenText;
     }
 
-    public String getAminAuthenText() {
-        return aminAuthenText;
+    public String getAdminAuthenText() {
+        return adminAuthenText;
     }
 
     public void setCardNumber(String cardNumber) {
@@ -48,12 +48,6 @@ public class Client extends Person {
     }
 
     @Override
-    public void setPassword(String password) {
-        // TODO Auto-generated method stub
-        super.setPassword(password);
-    }
-
-    @Override
     public String toString() {
         return "Client{" +
                 "\nphoneNumber: '" + getPhoneNumber() +
@@ -61,13 +55,15 @@ public class Client extends Person {
                 "\'\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
                 "\'\nnationalCodeID: '" + getNationalCodeID() +
-                "\'\naminAuthenText: '" + getAminAuthenText() +
+                "\'\nadminAuthenText: '" + getAdminAuthenText() +
+                "\'\ncardNumber: '" + getCardNumber() +
+                "\'\naccountNumber: '" + getAccountNumber() +
                 "\'\n'}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nationalCodeID, aminAuthenText);
+        return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText);
     }
 
     @Override
@@ -77,9 +73,9 @@ public class Client extends Person {
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Client otherCustomer) {
-            if (getPhoneNumber() == otherCustomer.getPhoneNumber())
+            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                 return true;
-            if (this.getPassword() == otherCustomer.getPassword())
+            if (this.getPassword().equals(otherCustomer.getPassword()))
                 return true;
         }
         return false;
