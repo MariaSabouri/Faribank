@@ -51,12 +51,7 @@ public class SignUpController implements Initializable {
     private static Stage stage;
 
     public static void changeSceneToHome() {
-
         ProjectFX.changingscene(stage,"ClentHomePage.fxml");
-
-
-
-
     }
 
     @Override
@@ -65,7 +60,6 @@ public class SignUpController implements Initializable {
         signUpButton.setOnMouseClicked(mouseEvent -> signUpButtonHandler());
 
         signUpBorderPane.setBackground(new Background(new BackgroundFill(Color.web("3387CC"), null, null)));
-
     }
 
     private void signUpButtonHandler() {
@@ -94,7 +88,6 @@ public class SignUpController implements Initializable {
             passwordField.clear();
             PhoneNumber.clear();
         }
-
     }
 
     private void loginButtonHandler() {
