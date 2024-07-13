@@ -72,9 +72,6 @@ public class LoginController implements Initializable {
             loginBorderPane.setBackground(new Background(new BackgroundFill(Color.web("4F51a5"), null, null)));
             LoginLabel.setText("Admin - Login");
         }
-
-
-
     }
 
     private void loginButtonHandler() {
@@ -95,6 +92,11 @@ public class LoginController implements Initializable {
 
     public static void changeSceneToHome() {
         ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+    }
+    public static void changeSceneToAuthen() {ProjectFX.changingscene(stage,"Authentication.fxml");}
+    public static void changeSceneToSignUp(String errMessage) {
+        ProjectFX.changingscene(stage,"signUp-view.fxml");
+        Alert.showingError(errMessage);
     }
 
     private void signUpButtonHandler() {

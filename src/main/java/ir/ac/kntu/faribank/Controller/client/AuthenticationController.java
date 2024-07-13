@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.Objects;
@@ -22,6 +23,9 @@ public class AuthenticationController implements Initializable {
     private WebView waitSVG;
     private static Stage stage;
 
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LogOutButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
@@ -34,6 +38,6 @@ public class AuthenticationController implements Initializable {
 
     private void LogOutButtonHandler() {
         stage=(Stage) LogOutButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"Authentication.fxml");
+        ProjectFX.changingscene(stage,"welcome.fxml");
     }
 }
