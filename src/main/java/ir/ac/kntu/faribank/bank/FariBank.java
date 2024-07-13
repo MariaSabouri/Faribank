@@ -9,6 +9,7 @@ import ir.ac.kntu.faribank.util.GenerateUniqueNumber;
 public class FariBank implements Bank {
     private static final FariBank instance = new FariBank();
     private ArrayList<Client> clients = new ArrayList<Client>();
+    private ArrayList<Client> newClients = new ArrayList<Client>();
 
     public static FariBank getInstance() {
         return instance;
@@ -18,19 +19,28 @@ public class FariBank implements Bank {
         return clients;
     }
 
+    public ArrayList<Client> getNewClients() {
+        return newClients;
+    }
+
     @Override
-    public void addClient(Client client) throws DuplicatedItemException {
-        if (clients.contains(client)) {
-            if (client.getAdminAuthenText().equals("")) {
-                throw new DuplicatedItemException("Duplicated Account (Phone Number or National ID) has found!");
-            } else if (client.getAdminAuthenText().equals(null)) {
-                throw new DuplicatedItemException("This Account has already be created. Please wait until admin authenticates your account.");
-            }
+    public void addNewClient(Client newClient) throws DuplicatedItemException {
+        if (clients.contains(newClient)) {
+            throw new DuplicatedItemException("Duplicated Account has found! this (Phone Number or National ID) has already been taken.");
+        } else if (newClients.contains(newClient)) {
+            throw new DuplicatedItemException("This Account has already been created. Please wait until admin authenticates your account.");
         }
 
-        client.setAccountNumber(GenerateUniqueNumber.generate(10));
-        client.setCardNumber(GenerateUniqueNumber.generate(16));
-        clients.add(client);
+        newClients.add(newClient);
+    }
+
+    @Override
+    public void addClient(Client newClient) {
+        newClient.setAccountNumber(GenerateUniqueNumber.generate(10));
+        newClient.setCardNumber(GenerateUniqueNumber.generate(16));
+
+        clients.add(newClient);
+        System.out.println("Client added successfully!\nNow Client has Account number and Card number.");
     }
 
     @Override

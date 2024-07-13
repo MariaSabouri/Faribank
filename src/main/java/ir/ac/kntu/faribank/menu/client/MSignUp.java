@@ -1,9 +1,5 @@
 package ir.ac.kntu.faribank.menu.client;
 
-import ir.ac.kntu.faribank.Controller.client.AuthenticationController;
-import org.json.JSONObject;
-
-import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.FariBank;
@@ -37,19 +33,15 @@ public class MSignUp implements Menu {
 
     @Override
     public void handle(Person p) throws InvalidInputException, DuplicatedItemException {
-        Client client = (Client) p; // Person: Admin - Client
+        Client newClient = (Client) p; // Person: Admin - Client
 
-        checkInput(client);
-        FariBank.getInstance().addClient(client);
-
-        // update admin
+        checkInput(newClient);
+        FariBank.getInstance().addNewClient(newClient);
 
         SignUpController.changeSceneToAuthentication(); // GUI
 
         System.out.println("Client added successfully!");
-        System.out.println(client.toString());
-        System.out.println(FariBank.getInstance().getClients());
-        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
-
+        System.out.println(newClient.toString());
+        System.out.println("NewClients: " + FariBank.getInstance().getNewClients());
     }
 }
