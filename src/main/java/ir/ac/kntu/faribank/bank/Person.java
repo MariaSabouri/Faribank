@@ -2,6 +2,8 @@ package ir.ac.kntu.faribank.bank;
 
 import java.util.Objects;
 
+import ir.ac.kntu.faribank.bank.client.Client;
+
 public abstract class Person {
     private String firstName;
     private String lastName;
@@ -50,5 +52,20 @@ public abstract class Person {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, phoneNumber, password);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+        if (other == null || getClass() != other.getClass())
+            return false;
+        if (other instanceof Client otherCustomer) {
+            if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
+                return true;
+            if (password.equals(otherCustomer.getPassword()))
+                return true;
+        }
+        return false;
     }
 }

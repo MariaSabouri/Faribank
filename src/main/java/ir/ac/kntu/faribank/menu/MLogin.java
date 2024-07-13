@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.FariBank;
-import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import org.json.JSONObject;
 
-public class MLogin implements Menu {
+public class MLogin {
 
     private static MLogin instance = new MLogin();
 
@@ -18,9 +18,7 @@ public class MLogin implements Menu {
         return instance;
     }
 
-    @Override
-    public void handle(Person p) throws NotFoundException {
-        Client client = (Client) p; // Person: Admin - Client
+    public void clientLogin(Client client) throws NotFoundException {
         ArrayList<Client> clients = FariBank.getInstance().getClients();
         ArrayList<Client> newClients = FariBank.getInstance().getNewClients();
 
@@ -53,8 +51,26 @@ public class MLogin implements Menu {
             LoginController.changeSceneToHome(); // GUI
     
             System.out.println("Login successfully!");
-            System.out.println(clients.get(index).toString());
+            System.out.println(clients.get(index));
             System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
         }
+    }
+
+    public void adminLogin(Admin admin) throws NotFoundException {
+        ArrayList<Admin> admins = FariBank.getInstance().getAdmins();
+
+        int index = admins.indexOf(admin);
+        if (index == -1) {
+            throw new NotFoundException();
+        }
+
+        // AdminHomePageController.SetUserInfo(jsonObject) {
+
+        // }
+        // LoginController.changeSceneToAdminHome(); // GUI
+
+        System.out.println("Login successfully!");
+        System.out.println(admins.get(index));
+        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
     }
 }

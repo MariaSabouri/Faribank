@@ -10,6 +10,7 @@ public class FariBank implements Bank {
     private static final FariBank instance = new FariBank();
     private ArrayList<Client> clients = new ArrayList<Client>();
     private ArrayList<Client> newClients = new ArrayList<Client>();
+    private ArrayList<Admin> admins = new ArrayList<Admin>();
 
     public static FariBank getInstance() {
         return instance;
@@ -23,6 +24,10 @@ public class FariBank implements Bank {
         return newClients;
     }
 
+    public ArrayList<Admin> getAdmins() {
+        return admins;
+    }
+
     @Override
     public void addNewClient(Client newClient) throws DuplicatedItemException {
         if (clients.contains(newClient)) {
@@ -32,6 +37,8 @@ public class FariBank implements Bank {
         }
 
         newClients.add(newClient);
+        System.out.println("New Client was added successfully!\n-->Authenticating...");
+        System.out.println(newClient);
     }
 
     @Override
@@ -41,12 +48,14 @@ public class FariBank implements Bank {
 
         clients.add(newClient);
         System.out.println("Client added successfully!\nNow Client has Account number and Card number.");
+        System.out.println(newClient);
     }
 
     @Override
     public void addAdmin(Admin admin) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addAdmin'");
+        admins.add(admin);
+        System.out.println("Client added successfully!");
+        System.out.println(admin);
     }
 
 }

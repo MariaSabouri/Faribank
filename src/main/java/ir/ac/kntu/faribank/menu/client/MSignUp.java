@@ -1,14 +1,12 @@
 package ir.ac.kntu.faribank.menu.client;
 
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
-import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
-import ir.ac.kntu.faribank.menu.Menu;
 
-public class MSignUp implements Menu {
+public class MSignUp {
 
     private static MSignUp instance = new MSignUp();
 
@@ -31,17 +29,12 @@ public class MSignUp implements Menu {
         }
     }
 
-    @Override
-    public void handle(Person p) throws InvalidInputException, DuplicatedItemException {
-        Client newClient = (Client) p; // Person: Admin - Client
-
+    public void handle(Client newClient) throws InvalidInputException, DuplicatedItemException {
         checkInput(newClient);
         FariBank.getInstance().addNewClient(newClient);
 
         SignUpController.changeSceneToAuthentication(); // GUI
 
-        System.out.println("Client added successfully!");
-        System.out.println(newClient.toString());
         System.out.println("NewClients: " + FariBank.getInstance().getNewClients());
     }
 }
