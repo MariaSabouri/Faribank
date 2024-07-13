@@ -15,7 +15,7 @@
     -fx-max-width: 25;
     -fx-max-height: 50;
 }
-.ClientHome {
+.ClientHome:hover {
     -fx-background-color: #000;
     -fx-alignment: center;
 

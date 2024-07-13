@@ -102,7 +102,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" style="-fx-cursor: hover;" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
                            </children>
                         </AnchorPane>
                      </center>

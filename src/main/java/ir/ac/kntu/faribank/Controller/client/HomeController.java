@@ -44,6 +44,9 @@ public class HomeController implements Initializable {
     @FXML
     private WebView TransferWeb;
 
+    @FXML
+    private WebView CardWeb;
+
     private static Stage stage;
 
     private static String name;
