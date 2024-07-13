@@ -100,7 +100,11 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="AccountManagerWeb" prefHeight="79.0" prefWidth="190.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="98.0" prefWidth="194.0">
@@ -116,7 +120,11 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="ContactsWeb" prefHeight="70.0" prefWidth="194.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <WebView fx:id="ContactsWeb" layoutX="75.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -132,7 +140,11 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="TransferWeb" prefHeight="200.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <WebView fx:id="TransferWeb" layoutX="78.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                </children>
@@ -155,7 +167,11 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="SupportWeb" prefHeight="50.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <WebView fx:id="SupportWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -171,7 +187,11 @@
                         </HBox>
                      </bottom>
                      <center>
-                        <WebView fx:id="SettingsWeb" prefHeight="200.0" prefWidth="200.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" BorderPane.alignment="CENTER" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <WebView fx:id="SettingsWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                           </children>
+                        </AnchorPane>
                      </center>
                   </BorderPane>
                </children>
