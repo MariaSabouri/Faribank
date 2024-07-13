@@ -22,6 +22,7 @@ public class Main extends Application {
         scene.getStylesheets().add(FXML_Loader.loadURL("Style.css").toExternalForm());
         stage.setTitle("FaridBank");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 }

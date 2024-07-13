@@ -80,14 +80,20 @@ public class LoginController implements Initializable {
         String phoneNumber=PhoneNumber.getText();
         String password=passwordField.getText();
 
-        try {
-            MLogin.getInstance().handle(new Client(phoneNumber, password, "", "", ""));
-        } catch (NotFoundException e) {
-            Alert.showingError(e.getMessage());
-        }finally {
-            PhoneNumber.clear();
-            passwordField.clear();
+        if (LabelText.equals("Customer")){
+            try {
+                MLogin.getInstance().handle(new Client(phoneNumber, password, "", "", ""));
+            } catch (NotFoundException e) {
+                Alert.showingError(e.getMessage());
+            }finally {
+                PhoneNumber.clear();
+                passwordField.clear();
+            }
+
+        }else {
+            //todo
         }
+
     }
 
     public static void changeSceneToHome() {
