@@ -36,8 +36,8 @@ public class AdminHomePageController implements Initializable {
 
     private static JSONObject userInfo;
 
-    public static void SetUserInfo(JSONObject jsonObject){
-        userInfo=jsonObject;
+    public static void setUserInfo(JSONObject jsonObject) {
+        userInfo = jsonObject;
     }
 
     @Override
@@ -48,17 +48,16 @@ public class AdminHomePageController implements Initializable {
         AuthenticationWeb.setPageFill(Color.TRANSPARENT);
         RequestWeb.setPageFill(Color.TRANSPARENT);
 
-
-
         UserWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Account.svg")).toExternalForm());
-        AuthenticationWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Authentication.svg")).toExternalForm());
+        AuthenticationWeb.getEngine()
+                .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Authentication.svg")).toExternalForm());
         RequestWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Request.svg")).toExternalForm());
 
-        UserName.setText(userInfo.getString("firstName")+" "+userInfo.getString("lastName"));
+        UserName.setText(userInfo.getString("firstName") + " " + userInfo.getString("lastName"));
     }
 
     private void LogOutButtonHandler() {
-        stage=(Stage) LogOutButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"welcome.fxml");
+        stage = (Stage) LogOutButton.getScene().getWindow();
+        ProjectFX.changingscene(stage, "welcome.fxml");
     }
 }

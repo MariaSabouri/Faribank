@@ -55,7 +55,7 @@ public class HomeController implements Initializable {
     private static String CardNumber;
     private static String AccountNumber;
 
-    public static void SetUserInfo(JSONObject jsonObject) {
+    public static void setUserInfo(JSONObject jsonObject) {
         name = jsonObject.getString("firstName") + " " + jsonObject.getString("lastName");
         CardNumber = jsonObject.getString("cardNumber");
         AccountNumber = jsonObject.getString("accountNumber");

@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.menu;
 
 import java.util.ArrayList;
 
+import ir.ac.kntu.faribank.Controller.admin.AdminHomePageController;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.FariBank;
@@ -31,25 +32,25 @@ public class MLogin {
             } else {
                 LoginController.changeSceneToAuthen();
             }
-            
+
         } else {
             int index = clients.indexOf(client);
             if (index == -1) {
                 throw new NotFoundException();
             }
-    
+
             Client foundedClient = clients.get(index);
-    
+
             JSONObject jsonObject = new JSONObject();
-    
+
             jsonObject.put("firstName", foundedClient.getFirstName());
             jsonObject.put("lastName", foundedClient.getLastName());
             jsonObject.put("cardNumber", foundedClient.getCardNumber());
             jsonObject.put("accountNumber", foundedClient.getAccountNumber());
-    
-            HomeController.SetUserInfo(jsonObject);
+
+            HomeController.setUserInfo(jsonObject);
             LoginController.changeSceneToHome(); // GUI
-    
+
             System.out.println("Login successfully!");
             System.out.println(clients.get(index));
             System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
@@ -64,10 +65,15 @@ public class MLogin {
             throw new NotFoundException();
         }
 
-        // AdminHomePageController.SetUserInfo(jsonObject) {
+        Admin foundedClient = admins.get(index);
 
-        // }
-        // LoginController.changeSceneToAdminHome(); // GUI
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("firstName", foundedClient.getFirstName());
+        jsonObject.put("lastName", foundedClient.getLastName());
+
+        AdminHomePageController.setUserInfo(jsonObject);
+        LoginController.changeSceneToAdminHome(); // GUI
 
         System.out.println("Login successfully!");
         System.out.println(admins.get(index));
