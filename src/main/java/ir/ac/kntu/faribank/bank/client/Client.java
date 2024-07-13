@@ -58,26 +58,11 @@ public class Client extends Person {
                 "\'\nadminAuthenText: '" + getAdminAuthenText() +
                 "\'\ncardNumber: '" + getCardNumber() +
                 "\'\naccountNumber: '" + getAccountNumber() +
-                "\'\n'}";
+                "\'\n}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (other == null || getClass() != other.getClass())
-            return false;
-        if (other instanceof Client otherCustomer) {
-            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
-                return true;
-            if (this.getPassword().equals(otherCustomer.getPassword()))
-                return true;
-        }
-        return false;
+        return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText, cardNumber, accountNumber);
     }
 }

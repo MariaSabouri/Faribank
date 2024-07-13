@@ -51,10 +51,8 @@ public class LoginController implements Initializable {
     private static Stage stage;
 
     public static void setLoginLabel(String text) {
-        LabelText=text;
+        LabelText = text;
     }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,11 +60,10 @@ public class LoginController implements Initializable {
         signUpButton.setOnMouseClicked(mouseEvent -> signUpButtonHandler());
         loginButton.setOnMouseClicked(mouseEvent -> loginButtonHandler());
 
-
-        if (LabelText.equals("Customer")){
+        if (LabelText.equals("Customer")) {
             loginBorderPane.setBackground(new Background(new BackgroundFill(Color.web("3387CC"), null, null)));
             LoginLabel.setText("Client - Login");
-        }else {
+        } else {
             DoNotHaveAnAccountLAbel.setVisible(false);
             signUpButton.setVisible(false);
             loginBorderPane.setBackground(new Background(new BackgroundFill(Color.web("4F51a5"), null, null)));
@@ -75,43 +72,47 @@ public class LoginController implements Initializable {
     }
 
     private void loginButtonHandler() {
-        stage=(Stage) loginButton.getScene().getWindow();
+        stage = (Stage) loginButton.getScene().getWindow();
 
-        String phoneNumber=PhoneNumber.getText();
-        String password=passwordField.getText();
+        String phoneNumber = PhoneNumber.getText();
+        String password = passwordField.getText();
 
-        if (LabelText.equals("Customer")){
+        if (LabelText.equals("Customer")) {
             try {
-                MLogin.getInstance().handle(new Client(phoneNumber, password, "", "", ""));
+                MLogin.getInstance().clientLogin(new Client(phoneNumber, password, null, null, null));
             } catch (NotFoundException e) {
                 Alert.showingError(e.getMessage());
-            }finally {
+            } finally {
                 PhoneNumber.clear();
                 passwordField.clear();
             }
 
-        }else {
-            //todo
+        } else {
+            // todo
         }
 
     }
 
     public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+        ProjectFX.changingscene(stage, "ClentHomePage.fxml");
     }
-    public static void changeSceneToAuthen() {ProjectFX.changingscene(stage,"Authentication.fxml");}
+
+    public static void changeSceneToAuthen() {
+        ProjectFX.changingscene(stage, "Authentication.fxml");
+    }
+
     public static void changeSceneToSignUp(String errMessage) {
-        ProjectFX.changingscene(stage,"signUp-view.fxml");
+        ProjectFX.changingscene(stage, "signUp-view.fxml");
         Alert.showingError(errMessage);
     }
 
     private void signUpButtonHandler() {
-        stage=(Stage) signUpButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"signUp-view.fxml");
+        stage = (Stage) signUpButton.getScene().getWindow();
+        ProjectFX.changingscene(stage, "signUp-view.fxml");
     }
 
     private void BackButtonHandler() {
-        stage=(Stage) BackButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"welcome.fxml");
+        stage = (Stage) BackButton.getScene().getWindow();
+        ProjectFX.changingscene(stage, "welcome.fxml");
     }
 }
