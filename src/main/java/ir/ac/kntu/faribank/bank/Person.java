@@ -2,8 +2,6 @@ package ir.ac.kntu.faribank.bank;
 
 import java.util.Objects;
 
-import ir.ac.kntu.faribank.bank.client.Client;
-
 public abstract class Person {
     private String firstName;
     private String lastName;
@@ -60,7 +58,7 @@ public abstract class Person {
             return true;
         if (other == null || getClass() != other.getClass())
             return false;
-        if (other instanceof Client otherCustomer) {
+        if (other instanceof Person otherCustomer) {
             if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
                 return true;
             if (password.equals(otherCustomer.getPassword()))

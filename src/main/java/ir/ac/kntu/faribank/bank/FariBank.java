@@ -54,7 +54,7 @@ public class FariBank implements Bank {
     @Override
     public void addAdmin(Admin admin) {
         admins.add(admin);
-        System.out.println("Client added successfully!");
+        System.out.println("Admin added successfully!");
         System.out.println(admin);
     }
 

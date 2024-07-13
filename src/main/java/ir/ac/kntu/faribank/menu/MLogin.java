@@ -25,12 +25,12 @@ public class MLogin {
 
         int i = newClients.indexOf(client);
         if (i != -1) {
-            Client foundedNewClient = clients.get(i);
+            Client foundedNewClient = newClients.get(i);
 
-            if (foundedNewClient.getAdminAuthenText().length() > 0) {
-                LoginController.changeSceneToSignUp(foundedNewClient.getAdminAuthenText());
-            } else {
+            if (foundedNewClient.getAdminAuthenText() == null) {
                 LoginController.changeSceneToAuthen();
+            } else {
+                LoginController.changeSceneToSignUp(foundedNewClient.getAdminAuthenText());
             }
 
         } else {
@@ -51,9 +51,9 @@ public class MLogin {
             HomeController.setUserInfo(jsonObject);
             LoginController.changeSceneToHome(); // GUI
 
+            System.out.println("**Bank Class HashCode: " + FariBank.getInstance());
             System.out.println("Login successfully!");
             System.out.println(clients.get(index));
-            System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
         }
     }
 
@@ -77,6 +77,5 @@ public class MLogin {
 
         System.out.println("Login successfully!");
         System.out.println(admins.get(index));
-        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
     }
 }

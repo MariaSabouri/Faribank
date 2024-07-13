@@ -14,6 +14,6 @@ public class Admin extends Person {
                 "\'\npassword: '" + getPassword() +
                 "\'\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
-                "\'\n'}";
+                "\'\n}";
     }
 }
