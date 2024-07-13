@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.Controller.commonControllers;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.MLogin;
 import ir.ac.kntu.faribank.util.Alert;
@@ -88,7 +89,14 @@ public class LoginController implements Initializable {
             }
 
         } else {
-            // todo
+            try {
+                MLogin.getInstance().adminLogin(new Admin(null,null,phoneNumber,password));
+            } catch (NotFoundException e) {
+                throw new RuntimeException(e);
+            }finally {
+                PhoneNumber.clear();
+                passwordField.clear();
+            }
         }
 
     }
@@ -104,6 +112,10 @@ public class LoginController implements Initializable {
     public static void changeSceneToSignUp(String errMessage) {
         ProjectFX.changingscene(stage, "signUp-view.fxml");
         Alert.showingError(errMessage);
+    }
+
+    public static void changeSceneToAdminHome(){
+        ProjectFX.changingscene(stage,"AdminHomePage.fxml");
     }
 
     private void signUpButtonHandler() {

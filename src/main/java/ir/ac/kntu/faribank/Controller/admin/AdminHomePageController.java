@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.Controller.admin;
 
+import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.Objects;
@@ -29,8 +32,18 @@ public class AdminHomePageController implements Initializable {
     @FXML
     private WebView UserWeb;
 
+    private static Stage stage;
+
+    private static JSONObject userInfo;
+
+    public static void SetUserInfo(JSONObject jsonObject){
+        userInfo=jsonObject;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LogOutButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
+
         UserWeb.setPageFill(Color.TRANSPARENT);
         AuthenticationWeb.setPageFill(Color.TRANSPARENT);
         RequestWeb.setPageFill(Color.TRANSPARENT);
@@ -40,5 +53,12 @@ public class AdminHomePageController implements Initializable {
         UserWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Account.svg")).toExternalForm());
         AuthenticationWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Authentication.svg")).toExternalForm());
         RequestWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Request.svg")).toExternalForm());
+
+        UserName.setText(userInfo.getString("firstName")+" "+userInfo.getString("lastName"));
+    }
+
+    private void LogOutButtonHandler() {
+        stage=(Stage) LogOutButton.getScene().getWindow();
+        ProjectFX.changingscene(stage,"welcome.fxml");
     }
 }
