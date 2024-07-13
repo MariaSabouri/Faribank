@@ -96,9 +96,7 @@ public class LoginController implements Initializable {
 
     }
 
-    public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
-    }
+    public static void changeSceneToHome() {ProjectFX.changingscene(stage,"ClentHomePage.fxml");}
     public static void changeSceneToAuthen() {ProjectFX.changingscene(stage,"Authentication.fxml");}
     public static void changeSceneToSignUp(String errMessage) {
         ProjectFX.changingscene(stage,"signUp-view.fxml");
