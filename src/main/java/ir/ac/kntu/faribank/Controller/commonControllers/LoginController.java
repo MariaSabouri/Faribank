@@ -92,7 +92,7 @@ public class LoginController implements Initializable {
             try {
                 MLogin.getInstance().adminLogin(new Admin(null,null,phoneNumber,password));
             } catch (NotFoundException e) {
-                throw new RuntimeException(e);
+                Alert.showingError(e.getMessage());
             }finally {
                 PhoneNumber.clear();
                 passwordField.clear();
