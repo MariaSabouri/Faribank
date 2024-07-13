@@ -1,5 +1,7 @@
 package ir.ac.kntu.faribank.menu.client;
 
+import org.json.JSONObject;
+
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
@@ -39,11 +41,14 @@ public class MSignUp implements Menu {
         checkInput(client);
         FariBank.getInstance().addClient(client);
 
-        HomeController.SetingUserInfo(
-                client.getFirstName(),
-                client.getLastName(),
-                client.getCardNumber(),
-                client.getAccountNumber());
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("firstName", client.getFirstName());
+        jsonObject.put("lsatName", client.getLastName());
+        jsonObject.put("cardNumber", client.getCardNumber());
+        jsonObject.put("accountNumber", client.getAccountNumber());
+
+        HomeController.SetUserInfo(jsonObject);
         SignUpController.changeSceneToHome(); // GUI
 
         System.out.println("Client added successfully!");

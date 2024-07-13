@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import org.json.JSONObject;
+
 public class HomeController implements Initializable {
 
     @FXML
@@ -53,10 +55,10 @@ public class HomeController implements Initializable {
     private static String CardNumber;
     private static String AccountNumber;
 
-    public static  void SetingUserInfo(String firstName, String lastName, String cardNumber, String accountNumber){
-        name=firstName+" "+lastName;
-        CardNumber=cardNumber;
-        AccountNumber=accountNumber;
+    public static void SetUserInfo(JSONObject jsonObject) {
+        name = jsonObject.getString("firstName") + " " + jsonObject.getString("lastName");
+        CardNumber = jsonObject.getString("cardNumber");
+        AccountNumber = jsonObject.getString("accountNumber");
     }
 
     @Override
@@ -69,11 +71,15 @@ public class HomeController implements Initializable {
         ContactsWeb.setPageFill(Color.TRANSPARENT);
         AccountManagerWeb.setPageFill(Color.TRANSPARENT);
 
-        TransferWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Transfer.svg")).toExternalForm());
-        SettingsWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Settings.svg")).toExternalForm());
-        ContactsWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Contacts.svg")).toExternalForm());
+        TransferWeb.getEngine()
+                .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Transfer.svg")).toExternalForm());
+        SettingsWeb.getEngine()
+                .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Settings.svg")).toExternalForm());
+        ContactsWeb.getEngine()
+                .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Contacts.svg")).toExternalForm());
         SupportWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Support.svg")).toExternalForm());
-        AccountManagerWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Accountmanagement.svg")).toExternalForm());
+        AccountManagerWeb.getEngine()
+                .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Accountmanagement.svg")).toExternalForm());
 
         ClientName.setText(name);
         CardnumberLabel.setText(CardNumber);
@@ -82,7 +88,7 @@ public class HomeController implements Initializable {
     }
 
     private void LogOutButtonHandler() {
-        stage=(Stage) LogOutButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"welcome.fxml");
+        stage = (Stage) LogOutButton.getScene().getWindow();
+        ProjectFX.changingscene(stage, "welcome.fxml");
     }
 }
