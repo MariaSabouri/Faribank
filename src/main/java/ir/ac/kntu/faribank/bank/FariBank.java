@@ -21,7 +21,11 @@ public class FariBank implements Bank {
     @Override
     public void addClient(Client client) throws DuplicatedItemException {
         if (clients.contains(client)) {
-            throw new DuplicatedItemException();
+            if (client.getAdminAuthenText().equals("")) {
+                throw new DuplicatedItemException("Duplicated Account (Phone Number or National ID) has found!");
+            } else if (client.getAdminAuthenText().equals(null)) {
+                throw new DuplicatedItemException("This Account has already be created. Please wait until admin authenticates your account.");
+            }
         }
 
         client.setAccountNumber(GenerateUniqueNumber.generate(10));
