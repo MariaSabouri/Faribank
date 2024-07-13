@@ -1,7 +1,5 @@
 package ir.ac.kntu.faribank.menu.client;
 
-import java.util.ArrayList;
-
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.SignUpController;
 import ir.ac.kntu.faribank.bank.Person;
@@ -19,7 +17,7 @@ public class MSignUp implements Menu {
         return instance;
     }
 
-    public void checkInput(Client client) throws InvalidInputException {
+    private void checkInput(Client client) throws InvalidInputException {
         if (client.getPhoneNumber().length() != 11) {
             throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!client.getPhoneNumber().matches("[0-9]{11}")) {

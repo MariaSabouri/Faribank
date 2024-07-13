@@ -27,19 +27,24 @@ public class MLogin implements Menu {
             throw new NotFoundException();
         }
     
-        Client foundClient = clients.get(index);
+        Client foundedClient = clients.get(index);
 
-        HomeController.SetingUserInfo(
-                foundClient.getFirstName(),
-                foundClient.getLastName(),
-                foundClient.getCardNumber(),
-                foundClient.getAccountNumber()
-        );
-        LoginController.changeSceneToHome();
-
-        System.out.println("Login successfully!");
-        System.out.println(clients.get(index).toString());
-        System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
+        if (foundedClient.getAdminAuthenText().equals(null)) {
+            // Authen Page...
+        } else if (foundedClient.getAdminAuthenText().equals("")) {
+            HomeController.SetingUserInfo(
+                    foundedClient.getFirstName(),
+                    foundedClient.getLastName(),
+                    foundedClient.getCardNumber(),
+                    foundedClient.getAccountNumber()
+            );
+            LoginController.changeSceneToHome(); // GUI
+    
+            System.out.println("Login successfully!");
+            System.out.println(clients.get(index).toString());
+            System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
+        } else {
+            // SignUp Page, we have adminAuthenText
+        }
     }
-
 }
