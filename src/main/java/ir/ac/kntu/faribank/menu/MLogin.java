@@ -20,34 +20,41 @@ public class MLogin implements Menu {
 
     @Override
     public void handle(Person p) throws NotFoundException {
-        Client c = (Client) p; // Person: Admin - Client
+        Client client = (Client) p; // Person: Admin - Client
         ArrayList<Client> clients = FariBank.getInstance().getClients();
+        ArrayList<Client> newClients = FariBank.getInstance().getNewClients();
 
-        int index = clients.indexOf(c);
-        if (index == -1) {
-            throw new NotFoundException();
-        }
+        int i = newClients.indexOf(client);
+        if (i != -1) {
+            Client foundedNewClient = clients.get(i);
 
-        Client foundedClient = clients.get(index);
-
-        if (foundedClient.getAdminAuthenText().equals("null")) {
-            LoginController.changeSceneToAuthen();
-        } else if (foundedClient.getAdminAuthenText().isEmpty()) {
+            if (foundedNewClient.getAdminAuthenText().length() > 0) {
+                LoginController.changeSceneToSignUp(foundedNewClient.getAdminAuthenText());
+            } else {
+                LoginController.changeSceneToAuthen();
+            }
+            
+        } else {
+            int index = clients.indexOf(client);
+            if (index == -1) {
+                throw new NotFoundException();
+            }
+    
+            Client foundedClient = clients.get(index);
+    
             JSONObject jsonObject = new JSONObject();
-
+    
             jsonObject.put("firstName", foundedClient.getFirstName());
             jsonObject.put("lastName", foundedClient.getLastName());
             jsonObject.put("cardNumber", foundedClient.getCardNumber());
             jsonObject.put("accountNumber", foundedClient.getAccountNumber());
-
+    
             HomeController.SetUserInfo(jsonObject);
             LoginController.changeSceneToHome(); // GUI
-
+    
             System.out.println("Login successfully!");
             System.out.println(clients.get(index).toString());
             System.out.println("Check Bank Class HashCode: " + FariBank.getInstance());
-        } else {
-            LoginController.changeSceneToSignUp(foundedClient.getAdminAuthenText());
         }
     }
 }

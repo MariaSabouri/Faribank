@@ -6,7 +6,7 @@ import ir.ac.kntu.faribank.bank.Person;
 
 public class Client extends Person {
     private String nationalCodeID;
-    private String adminAuthenText = "null";
+    private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
 
