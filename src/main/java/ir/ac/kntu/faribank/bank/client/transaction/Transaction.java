@@ -2,7 +2,7 @@ package ir.ac.kntu.faribank.bank.client.transaction;
 
 import java.time.LocalDateTime;
 
-public abstract class Transaction {    
+public abstract class Transaction implements Comparable<Transaction> {    
     private Double newBalance;
     private LocalDateTime date;
 
@@ -25,5 +25,10 @@ public abstract class Transaction {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    @Override
+    public int compareTo(Transaction transaction) {
+        return transaction.getDate().compareTo(this.date);
     }
 }

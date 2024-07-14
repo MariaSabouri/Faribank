@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import ir.ac.kntu.faribank.Controller.admin.NewClientsDetailsController;
 import ir.ac.kntu.faribank.bank.FariBank;
-import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Client;
 
 public class MNewClientsDetails {
