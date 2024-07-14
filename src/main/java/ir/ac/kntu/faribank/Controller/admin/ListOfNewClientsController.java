@@ -20,11 +20,11 @@ public class ListOfNewClientsController implements Initializable {
     @FXML
     private ListView<?> RequestsLIstview;
 
+    private ArrayList<Client> newClients;
+
     public static void setNewClients(ArrayList<Client> newClients) {
         ListOfNewClientsController.newClients = newClients;
     }
-
-    private static ArrayList<Client> newClients;
 
 
     private static Stage stage;
@@ -32,6 +32,11 @@ public class ListOfNewClientsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
+
+        for (Client neclient:newClients){
+
+        }
+
 
     }
 
