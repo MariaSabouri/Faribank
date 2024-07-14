@@ -66,6 +66,7 @@ public class ContactDetailController implements Initializable {
         phoneNumberTextField.setText(contactDetail.getPhoneNumber());
         AccountTextField.setText(String.valueOf(contactDetail.getAccountNumber()));
 
+
         SaveButton.setDisable(true);
         NameTextField.setEditable(false);
         LastNameTextField.setEditable(false);
