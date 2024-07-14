@@ -3,14 +3,17 @@ package ir.ac.kntu.faribank.bank.client;
 import java.util.Objects;
 
 import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 
 public class Client extends Person {
     private String nationalCodeID;
     private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
+    private Double balance;
 
-    public Client(String phoneNumber, String password, String firstName, String lastName,  String nationalCodeID) {
+    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
         setNationalCodeID(nationalCodeID);
     }
@@ -47,25 +50,36 @@ public class Client extends Person {
         return accountNumber;
     }
 
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) throws InvalidAmountException {
+        if (amount <= 0) {
+            throw new InvalidAmountException();
+        }
+
+        balance += amount;
+    }
+
+    public void withdraw(double amount) throws InvalidAmountException, InsufficientFundsException {
+        if (amount < 0) {
+            throw new InvalidAmountException();
+        } else if (balance < amount) {
+            throw new InsufficientFundsException();
+        }
+
+        balance -= amount;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText, cardNumber, accountNumber);
     }
-
-    // @Override
-    // public boolean equals(Object other) {
-    //     if (this == other)
-    //         return true;
-    //     if (other == null || getClass() != other.getClass())
-    //         return false;
-    //     if (other instanceof Client otherCustomer) {
-    //         if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
-    //             return true;
-    //         if (getPassword().equals(otherCustomer.getPassword()))
-    //             return true;
-    //     }
-    //     return false;
-    // }
 
     @Override
     public String toString() {
