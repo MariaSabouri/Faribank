@@ -47,6 +47,8 @@ public class depositController implements Initializable {
         stage=(Stage) depositButton.getScene().getWindow();
         String depositValue=depositText.getText();
 
+        ProjectFX.changingscene(stage, "DepositTransaction.fxml");
+
          try {
             HomeController.getClient().deposit(depositValue);
 

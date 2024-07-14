@@ -3,6 +3,7 @@ package ir.ac.kntu.faribank.Controller.admin;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.admin.MNewClientsDetails;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -69,6 +70,9 @@ public class NewClientsDetailsController implements Initializable {
 
     private void RejectButtonHandler() {
         stage=(Stage) RejectButton.getScene().getWindow();
+        if (AdmincommentsTextField.getText().isEmpty()){
+            Alert.showingError("There is no any comments!");
+        }
         MNewClientsDetails.getInstance().reject(ClientDetail,AdmincommentsTextField.getText());
     }
 
