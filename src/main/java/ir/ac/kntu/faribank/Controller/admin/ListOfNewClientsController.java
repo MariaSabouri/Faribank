@@ -2,12 +2,14 @@ package ir.ac.kntu.faribank.Controller.admin;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.client.Client;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -47,6 +49,14 @@ public class ListOfNewClientsController implements Initializable {
             borderPane.setLeft(Name);
             borderPane.setRight(phonenumber);
             RequestsLIstview.getItems().add(borderPane);
+            borderPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    stage=(Stage) borderPane.getScene().getWindow();
+                    NewClientsDetailsController.setClientDetail(neclient);
+                    ProjectFX.changingscene(stage,"NewClientsDetails.fxml");
+                }
+            });
         }
 
 
