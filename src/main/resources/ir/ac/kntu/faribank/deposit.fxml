@@ -56,10 +56,20 @@
       </AnchorPane>
    </center>
    <bottom>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="72.0" spacing="30.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="10.0" />
          </BorderPane.margin>
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.5" style="-fx-background-color: #37a671;" text="back" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
       </HBox>
    </bottom>
 </BorderPane>

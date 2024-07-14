@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.Controller.client;
 
+import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.client.Client;
@@ -26,17 +27,25 @@ public class depositController implements Initializable {
 
     @FXML
     private WebView depositWebView;
+    @FXML
+    private Button backButton;
 
     private static Stage stage;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         depositButton.setOnMouseClicked(mouseEvent -> depositButtonHandler());
+        backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
 
         depositWebView.setPageFill(Color.TRANSPARENT);
         depositWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/deposit.svg")).toExternalForm());
 
 
 
+    }
+
+    private void backButtonHandler() {
+        stage=(Stage) backButton.getScene().getWindow();
+        ProjectFX.changingscene(stage,"deposit.fxml");
     }
 
     private void depositButtonHandler() {
