@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4F51a5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.admin.AdminHomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4F51a5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.admin.AdminHomePageController">
    <center>
       <VBox alignment="CENTER" prefHeight="243.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -45,7 +49,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" spacing="100.0">
                <children>
-                  <BorderPane fx:id="AuthenticationBorder" prefHeight="100.0" prefWidth="116.0">
+                  <BorderPane fx:id="AuthenticationBorder" prefHeight="100.0" prefWidth="116.0" styleClass="borderPane" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                            <children>
@@ -65,7 +69,7 @@
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0" styleClass="Home-hover" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0" styleClass="borderPane" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>

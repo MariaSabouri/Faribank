@@ -45,6 +45,9 @@ public class AdminHomePageController implements Initializable {
     public static void setUserInfo(JSONObject jsonObject) {
         userInfo = jsonObject;
     }
+    public static void changeSceneTONewClientsDetails(){
+        ProjectFX.changingscene(stage,"NewClientsDetails.fxml");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
