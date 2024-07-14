@@ -150,8 +150,6 @@ public class Client extends Person {
 
     @Override
     public boolean equals(Object other) {
-        System.out.println("equals: " + other);
-
         if (this == other)
             return true;
         if (other == null || getClass() != other.getClass())

@@ -12,14 +12,14 @@ public class Contact implements Comparable<Contact> {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Double accountNumber;
+    private String accountNumber;
     private LocalDateTime date;
 
-    public Contact(String firstName, String lastName, String phoneNumber, String accountNumberStr) throws NumberFormatException, InvalidInputException, NotFoundException {
+    public Contact(String firstName, String lastName, String phoneNumber, String accountNumber) throws NumberFormatException, InvalidInputException, NotFoundException {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
-        setAccountNumber(accountNumberStr);
+        setAccountNumber(accountNumber);
     }
 
     public void setFirstName(String firstName) {
@@ -56,16 +56,15 @@ public class Contact implements Comparable<Contact> {
         return phoneNumber;
     }
 
-    public void setAccountNumber(String accountNumberStr) throws InvalidInputException, NumberFormatException {
-        if (accountNumberStr.length() != 10) {
+    public void setAccountNumber(String accountNumber) throws InvalidInputException {
+        if (accountNumber.length() != 10) {
             throw new InvalidInputException("Account Number's digits must be 10.");
         }
 
-        Double accountNumber = Double.parseDouble(accountNumberStr);
         this.accountNumber = accountNumber;
     }
 
-    public Double getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 

@@ -23,10 +23,6 @@ public class MLogin {
         ArrayList<Client> clients = FariBank.getInstance().getClients();
         ArrayList<Client> newClients = FariBank.getInstance().getNewClients();
 
-        System.out.println("TEST client:" + client);
-        System.out.println("TEST clients:" + clients);
-        System.out.println("TEST newClients:" + newClients);
-
         int i = newClients.indexOf(client);
         if (i != -1) {
             Client foundedNewClient = newClients.get(i);
