@@ -3,6 +3,7 @@ package ir.ac.kntu.faribank.Controller.client.contacts;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
 import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
@@ -57,7 +58,7 @@ public class AddClientsController implements Initializable {
 
         try {
             HomeController.getClient().addContact(contact);
-        }catch (DuplicatedItemException e){
+        }catch (NotFoundException|DuplicatedItemException e){
             Alert.showingError(e.getMessage());
         }
 

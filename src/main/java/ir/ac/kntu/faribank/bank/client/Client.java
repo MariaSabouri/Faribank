@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
@@ -75,12 +76,12 @@ public class Client extends Person {
         return contacts;
     }
 
-    public void addContact(Contact contact) throws DuplicatedItemException {
+    public void addContact(Contact contact) throws DuplicatedItemException , NotFoundException {
         if (contacts.contains(contact)) {
             throw new DuplicatedItemException();
         }
-        
         contacts.add(contact);
+        throw new NotFoundException();
     }
 
     public void addRecent(Contact recentContant) {
