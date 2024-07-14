@@ -102,7 +102,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" style="-fx-cursor: hover;" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" style="-fx-cursor: hover;"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -122,7 +122,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="ContactsWeb" layoutX="75.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="ContactsWeb" layoutX="75.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -142,7 +142,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="TransferWeb" layoutX="78.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="TransferWeb" layoutX="78.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -169,7 +169,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="SupportWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="SupportWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -189,7 +189,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="SettingsWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="SettingsWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" />
                            </children>
                         </AnchorPane>
                      </center>

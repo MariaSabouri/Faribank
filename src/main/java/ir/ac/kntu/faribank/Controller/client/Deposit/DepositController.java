@@ -1,6 +1,7 @@
-package ir.ac.kntu.faribank.Controller.client;
+package ir.ac.kntu.faribank.Controller.client.Deposit;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.FXML_Loader;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.util.Alert;

@@ -1,6 +1,7 @@
-package ir.ac.kntu.faribank.Controller.client;
+package ir.ac.kntu.faribank.Controller.client.Deposit;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -40,7 +41,7 @@ public class ListOfAllTransactions implements Initializable {
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        ArrayList<Transaction> transactions=HomeController.getClient().getTransactions();
+        ArrayList<Transaction> transactions= HomeController.getClient().getTransactions();
         Collections.sort(transactions);
 
         for (Transaction t:transactions){
