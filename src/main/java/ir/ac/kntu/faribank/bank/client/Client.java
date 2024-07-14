@@ -91,9 +91,9 @@ public class Client extends Person {
         System.out.println(tDeposit);
     }
 
-    public void withdraw(String amountStr, String accountNumberStr) throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
+    public void transfer(String amountStr, String accountNumberStr) throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
         double amount = Double.parseDouble(amountStr);
-        
+
         if (amount < 0) {
             throw new InvalidAmountException();
         } else if (balance < amount) {

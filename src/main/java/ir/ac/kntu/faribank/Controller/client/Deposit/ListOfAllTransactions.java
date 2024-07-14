@@ -42,7 +42,7 @@ public class ListOfAllTransactions implements Initializable {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         ArrayList<Transaction> transactions= HomeController.getClient().getTransactions();
-        Collections.sort(transactions);
+        transactions.sort((t1, t2) -> t1.getDate().compareTo(t2.getDate()));
 
         for (Transaction t:transactions){
             BorderPane borderPane=new BorderPane();
