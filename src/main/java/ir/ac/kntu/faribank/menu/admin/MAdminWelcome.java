@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.client.Client;
 
-public class MAuthentication {
+public class MAdminWelcome {
 
-    private static MAuthentication instance = new MAuthentication();
+    private static MAdminWelcome instance = new MAdminWelcome();
 
-    public static MAuthentication getInstance() {
+    public static MAdminWelcome getInstance() {
         return instance;
     }
 
