@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -49,6 +50,9 @@ public class ListOfNewClientsController implements Initializable {
             borderPane.setLeft(Name);
             borderPane.setRight(phonenumber);
             RequestsLIstview.getItems().add(borderPane);
+            if (neclient.getAdminAuthenText()!=null){
+                borderPane.setStyle("-fx-background-color:  #D46262;");
+            }
             borderPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
