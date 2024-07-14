@@ -1,8 +1,6 @@
 package ir.ac.kntu.faribank.Controller.client;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
-import ir.ac.kntu.faribank.Controller.admin.ListOfNewClientsController;
-import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -60,8 +58,13 @@ public class ListOfAllTransactions implements Initializable {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     stage=(Stage) borderPane.getScene().getWindow();
-                    TransactionDetails.setTransactionDetails(t);
-                    ProjectFX.changingscene(stage,"TransactionDetails.fxml");
+                    if (t.getClass().getSimpleName().equals("TTransfer")){
+                        TransferDetailsController.setTransactionDetails(t);
+                        ProjectFX.changingscene(stage,"TransferDetails.fxml");
+                    }else {
+                        DepositTransactioWithoutListOfTransactionBtnController.setTransactionDetails(t);
+                        ProjectFX.changingscene(stage,"DepositTransactioWithoutListOfTransactionBtn.fxml");
+                    }
                 }
             });
 
