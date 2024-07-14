@@ -82,6 +82,21 @@ public class Client extends Person {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+        if (other == null || getClass() != other.getClass())
+            return false;
+        if (other instanceof Client otherCustomer) {
+            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
+                return true;
+            if (nationalCodeID.equals(otherCustomer.getNationalCodeID()))
+                return true;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Client{" +
                 "\nphoneNumber: '" + getPhoneNumber() +
