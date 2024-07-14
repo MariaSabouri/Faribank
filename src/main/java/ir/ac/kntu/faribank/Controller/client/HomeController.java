@@ -32,6 +32,9 @@ public class HomeController implements Initializable {
     private Label ClientName;
 
     @FXML
+    private Label BalanceLabel;
+
+    @FXML
     private Button LogOutButton;
 
     @FXML
@@ -69,6 +72,7 @@ public class HomeController implements Initializable {
     private static String name;
     private static String CardNumber;
     private static String AccountNumber;
+    private static String Balance;
 
     private static Client client;
 
@@ -82,6 +86,7 @@ public class HomeController implements Initializable {
         name = client.getFirstName()+" "+client.getLastName();
         CardNumber = client.getCardNumber();
         AccountNumber = client.getAccountNumber();
+        Balance=String.valueOf(client.getBalance());
     }
 
     @Override
