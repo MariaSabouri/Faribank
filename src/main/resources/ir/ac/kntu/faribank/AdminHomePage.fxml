@@ -64,12 +64,12 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="AuthenticationWeb" layoutX="28.0" layoutY="9.0" prefHeight="60.0" prefWidth="60.0" styleClass="Home-hover" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="AuthenticationWeb" layoutX="28.0" layoutY="9.0" prefHeight="60.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
@@ -84,7 +84,7 @@
                      <center>
                         <AnchorPane prefHeight="78.0" prefWidth="166.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="RequestWeb" layoutX="29.0" layoutY="9.0" prefHeight="60.0" prefWidth="60.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="RequestWeb" layoutX="29.0" layoutY="9.0" prefHeight="60.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                      </center>

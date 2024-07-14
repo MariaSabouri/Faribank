@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
@@ -19,8 +20,6 @@ import org.json.JSONObject;
 
 public class HomeController implements Initializable {
 
-    @FXML
-    private WebView AccountManagerWeb;
 
     @FXML
     private Label AccountNumberLabel;
@@ -32,10 +31,25 @@ public class HomeController implements Initializable {
     private Label ClientName;
 
     @FXML
-    private WebView ContactsWeb;
+    private Button LogOutButton;
 
     @FXML
-    private Button LogOutButton;
+    private BorderPane AccountManagementBorder;
+
+    @FXML
+    private BorderPane ContactBorder;
+
+    @FXML
+    private BorderPane SettingsBorder;
+
+    @FXML
+    private BorderPane SupportBorder;
+
+    @FXML
+    private BorderPane TransferBorder;
+
+    @FXML
+    private WebView ContactsWeb;
 
     @FXML
     private WebView SettingsWeb;
@@ -47,7 +61,7 @@ public class HomeController implements Initializable {
     private WebView TransferWeb;
 
     @FXML
-    private WebView CardWeb;
+    private WebView AccountManagerWeb;
 
     private static Stage stage;
 
@@ -64,6 +78,11 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LogOutButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
+        AccountManagementBorder.setOnMouseClicked(mouseEvent -> AccountManagementBorderHandler());
+        ContactBorder.setOnMouseClicked(mouseEvent -> ContactBorderHandler());
+        SettingsBorder.setOnMouseClicked(mouseEvent -> SettingsBorderHandler());
+        SupportBorder.setOnMouseClicked(mouseEvent -> SupportBorderHandler());
+        TransferBorder.setOnMouseClicked(mouseEvent -> TransferBorderHandler());
 
         TransferWeb.setPageFill(Color.TRANSPARENT);
         SettingsWeb.setPageFill(Color.TRANSPARENT);
@@ -85,6 +104,27 @@ public class HomeController implements Initializable {
         CardnumberLabel.setText(CardNumber);
         AccountNumberLabel.setText(AccountNumber);
 
+    }
+
+    private void TransferBorderHandler() {
+        stage=(Stage) TransferBorder.getScene().getWindow();
+    }
+
+    private void SupportBorderHandler() {
+        stage=(Stage) SupportBorder.getScene().getWindow();
+    }
+
+    private void SettingsBorderHandler() {
+        stage=(Stage) SettingsBorder.getScene().getWindow();
+    }
+
+    private void ContactBorderHandler() {
+        stage=(Stage) ContactBorder.getScene().getWindow();
+    }
+
+    private void AccountManagementBorderHandler() {
+        stage=(Stage) AccountManagementBorder.getScene().getWindow();
+        ProjectFX.changingscene(stage,"deposit.fxml");
     }
 
     private void LogOutButtonHandler() {
