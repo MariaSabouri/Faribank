@@ -1,15 +1,19 @@
 package ir.ac.kntu.faribank.bank.client;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private Double accountNumber;
+    private LocalDateTime date;
 
-    public Contact(String firstName, String lastName, String phoneNumber) {
+    public Contact(String firstName, String lastName, String phoneNumber, Double accountNumber) {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
@@ -39,6 +43,27 @@ public class Contact {
         return phoneNumber;
     }
 
+    public void setAccountNumber(String accountNumberStr) throws InvalidInputException, NumberFormatException {
+        if (accountNumberStr.length() != 10) {
+            throw new InvalidInputException("Account Number's digits must be 10.");
+        }
+
+        Double accountNumber = Double.parseDouble(accountNumberStr);
+        this.accountNumber = accountNumber;
+    }
+
+    public Double getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setDate() {
+        this.date = LocalDateTime.now();;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, phoneNumber);
@@ -55,5 +80,10 @@ public class Contact {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public int compareTo(Contact contact) {
+        return contact.getDate().compareTo(this.date);
     }
 }

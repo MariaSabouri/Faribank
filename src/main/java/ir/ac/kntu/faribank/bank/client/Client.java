@@ -19,6 +19,7 @@ public class Client extends Person {
     private Double balance = 0.0;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
+    // private ArrayList<RecentContant> recentContants = new ArrayList<RecentContant>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -73,6 +74,16 @@ public class Client extends Person {
         return contacts;
     }
 
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+    }
+
+    public void addRecent(Contact recentContant) {
+        // if (recentContants.contains(recentContant)) {
+
+        // }
+    }
+
     public void deposit(String amountStr) throws InvalidAmountException, NumberFormatException {
         double amount = Double.parseDouble(amountStr);
 
@@ -101,8 +112,11 @@ public class Client extends Person {
         }
 
         balance -= amount;
+        // TODO
+    }
 
-        // transaction
+    public void confirm(Contact contact) {
+        // TODO
     }
 
     @Override
