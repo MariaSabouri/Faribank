@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4F51a5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.client.DepositTransactionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3387CC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.ac.kntu.faribank.Controller.client.DepositTransactionController">
    <top>
       <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -67,15 +67,6 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <Label fx:id="DepositLabel" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                            <children>
                               <Label text="New balance:" textFill="#bdcdff">
@@ -87,6 +78,15 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="DepositLabel" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
                               <Label fx:id="NewBalanceLabel" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="15.0" />

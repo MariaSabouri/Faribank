@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class ListOfAllTransactions implements Initializable {
@@ -32,11 +33,6 @@ public class ListOfAllTransactions implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    private static ArrayList<Transaction> transactions;
-
-    public static void setNewClients(ArrayList<Transaction> transactions) {
-        ListOfAllTransactions.transactions = transactions;
-    }
     private static Stage stage;
 
     @Override
@@ -45,6 +41,9 @@ public class ListOfAllTransactions implements Initializable {
         HomeButton.setOnMouseClicked(mouseEvent -> HomeButtonHandler());
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        ArrayList<Transaction> transactions=HomeController.getClient().getTransactions();
+        Collections.sort(transactions);
 
         for (Transaction t:transactions){
             BorderPane borderPane=new BorderPane();

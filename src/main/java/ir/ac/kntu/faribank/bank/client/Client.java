@@ -64,6 +64,10 @@ public class Client extends Person {
         return balance;
     }
 
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
     public void deposit(String amountStr) throws InvalidAmountException {
         double amount = Double.parseDouble(amountStr); // check exception
 
