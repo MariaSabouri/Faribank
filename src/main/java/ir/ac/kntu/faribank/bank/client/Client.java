@@ -6,10 +6,12 @@ import java.util.Objects;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
@@ -76,12 +78,25 @@ public class Client extends Person {
         return contacts;
     }
 
-    public void addContact(Contact contact) throws DuplicatedItemException , NotFoundException {
-        if (contacts.contains(contact)) {
-            throw new DuplicatedItemException();
+    public void editContact(Contact editedContact) throws NotFoundException, InvalidInputException {
+        int index = contacts.indexOf(editedContact);
+        if (index == -1) {
+            throw new NotFoundException();
         }
+
+        contacts.remove(index);
+        System.out.println("Contact edited successfully!");
+        contacts.add(editedContact);
+    }
+
+    public void addContact(Contact contact) throws DuplicatedItemException {
+        if (contacts.contains(contact)) {
+            throw new DuplicatedItemException("Your contact is already in the contact list.");
+        }
+
         contacts.add(contact);
-        throw new NotFoundException();
+        System.out.println("New Contact added successfully!");
+        System.err.println(contact);
     }
 
     public void addRecent(Contact recentContant) {
@@ -110,7 +125,8 @@ public class Client extends Person {
         System.out.println(tDeposit);
     }
 
-    public void transfer(String amountStr, String accountNumberStr) throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
+    public void transfer(String amountStr, String accountNumberStr)
+            throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
         double amount = Double.parseDouble(amountStr);
 
         if (amount < 0) {
@@ -142,7 +158,7 @@ public class Client extends Person {
             return false;
         if (other instanceof Client otherCustomer) {
 
-            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber())) 
+            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                 return true;
 
             if (otherCustomer.getNationalCodeID().equals("")) {

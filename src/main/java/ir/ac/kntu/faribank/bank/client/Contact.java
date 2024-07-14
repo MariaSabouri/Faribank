@@ -3,8 +3,9 @@ package ir.ac.kntu.faribank.bank.client;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 
 public class Contact implements Comparable<Contact> {
     private String firstName;
@@ -13,10 +14,11 @@ public class Contact implements Comparable<Contact> {
     private Double accountNumber;
     private LocalDateTime date;
 
-    public Contact(String firstName, String lastName, String phoneNumber, Double accountNumber) {
+    public Contact(String firstName, String lastName, String phoneNumber, String accountNumberStr) throws NumberFormatException, InvalidInputException, NotFoundException {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
+        setAccountNumber(accountNumberStr);
     }
 
     public void setFirstName(String firstName) {
@@ -35,7 +37,15 @@ public class Contact implements Comparable<Contact> {
         return lastName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws InvalidInputException, NotFoundException {
+        if (phoneNumber.length() != 11) {
+            throw new InvalidInputException("Phone Number'length must be 11 digits.");
+        } else if (!phoneNumber.matches("[0-9]{11}")) {
+            throw new InvalidInputException("Phone Number should only contain digits (0-9).");
+        } else if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "", "", "", ""))) {
+            throw new NotFoundException("This Phone number has not a FariBank account yet.");
+        }
+
         this.phoneNumber = phoneNumber;
     }
 
@@ -75,11 +85,22 @@ public class Contact implements Comparable<Contact> {
             return true;
         if (other == null || getClass() != other.getClass())
             return false;
-        if (other instanceof Person otherCustomer) {
+        if (other instanceof Contact otherCustomer) {
             if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+        "\nfirstName: " + firstName +
+        "\nlastName: " + lastName +
+        "\nphoneNumber: '" + phoneNumber +
+        "\'\naccountNumber: " + accountNumber +
+        "\n\ndate: " + date +
+        "\'\n}";
     }
 
     @Override
