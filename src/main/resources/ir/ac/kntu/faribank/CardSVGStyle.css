@@ -26,15 +26,15 @@
 /*    !*-fx-background-color: red;*!*/
 /*}*/
 
-.borderPane:hover {
-    background-color: #ff0000;
-    color: #fff;
-}
+/*.borderPane:hover {*/
+/*    background-color: #ff0000;*/
+/*    color: #fff;*/
+/*}*/
 
-.borderPane:hover .label {
-    color: #ff0000;
-}
+/*.borderPane:hover .label {*/
+/*    color: #ff0000;*/
+/*}*/
 
-.borderPane:hover svg {
-    fill: #ff0000;
-}
+/*.borderPane:hover svg {*/
+/*    fill: #ff0000;*/
+/*}*/

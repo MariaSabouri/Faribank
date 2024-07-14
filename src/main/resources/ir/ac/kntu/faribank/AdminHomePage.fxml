@@ -49,7 +49,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" spacing="100.0">
                <children>
-                  <BorderPane fx:id="AuthenticationBorder" prefHeight="100.0" prefWidth="116.0" styleClass="borderPane" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="AuthenticationBorder" prefHeight="100.0" prefWidth="116.0" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                            <children>
@@ -69,7 +69,7 @@
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0" styleClass="borderPane" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="RequestBorder" prefHeight="100.0" prefWidth="118.0" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
