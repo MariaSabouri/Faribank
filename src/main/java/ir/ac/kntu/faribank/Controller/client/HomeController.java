@@ -117,6 +117,7 @@ public class HomeController implements Initializable {
         ClientName.setText(name);
         CardnumberLabel.setText(CardNumber);
         AccountNumberLabel.setText(AccountNumber);
+        BalanceLabel.setText(Balance);
 
     }
 

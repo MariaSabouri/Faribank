@@ -61,7 +61,7 @@ public class ListOfAllTransactions implements Initializable {
                     stage=(Stage) borderPane.getScene().getWindow();
                     if (t.getClass().getSimpleName().equals("TTransfer")){
                         TransferDetailsController.setTransactionDetails(t);
-                        ProjectFX.changingscene(stage,"clientFXML/deposit/TransferDetails.fxml");
+                        ProjectFX.changingscene(stage,"clientFXML/deposit/AddClients.fxml");
                     }else {
                         DepositTransactioWithoutListOfTransactionBtnController.setTransactionDetails(t);
                         ProjectFX.changingscene(stage,"clientFXML/deposit/DepositTransactioWithoutListOfTransactionBtn.fxml");
