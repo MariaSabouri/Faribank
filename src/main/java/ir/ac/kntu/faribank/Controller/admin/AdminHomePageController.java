@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -31,6 +32,10 @@ public class AdminHomePageController implements Initializable {
 
     @FXML
     private WebView UserWeb;
+    @FXML
+    private BorderPane AuthenticationBorder;
+    @FXML
+    private BorderPane RequestBorder;
 
     private static Stage stage;
 
@@ -43,6 +48,8 @@ public class AdminHomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LogOutButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
+        AuthenticationBorder.setOnMouseClicked(mouseEvent -> AuthenticationBorderBorder());
+        RequestBorder.setOnMouseClicked(mouseEvent -> RequestBorderHandler());
 
         UserWeb.setPageFill(Color.TRANSPARENT);
         AuthenticationWeb.setPageFill(Color.TRANSPARENT);
@@ -54,6 +61,15 @@ public class AdminHomePageController implements Initializable {
         RequestWeb.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Request.svg")).toExternalForm());
 
         UserName.setText(userInfo.getString("firstName") + " " + userInfo.getString("lastName"));
+    }
+
+    private void RequestBorderHandler() {
+        stage=(Stage) RequestBorder.getScene().getWindow();
+
+
+    }
+
+    private void AuthenticationBorderBorder() {
     }
 
     private void LogOutButtonHandler() {
