@@ -38,6 +38,9 @@ public class depositController implements Initializable {
         depositWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/deposit.svg")).toExternalForm());
     }
 
+    public static void changeSceneToDisposeTransaction(){
+        ProjectFX.changingscene(stage, "DepositTransaction.fxml");
+    }
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
         ProjectFX.changingscene(stage,"deposit.fxml");
@@ -47,12 +50,8 @@ public class depositController implements Initializable {
         stage=(Stage) depositButton.getScene().getWindow();
         String depositValue=depositText.getText();
 
-        ProjectFX.changingscene(stage, "DepositTransaction.fxml");
-
          try {
             HomeController.getClient().deposit(depositValue);
-
-            // Change scene to Deposit Transaction
          }catch (NumberFormatException | InvalidAmountException e){
              Alert.showingError(e.getMessage());
          }
