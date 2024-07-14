@@ -65,7 +65,7 @@ public class AdminHomePageController implements Initializable {
 
     private void RequestBorderHandler() {
         stage=(Stage) RequestBorder.getScene().getWindow();
-        ProjectFX.changingscene(stage,"ListOfNewClients.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/ListOfNewClients.fxml");
     }
 
     private void AuthenticationBorderBorder() {
