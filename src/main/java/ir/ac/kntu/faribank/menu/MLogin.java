@@ -23,6 +23,10 @@ public class MLogin {
         ArrayList<Client> clients = FariBank.getInstance().getClients();
         ArrayList<Client> newClients = FariBank.getInstance().getNewClients();
 
+        System.out.println("TEST client:" + client);
+        System.out.println("TEST clients:" + clients);
+        System.out.println("TEST newClients:" + newClients);
+
         int i = newClients.indexOf(client);
         if (i != -1) {
             Client foundedNewClient = newClients.get(i);
@@ -41,14 +45,7 @@ public class MLogin {
 
             Client foundedClient = clients.get(index);
 
-            JSONObject jsonObject = new JSONObject();
-
-            jsonObject.put("firstName", foundedClient.getFirstName());
-            jsonObject.put("lastName", foundedClient.getLastName());
-            jsonObject.put("cardNumber", foundedClient.getCardNumber());
-            jsonObject.put("accountNumber", foundedClient.getAccountNumber());
-
-            HomeController.setUserInfo(jsonObject);
+            HomeController.setUserInfo(foundedClient);
             LoginController.changeSceneToHome(); // GUI
 
             System.out.println("**Bank Class HashCode: " + FariBank.getInstance());

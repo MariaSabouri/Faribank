@@ -2,7 +2,7 @@ package ir.ac.kntu.faribank.bank.Errors;
 
 public class InvalidAmountException extends Exception {
     public InvalidAmountException() {
-        super("Invalid amount because is less than 0.");
+        super("Invalid amount");
     }
 
     public InvalidAmountException(String errorMessage) {

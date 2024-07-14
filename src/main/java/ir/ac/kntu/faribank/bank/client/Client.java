@@ -14,7 +14,7 @@ public class Client extends Person {
     private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
-    private Double balance;
+    private Double balance = 0.0;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
@@ -96,15 +96,24 @@ public class Client extends Person {
 
     @Override
     public boolean equals(Object other) {
+        System.out.println("equals: " + other);
+
         if (this == other)
             return true;
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Client otherCustomer) {
-            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
+
+            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber())) 
                 return true;
-            if (nationalCodeID.equals(otherCustomer.getNationalCodeID()))
-                return true;
+
+            if (otherCustomer.getNationalCodeID().equals("")) {
+                if (getPassword().equals(otherCustomer.getPassword()))
+                    return true;
+            } else {
+                if (nationalCodeID.equals(otherCustomer.getNationalCodeID()))
+                    return true;
+            }
         }
         return false;
     }

@@ -80,7 +80,7 @@ public class LoginController implements Initializable {
 
         if (LabelText.equals("Customer")) {
             try {
-                MLogin.getInstance().clientLogin(new Client(phoneNumber, password, null, null, null));
+                MLogin.getInstance().clientLogin(new Client(phoneNumber, password, "", "", ""));
             } catch (NotFoundException e) {
                 Alert.showingError(e.getMessage());
             } finally {

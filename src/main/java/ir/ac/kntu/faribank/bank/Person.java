@@ -59,6 +59,7 @@ public abstract class Person {
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Person otherCustomer) {
+            System.out.println("XXXXXXXXXX");
             if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
                 return true;
         }
