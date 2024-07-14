@@ -61,10 +61,10 @@ public class ListOfAllTransactions implements Initializable {
                     stage=(Stage) borderPane.getScene().getWindow();
                     if (t.getClass().getSimpleName().equals("TTransfer")){
                         TransferDetailsController.setTransactionDetails(t);
-                        ProjectFX.changingscene(stage,"TransferDetails.fxml");
+                        ProjectFX.changingscene(stage,"clientFXML/deposit/TransferDetails.fxml");
                     }else {
                         DepositTransactioWithoutListOfTransactionBtnController.setTransactionDetails(t);
-                        ProjectFX.changingscene(stage,"DepositTransactioWithoutListOfTransactionBtn.fxml");
+                        ProjectFX.changingscene(stage,"clientFXML/deposit/DepositTransactioWithoutListOfTransactionBtn.fxml");
                     }
                 }
             });
@@ -78,11 +78,11 @@ public class ListOfAllTransactions implements Initializable {
 
     private void HomeButtonHandler() {
         stage=(Stage) HomeButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
     }
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"DepositTransaction.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/deposit/DepositTransaction.fxml");
     }
 }

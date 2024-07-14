@@ -40,11 +40,11 @@ public class DepositController implements Initializable {
     }
 
     public static void changeSceneToDisposeTransaction(){
-        ProjectFX.changingscene(stage, "DepositTransaction.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/deposit/DepositTransaction.fxml");
     }
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"deposit.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/deposit/deposit.fxml");
     }
 
     private void depositButtonHandler() {

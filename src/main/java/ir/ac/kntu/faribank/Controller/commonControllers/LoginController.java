@@ -102,25 +102,25 @@ public class LoginController implements Initializable {
     }
 
     public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage, "ClentHomePage.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/ClentHomePage.fxml");
     }
 
     public static void changeSceneToAuthen() {
-        ProjectFX.changingscene(stage, "Authentication.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/Authentication.fxml");
     }
 
     public static void changeSceneToSignUp(String errMessage) {
-        ProjectFX.changingscene(stage, "signUp-view.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/signUp-view.fxml");
         Alert.showingError("Error from admin",errMessage);
     }
 
     public static void changeSceneToAdminHome(){
-        ProjectFX.changingscene(stage,"AdminHomePage.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/AdminHomePage.fxml");
     }
 
     private void signUpButtonHandler() {
         stage = (Stage) signUpButton.getScene().getWindow();
-        ProjectFX.changingscene(stage, "signUp-view.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/signUp-view.fxml");
     }
 
     private void BackButtonHandler() {

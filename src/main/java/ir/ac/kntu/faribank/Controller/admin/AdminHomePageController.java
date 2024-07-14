@@ -47,7 +47,7 @@ public class AdminHomePageController implements Initializable {
         userInfo = jsonObject;
     }
     public static void changeSceneTONewClientsDetails(){
-        ProjectFX.changingscene(stage,"ListOfNewClients.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/ListOfNewClients.fxml");
     }
 
     @Override

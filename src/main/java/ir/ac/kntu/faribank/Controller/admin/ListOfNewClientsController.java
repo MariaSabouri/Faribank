@@ -58,7 +58,7 @@ public class ListOfNewClientsController implements Initializable {
                 public void handle(MouseEvent mouseEvent) {
                     stage=(Stage) borderPane.getScene().getWindow();
                     NewClientsDetailsController.setClientDetail(neclient);
-                    ProjectFX.changingscene(stage,"NewClientsDetails.fxml");
+                    ProjectFX.changingscene(stage,"adminFXML/NewClientsDetails.fxml");
                 }
             });
         }
@@ -68,6 +68,6 @@ public class ListOfNewClientsController implements Initializable {
 
     private void LogOutButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"AdminHomePage.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/AdminHomePage.fxml");
     }
 }

@@ -133,7 +133,7 @@ public class HomeController implements Initializable {
 
     private void AccountManagementBorderHandler() {
         stage=(Stage) AccountManagementBorder.getScene().getWindow();
-        ProjectFX.changingscene(stage,"deposit.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/deposit/deposit.fxml");
     }
 
     private void LogOutButtonHandler() {

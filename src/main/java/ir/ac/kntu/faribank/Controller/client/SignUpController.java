@@ -51,7 +51,7 @@ public class SignUpController implements Initializable {
     private static Stage stage;
 
     public static void changeSceneToAuthentication() {
-        ProjectFX.changingscene(stage,"Authentication.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/Authentication.fxml");
     }
 
     @Override

@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="148.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane minHeight="74.0" prefHeight="178.0" prefWidth="406.0" styleClass="svg" stylesheets="@CardSVGStyle.css">
+            <AnchorPane minHeight="74.0" prefHeight="178.0" prefWidth="406.0" styleClass="svg" stylesheets="@../CardSVGStyle.css">
                <children>
                   <VBox alignment="CENTER_LEFT" layoutX="8.0" layoutY="-11.0" prefHeight="170.0" prefWidth="390.0" spacing="10.0">
                      <children>
@@ -154,7 +154,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <BorderPane fx:id="SupportBorder" prefHeight="200.0" prefWidth="200.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="SupportBorder" prefHeight="200.0" prefWidth="200.0" stylesheets="@../CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="18.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>

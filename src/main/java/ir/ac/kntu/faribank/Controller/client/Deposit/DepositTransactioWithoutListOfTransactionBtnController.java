@@ -51,11 +51,11 @@ public class DepositTransactioWithoutListOfTransactionBtnController implements I
 
     private void ButtonHomeHandler() {
         stage=(Stage) ButtonHome.getScene().getWindow();
-        ProjectFX.changingscene(stage,"ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
     }
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"ListOfAllTransactions.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/deposit/ListOfAllTransactions.fxml");
     }
 }
