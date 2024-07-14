@@ -87,7 +87,7 @@
          <children>
             <HBox prefHeight="95.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <BorderPane prefHeight="115.0" prefWidth="190.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="AccountManagementBorder" prefHeight="115.0" prefWidth="190.0" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                            <children>
@@ -107,7 +107,7 @@
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane prefHeight="98.0" prefWidth="194.0">
+                  <BorderPane fx:id="ContactBorder" prefHeight="98.0" prefWidth="194.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
@@ -127,7 +127,7 @@
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane fx:id="TransferBorder" prefHeight="200.0" prefWidth="200.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="21.0" prefWidth="194.0" BorderPane.alignment="CENTER">
                            <children>
@@ -154,7 +154,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="97.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="SupportBorder" prefHeight="200.0" prefWidth="200.0" stylesheets="@CardSVGStyle.css">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="18.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
@@ -174,7 +174,7 @@
                         </AnchorPane>
                      </center>
                   </BorderPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane fx:id="SettingsBorder" prefHeight="200.0" prefWidth="200.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="22.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
