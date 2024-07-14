@@ -57,7 +57,7 @@ public class DepositTransactionController implements Initializable {
     private void ButtonListOfTransactionsHandler() {
         stage=(Stage) ButtonListOfTransactions.getScene().getWindow();
         //todo
-        ProjectFX.changingscene(stage,"DepositTransaction.fxml");
+        ProjectFX.changingscene(stage,"ListOfAllTransactions.fxml");
     }
 
     private void ButtonHomeHandler() {
