@@ -76,13 +76,12 @@ public class Client extends Person {
         return contacts;
     }
 
-    public void addContact(Contact contact) throws DuplicatedItemException, NumberFormatException, NotFoundException {
+    public void addContact(Contact contact) throws DuplicatedItemException {
         if (contacts.contains(contact)) {
-            throw new DuplicatedItemException(); 
+            throw new DuplicatedItemException("Your contact is already in the contact list."); 
         }
-        // is contact exist in Bunk? check it.
+
         contacts.add(contact);
-        throw new NotFoundException();
     }
 
     public void addRecent(Contact recentContant) {
