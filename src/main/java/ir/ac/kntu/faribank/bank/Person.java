@@ -61,8 +61,6 @@ public abstract class Person {
         if (other instanceof Person otherCustomer) {
             if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
                 return true;
-            if (password.equals(otherCustomer.getPassword()))
-                return true;
         }
         return false;
     }
