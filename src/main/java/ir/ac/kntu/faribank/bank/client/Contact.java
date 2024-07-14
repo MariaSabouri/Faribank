@@ -3,6 +3,7 @@ package ir.ac.kntu.faribank.bank.client;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
@@ -44,6 +45,8 @@ public class Contact implements Comparable<Contact> {
             throw new InvalidInputException("Phone Number should only contain digits (0-9).");
         } else if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "", "", "", ""))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
+        } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
+            throw new InvalidInputException("You can't add your account info.");
         }
 
         this.phoneNumber = phoneNumber;
