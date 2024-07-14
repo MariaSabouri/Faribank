@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.Controller.admin;
+package ir.ac.kntu.faribank.Controller.admin.requests;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.FariBank;
@@ -14,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,7 +49,7 @@ public class ListOfNewClientsController implements Initializable {
                 public void handle(MouseEvent mouseEvent) {
                     stage=(Stage) borderPane.getScene().getWindow();
                     NewClientsDetailsController.setClientDetail(neclient);
-                    ProjectFX.changingscene(stage,"adminFXML/NewClientsDetails.fxml");
+                    ProjectFX.changingscene(stage,"adminFXML/requests/NewClientsDetails.fxml");
                 }
             });
         }

@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.Controller.admin;
+package ir.ac.kntu.faribank.Controller.admin.requests;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.client.Client;
@@ -51,7 +51,7 @@ public class NewClientsDetailsController implements Initializable {
         ClientDetail = clientDetail;
     }
     public static void ChangeSceneToListOfNewClients(){
-        ProjectFX.changingscene(stage,"adminFXML/ListOfNewClients.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfNewClients.fxml");
     }
 
 
@@ -84,6 +84,6 @@ public class NewClientsDetailsController implements Initializable {
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"adminFXML/ListOfNewClients.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfNewClients.fxml");
     }
 }

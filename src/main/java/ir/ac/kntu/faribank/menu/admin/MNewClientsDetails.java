@@ -2,7 +2,7 @@ package ir.ac.kntu.faribank.menu.admin;
 
 import java.util.ArrayList;
 
-import ir.ac.kntu.faribank.Controller.admin.NewClientsDetailsController;
+import ir.ac.kntu.faribank.Controller.admin.requests.NewClientsDetailsController;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.client.Client;
 
