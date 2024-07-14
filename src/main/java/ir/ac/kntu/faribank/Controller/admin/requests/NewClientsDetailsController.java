@@ -51,7 +51,7 @@ public class NewClientsDetailsController implements Initializable {
         ClientDetail = clientDetail;
     }
     public static void ChangeSceneToListOfNewClients(){
-        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfAllContacts.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfNewClients.fxml");
     }
 
 

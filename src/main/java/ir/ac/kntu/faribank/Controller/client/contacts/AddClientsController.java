@@ -1,6 +1,10 @@
 package ir.ac.kntu.faribank.Controller.client.contacts;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
+import ir.ac.kntu.faribank.bank.client.Contact;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,8 +36,9 @@ public class AddClientsController implements Initializable {
     @FXML
     private Button homeButton;
 
+
     @FXML
-    private Button submitButton;
+    private Button addButton;
 
     private static Stage stage;
 
@@ -41,14 +46,22 @@ public class AddClientsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
         homeButton.setOnMouseClicked(mouseEvent -> homeButtonHandler());
-        submitButton.setOnMouseClicked(mouseEvent -> submitButtonHandler());
+        addButton.setOnMouseClicked(mouseEvent -> addButtonHandler());
         //todo
 
     }
 
-    private void submitButtonHandler() {
-        stage=(Stage) submitButton.getScene().getWindow();
-        //todo
+    private void addButtonHandler() {
+        stage=(Stage) addButton.getScene().getWindow();
+
+        Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),Double.parseDouble(AccountLabel.getText()));
+//        try {
+//            HomeController.getClient().addContact(contact);
+//        }catch (DuplicatedItemException e){
+//            Alert.showingError(e.getMessage());
+//        }
+
+        ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
 
     private void homeButtonHandler() {

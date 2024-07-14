@@ -132,6 +132,7 @@ public class HomeController implements Initializable {
 
     private void ContactBorderHandler() {
         stage=(Stage) ContactBorder.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
 
     private void AccountManagementBorderHandler() {
