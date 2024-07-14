@@ -53,6 +53,9 @@ public class depositController implements Initializable {
     private void depositButtonHandler() {
         stage=(Stage) depositButton.getScene().getWindow();
         String depositValue=depositText.getText();
+
+        ProjectFX.changingscene(stage, "DepositTransaction.fxml");
+
          try {
              MDeposit.getInstance().submit(HomeController.getClient(),depositValue);
          }catch (NumberFormatException | InvalidInputException e){
