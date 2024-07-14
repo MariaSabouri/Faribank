@@ -1,9 +1,7 @@
 package ir.ac.kntu.faribank.menu.admin;
 
-import java.util.ArrayList;
-
+import ir.ac.kntu.faribank.Controller.admin.ListOfNewClientsController;
 import ir.ac.kntu.faribank.bank.FariBank;
-import ir.ac.kntu.faribank.bank.client.Client;
 
 public class MAdminWelcome {
 
@@ -13,8 +11,8 @@ public class MAdminWelcome {
         return instance;
     }
 
-    public ArrayList<Client> authenticationBtn() {
-        return FariBank.getInstance().getNewClients();
+    public void authenticationBtn() {
+        ListOfNewClientsController.setNewClients(FariBank.getInstance().getNewClients());
     }
 
     public void requestsBtn() {
