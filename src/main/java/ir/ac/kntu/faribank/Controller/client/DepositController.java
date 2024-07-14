@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class depositController implements Initializable {
+public class DepositController implements Initializable {
     @FXML
     private Button depositButton;
 

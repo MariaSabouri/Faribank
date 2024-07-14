@@ -72,8 +72,9 @@ public class NewClientsDetailsController implements Initializable {
         stage=(Stage) RejectButton.getScene().getWindow();
         if (AdmincommentsTextField.getText().isEmpty()){
             Alert.showingError("There is no any comments!");
+        }else {
+            MNewClientsDetails.getInstance().reject(ClientDetail,AdmincommentsTextField.getText());
         }
-        MNewClientsDetails.getInstance().reject(ClientDetail,AdmincommentsTextField.getText());
     }
 
     private void AcceptButtonHandler() {

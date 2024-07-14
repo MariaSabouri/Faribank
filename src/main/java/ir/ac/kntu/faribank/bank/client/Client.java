@@ -3,7 +3,7 @@ package ir.ac.kntu.faribank.bank.client;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import ir.ac.kntu.faribank.Controller.client.depositController;
+import ir.ac.kntu.faribank.Controller.client.DepositController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
@@ -74,7 +74,7 @@ public class Client extends Person {
         Transaction tDeposit = new TDeposit(balance, amount);
         transactions.add(new TDeposit(balance, amount));
 
-        depositController.changeSceneToDisposeTransaction();
+        DepositController.changeSceneToDisposeTransaction();
 
         System.out.println("New Transaction added successfully!");
         System.out.println(tDeposit);
