@@ -22,24 +22,23 @@ public class ContactDetailController implements Initializable {
     private Button ButtonHome;
 
     @FXML
+    private Button EdditButton;
+
+    @FXML
     private TextField LastNameTextField;
 
     @FXML
     private TextField NameTextField;
 
     @FXML
-    private TextField PhonTextField;
-
-    @FXML
-    private Button EdditButton;
-
-
-    @FXML
     private Button SaveButton;
-
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private TextField phoneNumberTextField;
+
 
     private static Stage stage;
 
@@ -59,13 +58,13 @@ public class ContactDetailController implements Initializable {
 
         NameTextField.setText(contactDetail.getFirstName());
         LastNameTextField.setText(contactDetail.getLastName());
-        PhonTextField.setText(contactDetail.getPhoneNumber());
+        phoneNumberTextField.setText(contactDetail.getPhoneNumber());
         AccountTextField.setText(String.valueOf(contactDetail.getAccountNumber()));
 
         SaveButton.setDisable(true);
         NameTextField.setEditable(false);
         LastNameTextField.setEditable(false);
-        PhonTextField.setEditable(false);
+        phoneNumberTextField.setEditable(false);
         AccountTextField.setEditable(false);
 
     }
@@ -74,7 +73,7 @@ public class ContactDetailController implements Initializable {
         SaveButton.setDisable(false);
         NameTextField.setEditable(true);
         LastNameTextField.setEditable(true);
-        PhonTextField.setEditable(true);
+        phoneNumberTextField.setEditable(true);
         AccountTextField.setEditable(true);
     }
 
