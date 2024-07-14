@@ -111,7 +111,7 @@ public class LoginController implements Initializable {
 
     public static void changeSceneToSignUp(String errMessage) {
         ProjectFX.changingscene(stage, "signUp-view.fxml");
-        Alert.showingError(errMessage);
+        Alert.showingError("Error from admin",errMessage);
     }
 
     public static void changeSceneToAdminHome(){
