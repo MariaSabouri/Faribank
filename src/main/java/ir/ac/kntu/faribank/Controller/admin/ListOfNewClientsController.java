@@ -20,7 +20,7 @@ public class ListOfNewClientsController implements Initializable {
     @FXML
     private ListView<?> RequestsLIstview;
 
-    private ArrayList<Client> newClients;
+    private static ArrayList<Client> newClients;
 
     public static void setNewClients(ArrayList<Client> newClients) {
         ListOfNewClientsController.newClients = newClients;

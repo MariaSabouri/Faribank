@@ -1,22 +1,24 @@
 package ir.ac.kntu.faribank.menu.admin;
 
+import ir.ac.kntu.faribank.Controller.admin.AdminHomePageController;
 import ir.ac.kntu.faribank.Controller.admin.ListOfNewClientsController;
 import ir.ac.kntu.faribank.bank.FariBank;
 
-public class MAdminWelcome {
+public class MAdminHome {
 
-    private static MAdminWelcome instance = new MAdminWelcome();
+    private static MAdminHome instance = new MAdminHome();
 
-    public static MAdminWelcome getInstance() {
+    public static MAdminHome getInstance() {
         return instance;
     }
 
     public void authenticationBtn() {
         ListOfNewClientsController.setNewClients(FariBank.getInstance().getNewClients());
+        AdminHomePageController.changeSceneTONewClientsDetails();
     }
 
     public void requestsBtn() {
-
+        
     }
 
 }
