@@ -87,11 +87,11 @@
          <children>
             <HBox prefHeight="95.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <BorderPane fx:id="AccountManagementBorder" prefHeight="115.0" prefWidth="190.0" stylesheets="@CardSVGStyle.css">
+                  <BorderPane fx:id="AccountManagementBorder" prefHeight="115.0" prefWidth="190.0">
                      <bottom>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="193.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="AccountmanagementLabel" alignment="CENTER" prefHeight="18.0" prefWidth="194.0" text="Account management" textFill="WHITE" underline="true">
+                              <Label fx:id="AccountmanagementLabel" alignment="CENTER" prefHeight="18.0" prefWidth="194.0" text="Deposit" textFill="WHITE" underline="true">
                                  <font>
                                     <Font name="System Bold Italic" size="15.0" />
                                  </font>
@@ -102,7 +102,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" style="-fx-cursor: hover;" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="AccountManagerWeb" layoutX="73.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" style="-fx-cursor: hover;"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -122,7 +122,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="ContactsWeb" layoutX="75.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="ContactsWeb" layoutX="75.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -142,7 +142,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="TransferWeb" layoutX="78.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="TransferWeb" layoutX="78.0" layoutY="17.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -169,7 +169,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="SupportWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="SupportWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0"  />
                            </children>
                         </AnchorPane>
                      </center>
@@ -189,7 +189,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <WebView fx:id="SettingsWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" styleClass="ClientHome" stylesheets="@CardSVGStyle.css" />
+                              <WebView fx:id="SettingsWeb" layoutX="80.0" layoutY="18.0" prefHeight="40.0" prefWidth="40.0" />
                            </children>
                         </AnchorPane>
                      </center>

@@ -1,4 +1,4 @@
-package ir.ac.kntu.faribank.Controller.client;
+package ir.ac.kntu.faribank.Controller.client.Deposit;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;

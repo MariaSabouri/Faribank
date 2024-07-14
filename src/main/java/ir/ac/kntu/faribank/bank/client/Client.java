@@ -3,8 +3,8 @@ package ir.ac.kntu.faribank.bank.client;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import ir.ac.kntu.faribank.Controller.client.DepositController;
-import ir.ac.kntu.faribank.Controller.client.DepositTransactionController;
+import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
+import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
