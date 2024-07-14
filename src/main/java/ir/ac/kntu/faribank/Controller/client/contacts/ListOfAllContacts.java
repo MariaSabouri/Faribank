@@ -28,17 +28,19 @@ public class ListOfAllContacts implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
         AddButton.setOnMouseClicked(mouseEvent -> AddButtonHandler());
-
+        //todo
 
 
     }
 
     private void AddButtonHandler() {
         stage=(Stage) AddButton.getScene().getWindow();
+        //todo
         ProjectFX.changingscene(stage,"clientFXML/contacts/AddClients.fxml");
     }
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
     }
 }
