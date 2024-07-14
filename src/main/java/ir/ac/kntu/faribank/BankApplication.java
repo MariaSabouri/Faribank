@@ -13,10 +13,8 @@ public class BankApplication {
             FariBank.getInstance().addNewClient(new Client("12345678900", "K@2k", "nana", "nana", "001"));
             FariBank.getInstance().addNewClient(new Client("11111111111", "K@2k", "dada", "dada", "471"));
         } catch (DuplicatedItemException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
 
         Admin admin1 = new Admin("Kamyar", "Sabouri", "0990", "1111");
         Admin admin2 = new Admin("NiNi", "Bighou", "0930", "1234");

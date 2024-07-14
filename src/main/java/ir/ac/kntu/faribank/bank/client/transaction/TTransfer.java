@@ -38,7 +38,7 @@ public class TTransfer extends Transaction {
 
     @Override
     public String toString() {
-        return "TDeposit{" +
+        return "TTransfer{" +
         "\ndate: " + getDate() +
         "\ntransfer: " + getTransfer() +
         "\nfrom: '" + getFrom() +
