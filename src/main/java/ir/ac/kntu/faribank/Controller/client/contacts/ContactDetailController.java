@@ -1,7 +1,12 @@
 package ir.ac.kntu.faribank.Controller.client.contacts;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -78,7 +83,16 @@ public class ContactDetailController implements Initializable {
     }
 
     private void SaveButtonHandler() {
-        //todo
+        stage=(Stage) SaveButton.getScene().getWindow();
+        EdditButton.setDisable(true);
+
+        try {
+            Contact contact=new Contact(NameTextField.getText(),LastNameTextField.getText(),phoneNumberTextField.getText(),AccountTextField.getText());
+            HomeController.getClient().editContact(contact);
+        }catch (InvalidInputException|NumberFormatException| NotFoundException e){
+            Alert.showingError(e.getMessage());
+        }
+        ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
 
 

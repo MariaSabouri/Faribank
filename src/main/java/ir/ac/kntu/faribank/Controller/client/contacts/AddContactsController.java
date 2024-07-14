@@ -3,6 +3,7 @@ package ir.ac.kntu.faribank.Controller.client.contacts;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
 import ir.ac.kntu.faribank.util.Alert;
@@ -54,12 +55,11 @@ public class AddContactsController implements Initializable {
         stage=(Stage) addButton.getScene().getWindow();
 
         try {
-            Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),Double.parseDouble(AccountLabel.getText()));
+            Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),AccountLabel.getText());
             HomeController.getClient().addContact(contact);
-        }catch (NumberFormatException|NotFoundException|DuplicatedItemException e){
+        }catch (InvalidInputException | NumberFormatException | NotFoundException | DuplicatedItemException e){
             Alert.showingError(e.getMessage());
         }
-
         ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
 
