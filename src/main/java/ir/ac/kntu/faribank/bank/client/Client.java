@@ -6,6 +6,7 @@ import java.util.Objects;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
 import ir.ac.kntu.faribank.bank.Person;
+import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
@@ -19,7 +20,7 @@ public class Client extends Person {
     private Double balance = 0.0;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
-    // private ArrayList<RecentContant> recentContants = new ArrayList<RecentContant>();
+    private ArrayList<Contact> recentContants = new ArrayList<Contact>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -74,14 +75,20 @@ public class Client extends Person {
         return contacts;
     }
 
-    public void addContact(Contact contact) {
+    public void addContact(Contact contact) throws DuplicatedItemException {
+        if (contacts.contains(contact)) {
+            throw new DuplicatedItemException();
+        }
+        
         contacts.add(contact);
     }
 
     public void addRecent(Contact recentContant) {
-        // if (recentContants.contains(recentContant)) {
+        if (!recentContants.contains(recentContant)) {
+            recentContants.add(recentContant);
+        }
 
-        // }
+        // Collections.sort()
     }
 
     public void deposit(String amountStr) throws InvalidAmountException, NumberFormatException {
