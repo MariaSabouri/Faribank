@@ -2,12 +2,10 @@ package ir.ac.kntu.faribank.Controller.admin;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
-import ir.ac.kntu.faribank.menu.admin.MAdminHome;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
@@ -46,9 +44,6 @@ public class AdminHomePageController implements Initializable {
     public static void setUserInfo(JSONObject jsonObject) {
         userInfo = jsonObject;
     }
-    public static void changeSceneTONewClientsDetails(){
-        ProjectFX.changingscene(stage,"adminFXML/ListOfNewClients.fxml");
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,8 +65,7 @@ public class AdminHomePageController implements Initializable {
 
     private void RequestBorderHandler() {
         stage=(Stage) RequestBorder.getScene().getWindow();
-        MAdminHome.getInstance().authenticationBtn();
-
+        ProjectFX.changingscene(stage,"ListOfNewClients.fxml");
     }
 
     private void AuthenticationBorderBorder() {

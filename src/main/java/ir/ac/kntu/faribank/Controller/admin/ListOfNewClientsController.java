@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.admin;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.client.Client;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,14 +12,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 public class ListOfNewClientsController implements Initializable {
     @FXML
@@ -28,12 +26,6 @@ public class ListOfNewClientsController implements Initializable {
     private ListView<BorderPane> RequestsLIstview;
     @FXML
     private ScrollPane scrollPane;
-    private static ArrayList<Client> newClients;
-
-    public static void setNewClients(ArrayList<Client> newClients) {
-        ListOfNewClientsController.newClients = newClients;
-    }
-
 
     private static Stage stage;
 
@@ -43,7 +35,7 @@ public class ListOfNewClientsController implements Initializable {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
 
-        for (Client neclient:newClients){
+        for (Client neclient:FariBank.getInstance().getNewClients()){
             BorderPane borderPane=new BorderPane();
             Label Name=new Label(neclient.getFirstName()+" "+neclient.getLastName());
             Label phonenumber=new Label(neclient.getPhoneNumber());
