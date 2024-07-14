@@ -28,7 +28,7 @@
          <children>
             <ScrollPane fx:id="scrollPane" layoutX="29.0" layoutY="36.0" prefHeight="252.0" prefWidth="542.0">
                <content>
-                  <ListView fx:id="RequestsLIstview" prefHeight="239.0" prefWidth="542.0">
+                  <ListView fx:id="LIstview" prefHeight="239.0" prefWidth="542.0">
                      <padding>
                         <Insets bottom="10.0" />
                      </padding>
@@ -45,9 +45,17 @@
       </AnchorPane>
    </center>
    <bottom>
-      <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="590.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" style="-fx-background-color: #37a671; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-height: 36; -fx-pref-width: 80.5;" text="back">
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="HomeButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" style="-fx-background-color: #37a671; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-height: 36; -fx-pref-width: 80.5;" text="Home">
                <font>
                   <Font name="Arial Bold" size="17.0" />
                </font>
