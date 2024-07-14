@@ -47,7 +47,6 @@ public class AddClientsController implements Initializable {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
         homeButton.setOnMouseClicked(mouseEvent -> homeButtonHandler());
         addButton.setOnMouseClicked(mouseEvent -> addButtonHandler());
-        //todo
 
     }
 
@@ -55,11 +54,12 @@ public class AddClientsController implements Initializable {
         stage=(Stage) addButton.getScene().getWindow();
 
         Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),Double.parseDouble(AccountLabel.getText()));
-//        try {
-//            HomeController.getClient().addContact(contact);
-//        }catch (DuplicatedItemException e){
-//            Alert.showingError(e.getMessage());
-//        }
+
+        try {
+            HomeController.getClient().addContact(contact);
+        }catch (DuplicatedItemException e){
+            Alert.showingError(e.getMessage());
+        }
 
         ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
