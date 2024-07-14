@@ -75,6 +75,7 @@ public class ContactDetailController implements Initializable {
     }
 
     private void EdditButtonHandler() {
+        EdditButton.setDisable(true);
         SaveButton.setDisable(false);
         NameTextField.setEditable(true);
         LastNameTextField.setEditable(true);
@@ -84,15 +85,15 @@ public class ContactDetailController implements Initializable {
 
     private void SaveButtonHandler() {
         stage=(Stage) SaveButton.getScene().getWindow();
-        EdditButton.setDisable(true);
 
         try {
             Contact contact=new Contact(NameTextField.getText(),LastNameTextField.getText(),phoneNumberTextField.getText(),AccountTextField.getText());
             HomeController.getClient().editContact(contact);
+            ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
         }catch (InvalidInputException|NumberFormatException| NotFoundException e){
             Alert.showingError(e.getMessage());
         }
-        ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
+
     }
 
 
