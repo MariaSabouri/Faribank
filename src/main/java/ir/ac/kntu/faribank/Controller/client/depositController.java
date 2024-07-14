@@ -42,10 +42,10 @@ public class depositController implements Initializable {
     private void depositButtonHandler() {
         stage=(Stage) depositButton.getScene().getWindow();
         String depositValue=depositText.getText();
-        try {
-            Client.deposit(depositValue);
-        }catch (InvalidAmountException | NumberFormatException e){
-            Alert.showingError(e.getMessage());
-        }
+        // try {
+        //     Client.deposit(depositValue);
+        // }catch (InvalidAmountException | NumberFormatException e){
+        //     Alert.showingError(e.getMessage());
+        // }
     }
 }

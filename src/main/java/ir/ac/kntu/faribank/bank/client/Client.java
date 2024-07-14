@@ -14,8 +14,8 @@ public class Client extends Person {
     private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
-    private static Double balance;
-    private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private Double balance;
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -62,7 +62,7 @@ public class Client extends Person {
         return balance;
     }
 
-    public static void deposit(String amountStr) throws InvalidAmountException {
+    public void deposit(String amountStr) throws InvalidAmountException {
         double amount = Double.parseDouble(amountStr); // check exception
 
         if (amount <= 0) {
