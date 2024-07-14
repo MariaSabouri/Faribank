@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.Controller.admin;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
+import ir.ac.kntu.faribank.menu.admin.MAdminWelcome;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -65,7 +66,7 @@ public class AdminHomePageController implements Initializable {
 
     private void RequestBorderHandler() {
         stage=(Stage) RequestBorder.getScene().getWindow();
-
+        MAdminWelcome.getInstance().authenticationBtn();
 
     }
 
