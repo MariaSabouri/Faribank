@@ -23,6 +23,7 @@ public class ListOfNewClientsController implements Initializable {
 
     @FXML
     private ListView<BorderPane> RequestsLIstview;
+
     @FXML
     private ScrollPane scrollPane;
 
@@ -33,7 +34,6 @@ public class ListOfNewClientsController implements Initializable {
         backButton.setOnMouseClicked(mouseEvent -> LogOutButtonHandler());
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-
         for (Client neclient:FariBank.getInstance().getNewClients()){
             BorderPane borderPane=new BorderPane();
             Label Name=new Label(neclient.getFirstName()+" "+neclient.getLastName());
@@ -41,9 +41,11 @@ public class ListOfNewClientsController implements Initializable {
             borderPane.setLeft(Name);
             borderPane.setRight(phonenumber);
             RequestsLIstview.getItems().add(borderPane);
+
             if (neclient.getAdminAuthenText()!=null){
                 borderPane.setStyle("-fx-background-color:  #D46262;");
             }
+            
             borderPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
@@ -53,8 +55,6 @@ public class ListOfNewClientsController implements Initializable {
                 }
             });
         }
-
-
     }
 
     private void LogOutButtonHandler() {

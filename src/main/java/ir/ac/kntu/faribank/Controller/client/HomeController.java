@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -17,10 +16,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import org.json.JSONObject;
 
 public class HomeController implements Initializable {
-
 
     @FXML
     private Label AccountNumberLabel;

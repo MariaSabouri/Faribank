@@ -4,7 +4,6 @@ import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
-import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
 import ir.ac.kntu.faribank.util.Alert;
@@ -85,8 +84,6 @@ public class SignUpController implements Initializable {
             Alert.showingError(e.getMessage());
 
         }finally {
-            NameField.clear();
-            LastNameField.clear();
             NationalID.clear();
             passwordField.clear();
             PhoneNumber.clear();
