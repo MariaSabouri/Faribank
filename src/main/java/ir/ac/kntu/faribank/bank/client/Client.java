@@ -1,10 +1,13 @@
 package ir.ac.kntu.faribank.bank.client;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
+import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
+import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
 public class Client extends Person {
     private String nationalCodeID;
@@ -12,6 +15,7 @@ public class Client extends Person {
     private String cardNumber;
     private String accountNumber;
     private Double balance;
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -58,12 +62,19 @@ public class Client extends Person {
         return balance;
     }
 
-    public void deposit(double amount) throws InvalidAmountException {
+    public void deposit(String amountStr) throws InvalidAmountException {
+        double amount = Double.parseDouble(amountStr); // check exception
+
         if (amount <= 0) {
             throw new InvalidAmountException();
         }
 
         balance += amount;
+        Transaction tDeposit = new TDeposit(balance, amount);
+        transactions.add(new TDeposit(balance, amount));
+
+        System.out.println("New Transaction added successfully!");
+        System.out.println(tDeposit);
     }
 
     public void withdraw(double amount) throws InvalidAmountException, InsufficientFundsException {
@@ -74,6 +85,8 @@ public class Client extends Person {
         }
 
         balance -= amount;
+
+        // transaction
     }
 
     @Override
