@@ -9,14 +9,13 @@ import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddClientsController implements Initializable {
+public class AddContactsController implements Initializable {
 
 
     @FXML
@@ -54,11 +53,10 @@ public class AddClientsController implements Initializable {
     private void addButtonHandler() {
         stage=(Stage) addButton.getScene().getWindow();
 
-        Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),Double.parseDouble(AccountLabel.getText()));
-
         try {
+            Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),Double.parseDouble(AccountLabel.getText()));
             HomeController.getClient().addContact(contact);
-        }catch (NotFoundException|DuplicatedItemException e){
+        }catch (NumberFormatException|NotFoundException|DuplicatedItemException e){
             Alert.showingError(e.getMessage());
         }
 

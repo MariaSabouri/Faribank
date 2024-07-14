@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -52,11 +53,7 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Label fx:id="NameLabel" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <TextField fx:id="NameTextField" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -79,20 +76,12 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <Label fx:id="phoneLabel" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <TextField fx:id="PhonTextField" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <Label fx:id="LastNameLabel" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <TextField fx:id="LastNameTextField" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
@@ -106,17 +95,27 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <Label fx:id="AccountNumberLabel" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial Bold" size="17.0" />
-                                 </font>
-                              </Label>
+                              <TextField fx:id="AccountTextField" />
                            </children>
                         </VBox>
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button fx:id="EdditButton" mnemonicParsing="false" style="-fx-background-color: #37a671;" text="Eddit" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="SaveButton" mnemonicParsing="false" style="-fx-background-color: #37a671;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

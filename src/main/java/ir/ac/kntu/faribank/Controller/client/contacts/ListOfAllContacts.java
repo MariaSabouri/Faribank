@@ -58,7 +58,7 @@ public class ListOfAllContacts implements Initializable {
     private void AddButtonHandler() {
         stage=(Stage) AddButton.getScene().getWindow();
         //todo
-        ProjectFX.changingscene(stage,"clientFXML/contacts/AddClients.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/contacts/AddContacts.fxml");
     }
 
     private void backButtonHandler() {
