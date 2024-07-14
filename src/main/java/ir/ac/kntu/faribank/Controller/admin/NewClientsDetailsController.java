@@ -2,10 +2,12 @@ package ir.ac.kntu.faribank.Controller.admin;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.client.Client;
+import ir.ac.kntu.faribank.menu.admin.MClientsDetails;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -36,6 +38,10 @@ public class NewClientsDetailsController implements Initializable {
 
     @FXML
     private Label lastNameLabel;
+
+    @FXML
+    private TextField AdmincommentsTextField;
+
     private static Stage stage;
 
     private static Client ClientDetail;
@@ -63,10 +69,12 @@ public class NewClientsDetailsController implements Initializable {
 
     private void RejectButtonHandler() {
         stage=(Stage) RejectButton.getScene().getWindow();
+        MClientsDetails.getInstance().reject(ClientDetail,AdmincommentsTextField.getText());
     }
 
     private void AcceptButtonHandler() {
         stage=(Stage) AcceptButton.getScene().getWindow();
+        MClientsDetails.getInstance().accept(ClientDetail);
     }
 
     private void backButtonHandler() {
