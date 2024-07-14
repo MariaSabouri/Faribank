@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
@@ -46,7 +47,7 @@ public class AdminHomePageController implements Initializable {
         userInfo = jsonObject;
     }
     public static void changeSceneTONewClientsDetails(){
-        ProjectFX.changingscene(stage,"NewClientsDetails.fxml");
+        ProjectFX.changingscene(stage,"ListOfNewClients.fxml");
     }
 
     @Override
