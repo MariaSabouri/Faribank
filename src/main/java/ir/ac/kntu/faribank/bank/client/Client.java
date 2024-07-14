@@ -76,6 +76,16 @@ public class Client extends Person {
         return contacts;
     }
 
+    public void editContact(Contact editedContact) throws NotFoundException {
+        int index = contacts.indexOf(editedContact);
+        if (index == -1) {
+            throw new NotFoundException();
+        }
+
+        contacts.remove(index);
+        contacts.add(editedContact);
+    }
+
     public void addContact(Contact contact) throws DuplicatedItemException {
         if (contacts.contains(contact)) {
             throw new DuplicatedItemException("Your contact is already in the contact list."); 
