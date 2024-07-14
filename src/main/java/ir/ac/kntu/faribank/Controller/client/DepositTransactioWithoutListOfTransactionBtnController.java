@@ -56,6 +56,6 @@ public class DepositTransactioWithoutListOfTransactionBtnController implements I
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"DepositTransactioWithoutListOfTransactionBtn.fxml");
+        ProjectFX.changingscene(stage,"ListOfAllTransactions.fxml");
     }
 }
