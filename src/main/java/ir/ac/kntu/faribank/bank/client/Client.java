@@ -18,6 +18,7 @@ public class Client extends Person {
     private String accountNumber;
     private Double balance = 0.0;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private ArrayList<Contact> contacts = new ArrayList<Contact>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
         super(firstName, lastName, phoneNumber, password);
@@ -68,8 +69,12 @@ public class Client extends Person {
         return transactions;
     }
 
-    public void deposit(String amountStr) throws InvalidAmountException {
-        double amount = Double.parseDouble(amountStr); // check exception
+    public ArrayList<Contact> geContacts() {
+        return contacts;
+    }
+
+    public void deposit(String amountStr) throws InvalidAmountException, NumberFormatException {
+        double amount = Double.parseDouble(amountStr);
 
         if (amount <= 0) {
             throw new InvalidAmountException();
@@ -86,7 +91,9 @@ public class Client extends Person {
         System.out.println(tDeposit);
     }
 
-    public void withdraw(double amount) throws InvalidAmountException, InsufficientFundsException {
+    public void transfer(String amountStr, String accountNumberStr) throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
+        double amount = Double.parseDouble(amountStr);
+
         if (amount < 0) {
             throw new InvalidAmountException();
         } else if (balance < amount) {
