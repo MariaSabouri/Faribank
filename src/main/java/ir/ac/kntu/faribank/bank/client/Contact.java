@@ -93,6 +93,17 @@ public class Contact implements Comparable<Contact> {
     }
 
     @Override
+    public String toString() {
+        return "Contact{" +
+        "\nfirstName: " + firstName +
+        "\nlastName: " + lastName +
+        "\nphoneNumber: '" + phoneNumber +
+        "\'\naccountNumber: " + accountNumber +
+        "\n\ndate: " + date +
+        "\'\n}";
+    }
+
+    @Override
     public int compareTo(Contact contact) {
         return contact.getDate().compareTo(this.date);
     }
