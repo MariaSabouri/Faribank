@@ -3,7 +3,9 @@ package ir.ac.kntu.faribank.Controller.client;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.client.Client;
+import ir.ac.kntu.faribank.menu.client.management.MDeposit;
 import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,10 +53,10 @@ public class depositController implements Initializable {
     private void depositButtonHandler() {
         stage=(Stage) depositButton.getScene().getWindow();
         String depositValue=depositText.getText();
-        // try {
-        //     Client.deposit(depositValue);
-        // }catch (InvalidAmountException | NumberFormatException e){
-        //     Alert.showingError(e.getMessage());
-        // }
+         try {
+             MDeposit.getInstance().submit(HomeController.getClient(),depositValue);
+         }catch (NumberFormatException | InvalidInputException e){
+             Alert.showingError(e.getMessage());
+         }
     }
 }

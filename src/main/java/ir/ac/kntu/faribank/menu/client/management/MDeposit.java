@@ -1,6 +1,9 @@
 package ir.ac.kntu.faribank.menu.client.management;
 
 
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.client.Client;
+
 public class MDeposit {
 
     private static MDeposit instance = new MDeposit();
@@ -9,7 +12,9 @@ public class MDeposit {
         return instance;
     }
 
-    public void submit(String deposit) {
+    public void submit(Client client, String deposit)throws InvalidInputException {
+        throw new InvalidInputException();
+
         
     }
 }

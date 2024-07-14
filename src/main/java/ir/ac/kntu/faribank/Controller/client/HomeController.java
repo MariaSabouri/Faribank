@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.Controller.client;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.FXML_Loader;
+import ir.ac.kntu.faribank.bank.client.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -69,10 +70,18 @@ public class HomeController implements Initializable {
     private static String CardNumber;
     private static String AccountNumber;
 
-    public static void setUserInfo(JSONObject jsonObject) {
-        name = jsonObject.getString("firstName") + " " + jsonObject.getString("lastName");
-        CardNumber = jsonObject.getString("cardNumber");
-        AccountNumber = jsonObject.getString("accountNumber");
+    private static Client client;
+
+    public static Client getClient() {
+        return client;
+    }
+
+    public static void setUserInfo(Client client) {
+        HomeController.client=client;
+
+        name = client.getFirstName()+" "+client.getLastName();
+        CardNumber = client.getCardNumber();
+        AccountNumber = client.getAccountNumber();
     }
 
     @Override
