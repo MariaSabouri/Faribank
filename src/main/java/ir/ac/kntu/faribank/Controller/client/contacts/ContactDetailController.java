@@ -90,7 +90,7 @@ public class ContactDetailController implements Initializable {
             Contact contact=new Contact(NameTextField.getText(),LastNameTextField.getText(),phoneNumberTextField.getText(),AccountTextField.getText());
             HomeController.getClient().editContact(contact);
             ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
-        }catch (InvalidInputException|NumberFormatException| NotFoundException e){
+        }catch (InvalidInputException| NotFoundException e){
             Alert.showingError(e.getMessage());
         }
 

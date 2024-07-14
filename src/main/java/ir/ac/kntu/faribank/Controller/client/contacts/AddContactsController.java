@@ -57,10 +57,10 @@ public class AddContactsController implements Initializable {
         try {
             Contact contact=new Contact(NameLabel.getText(),LastNameLabel.getText(),PhoneLabel.getText(),AccountLabel.getText());
             HomeController.getClient().addContact(contact);
-        }catch (InvalidInputException | NumberFormatException | NotFoundException | DuplicatedItemException e){
+            ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
+        }catch (InvalidInputException | NotFoundException | DuplicatedItemException e){
             Alert.showingError(e.getMessage());
         }
-        ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
     }
 
     private void homeButtonHandler() {
