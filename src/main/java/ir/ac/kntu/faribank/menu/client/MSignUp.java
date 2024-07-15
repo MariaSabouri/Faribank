@@ -18,7 +18,5 @@ public class MSignUp {
         FariBank.getInstance().addNewClient(newClient);
 
         SignUpController.changeSceneToAuthentication(); // GUI
-
-        System.out.println("NewClients: " + FariBank.getInstance().getNewClients());
     }
 }
