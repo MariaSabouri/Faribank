@@ -1,7 +1,17 @@
 package ir.ac.kntu.faribank.Controller;
 
-import ir.ac.kntu.faribank.FXML_Loader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import org.apache.bcel.generic.InstructionConstants.Clinit;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import ir.ac.kntu.faribank.FXML_Loader;
+import ir.ac.kntu.faribank.bank.FariBank;
+import ir.ac.kntu.faribank.bank.client.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +22,22 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+        // Update
+        System.out.println("Shut Down");
+        try {
+            FileWriter fileWriter = new FileWriter("./student.json", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("clients", new JSONArray(FariBank.getInstance().getClients().stream().map(Client::toJson).toArray()));
+
+            printWriter.write(jsonObject.toString());
+            printWriter.flush();
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
