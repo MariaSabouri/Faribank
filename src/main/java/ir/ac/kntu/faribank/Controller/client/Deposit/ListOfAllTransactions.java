@@ -54,6 +54,13 @@ public class ListOfAllTransactions implements Initializable {
 
             LIstview.getItems().add(borderPane);
 
+            if (t.getClass().getSimpleName().equals("TTransfer")){
+                borderPane.setStyle("-fx-background-color:  #C3FFB5;");
+            }else {
+                borderPane.setStyle("-fx-background-color:  #D46262;");
+            }
+
+
             borderPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
