@@ -147,55 +147,6 @@ public class Client extends Person {
         }
     }
 
-    // public void transfer(String amountStr, String accountNumber)
-    //         throws InvalidAmountException, InsufficientFundsException, NumberFormatException, NotFoundException,
-    //         InvalidInputException {
-    //     double amount = Double.parseDouble(amountStr);
-
-    //     if (amount < 0) {
-    //         throw new InvalidAmountException();
-    //     } else if (balance < (amount + Bank.fee)) {
-    //         throw new InsufficientFundsException();
-    //     }
-
-    //     boolean pass1 = false, pass2 = false;
-    //     // Check it in my contacts
-    //     for (Contact contact : HomeController.getClient().geContacts()) {
-    //         if (contact.getAccountNumber().equals(accountNumber)) {
-    //             pass1 = true;
-    //             break;
-    //         }
-    //     }
-
-    //     if (!pass1) {
-    //         throw new NotFoundException("This account number does not exist in your contacts");
-    //     }
-
-    //     // check it in my destination client'contacts, do he/she have my accountNum in
-    //     // its contacts
-    //     for (Client client : FariBank.getInstance().getClients()) {
-    //         if (client.getAccountNumber().equals(accountNumber)) {
-    //             if (client.geContacts()
-    //                     .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
-    //                 client.addAmountToBalance(amount);
-    //                 balance -= (amount + Bank.fee);
-
-    //                 TTransfer tTransfer = new TTransfer(amount, client.getFirstName() + " " + client.getLastName(),
-    //                         contact.getFirstName() + " " + contact.getLastName(), balance);
-    //                 transactions.add(tTransfer);
-
-    //                 System.out.println("New Transaction added successfully!");
-    //                 System.out.println(tTransfer);
-    //                 return;
-    //             }
-    //         }
-    //     }
-
-    //     if (!pass2) {
-    //         throw new NotFoundException("The destination user does not have you in its contacts.");
-    //     }
-    // }
-
     public void transfer(String amountStr, Contact contact)
             throws InvalidAmountException, InsufficientFundsException, NumberFormatException, InvalidInputException,
             NotFoundException {
@@ -207,26 +158,27 @@ public class Client extends Person {
             throw new InsufficientFundsException();
         }
 
-        // check it in my destination client'contacts, do he/she have my accountNum in
-        // its contacts
+        // Do destination client'contacts have my accountNum?
         for (Client client : FariBank.getInstance().getClients()) {
-            if (client.getPhoneNumber().equals(contact.getPhoneNumber())) {
+            if (client.getPhoneNumber().equals(contact.getPhoneNumber())) { // find my contact
+
                 for (Contact toContact : client.geContacts()) {
                     if (toContact.getPhoneNumber().equals(HomeController.getClient().getPhoneNumber())) {
                         client.addAmountToBalance(amount);
                         balance -= (amount + Bank.fee);
-    
+
                         TTransfer tTransfer = new TTransfer(amount, this, client, balance);
                         transactions.add(tTransfer);
-    
+
                         TransferTransactionController.settTransfer(tTransfer);
                         PaymentConfirmationController.changeSceneToTransferTYransaction();
-    
+
                         System.out.println("New Transaction added successfully!");
                         System.out.println(tTransfer);
                         return;
                     }
                 }
+
             }
         }
 
@@ -269,10 +221,14 @@ public class Client extends Person {
         if (other instanceof Client otherCustomer) {
 
             if (otherCustomer.getAccountNumber() != null) {
-                if (password.equals(otherCustomer.getPassword()) && getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
+                // Login
+                if (password.equals(otherCustomer.getPassword())
+                        && getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                     return true;
             } else {
-                if (nationalCodeID.equals(otherCustomer.getNationalCodeID()) || getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
+                // SignUp
+                if (nationalCodeID.equals(otherCustomer.getNationalCodeID())
+                        || getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                     return true;
             }
         }
@@ -282,10 +238,10 @@ public class Client extends Person {
     @Override
     public String toString() {
         return "Client{" +
-                "\nphoneNumber: '" + getPhoneNumber() +
-                "\'\npassword: '" + password +
                 "\'\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
+                "\nphoneNumber: '" + getPhoneNumber() +
+                "\'\npassword: '" + password +
                 "\'\nnationalCodeID: '" + nationalCodeID +
                 "\'\nadminAuthenText: '" + adminAuthenText +
                 "\'\ncardNumber: '" + cardNumber +
