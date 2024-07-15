@@ -43,7 +43,7 @@ public class Contact implements Comparable<Contact> {
             throw new InvalidInputException("Phone Number'length must be 11 digits.");
         } else if (!phoneNumber.matches("[0-9]{11}")) {
             throw new InvalidInputException("Phone Number should only contain digits (0-9).");
-        } else if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "", "", "", ""))) {
+        } else if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
         } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
             throw new InvalidInputException("You can't add your account info.");

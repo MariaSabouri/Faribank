@@ -59,6 +59,7 @@ public class AddContactsController implements Initializable {
             HomeController.getClient().addContact(contact);
             ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
         }catch (InvalidInputException | NotFoundException | DuplicatedItemException e){
+            e.printStackTrace();
             Alert.showingError(e.getMessage());
         }
     }

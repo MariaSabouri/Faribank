@@ -3,9 +3,11 @@ package ir.ac.kntu.faribank.bank.client;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.Bank;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
@@ -23,14 +25,17 @@ public class Client extends Person {
     private Double balance = 0.0;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
-    private ArrayList<Contact> recentContants = new ArrayList<Contact>();
+    private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
 
-    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
+    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) throws InvalidInputException, NotFoundException {
         super(firstName, lastName, phoneNumber, password);
         setNationalCodeID(nationalCodeID);
     }
 
-    public void setNationalCodeID(String nationalCodeID) {
+    public void setNationalCodeID(String nationalCodeID) throws InvalidInputException {
+        if (nationalCodeID.isEmpty()) {
+            throw new InvalidInputException("National ID is empty.");
+        }
         this.nationalCodeID = nationalCodeID;
     }
 
@@ -99,12 +104,72 @@ public class Client extends Person {
         System.err.println(contact);
     }
 
-    public void addRecent(Contact recentContant) {
-        if (!recentContants.contains(recentContant)) {
-            recentContants.add(recentContant);
+    public void addRecentContact(Contact contact) {
+        if (!recentContacts.contains(contact)) {
+            contact.setDate();
+            recentContacts.add(contact);
+            System.out.println("\"Contact added to recentContacts successfully!\"");
+            System.out.println("RecentContact: " + contact);
+        } else {
+            int index = recentContacts.indexOf(contact);
+
+            recentContacts.remove(index);
+            contact.setDate();
+            recentContacts.add(contact);
+            System.out.println("\"Contact edited and add to recentContacts successfully!\"");
+            System.out.println("RecentContact: " + contact);
         }
 
-        // Collections.sort()
+        // Collections.sort() ??
+    }
+
+    public void transfer(String amountStr, String accountNumber)
+            throws InvalidAmountException, InsufficientFundsException, NumberFormatException, NotFoundException {
+        double amount = Double.parseDouble(amountStr);
+
+        if (amount < 0) {
+            throw new InvalidAmountException();
+        } else if (balance < amount + Bank.wage) {
+            throw new InsufficientFundsException();
+        }
+
+        // boolean accountNumberFound = false;
+        // int index = 0;
+        // for (Client client : FariBank.getInstance().getClients()) {
+        //     if (client.getAccountNumber().equals(accountNumber)) {
+        //         // if (client.geContacts().contains(new Contact("","",HomeController.getClient().getPhoneNumber(),""))) {
+        //         //     System.out.println();
+        //         // }
+        //         accountNumberFound = true;
+        //         break;
+        //     }
+        //     index++;
+        // }
+
+        // if (!accountNumberFound) {
+        //     throw new NotFoundException("This account number does not exist in the bank.");
+        // }
+
+        balance -= amount;
+        // TODO
+    }
+
+    public void transfer(Contact contact)
+            throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
+        // double amount = Double.parseDouble(amountStr);
+
+        // if (amount < 0) {
+        //     throw new InvalidAmountException();
+        // } else if (balance < amount) {
+        //     throw new InsufficientFundsException();
+        // }
+
+        // balance -= amount;
+        // TODO
+    }
+
+    public void confirm(Contact contact) {
+        // TODO
     }
 
     public void deposit(String amountStr) throws InvalidAmountException, NumberFormatException {
@@ -123,24 +188,6 @@ public class Client extends Person {
 
         System.out.println("New Transaction added successfully!");
         System.out.println(tDeposit);
-    }
-
-    public void transfer(String amountStr, String accountNumberStr)
-            throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
-        double amount = Double.parseDouble(amountStr);
-
-        if (amount < 0) {
-            throw new InvalidAmountException();
-        } else if (balance < amount) {
-            throw new InsufficientFundsException();
-        }
-
-        balance -= amount;
-        // TODO
-    }
-
-    public void confirm(Contact contact) {
-        // TODO
     }
 
     @Override

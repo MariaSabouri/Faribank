@@ -92,6 +92,7 @@ public class ContactDetailController implements Initializable {
             HomeController.getClient().editContact(contact);
             ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
         }catch (InvalidInputException| NotFoundException e){
+            e.printStackTrace();
             Alert.showingError(e.getMessage());
         }
 

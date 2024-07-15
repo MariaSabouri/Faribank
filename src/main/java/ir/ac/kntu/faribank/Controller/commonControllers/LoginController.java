@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.commonControllers;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
@@ -80,8 +81,9 @@ public class LoginController implements Initializable {
 
         if (LabelText.equals("Customer")) {
             try {
-                MLogin.getInstance().clientLogin(new Client(phoneNumber, password, "", "", ""));
-            } catch (NotFoundException e) {
+                MLogin.getInstance().clientLogin(new Client(phoneNumber, password, "-", "-", "-"));
+            } catch (NotFoundException | InvalidInputException e) {
+                e.printStackTrace();
                 Alert.showingError(e.getMessage());
             } finally {
                 PhoneNumber.clear();
@@ -90,8 +92,9 @@ public class LoginController implements Initializable {
 
         } else {
             try {
-                MLogin.getInstance().adminLogin(new Admin(null,null,phoneNumber,password));
-            } catch (NotFoundException e) {
+                MLogin.getInstance().adminLogin(new Admin("-","-",phoneNumber,password));
+            } catch (NotFoundException | InvalidInputException e) {
+                e.printStackTrace();
                 Alert.showingError(e.getMessage());
             }finally {
                 PhoneNumber.clear();

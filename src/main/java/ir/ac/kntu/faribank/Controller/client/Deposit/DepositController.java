@@ -54,7 +54,8 @@ public class DepositController implements Initializable {
          try {
             HomeController.getClient().deposit(depositValue);
          }catch (NumberFormatException | InvalidAmountException e){
-             Alert.showingError(e.getMessage());
+            e.printStackTrace();
+            Alert.showingError(e.getMessage());
          }
     }
 }

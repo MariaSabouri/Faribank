@@ -66,11 +66,6 @@ public class HomeController implements Initializable {
 
     private static Stage stage;
 
-    private static String name;
-    private static String CardNumber;
-    private static String AccountNumber;
-    private static String Balance;
-
     private static Client client;
 
     public static Client getClient() {
@@ -79,11 +74,6 @@ public class HomeController implements Initializable {
 
     public static void setUserInfo(Client client) {
         HomeController.client=client;
-
-        name = client.getFirstName()+" "+client.getLastName();
-        CardNumber = client.getCardNumber();
-        AccountNumber = client.getAccountNumber();
-        Balance=String.valueOf(client.getBalance());
     }
 
     @Override
@@ -111,10 +101,10 @@ public class HomeController implements Initializable {
         AccountManagerWeb.getEngine()
                 .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Accountmanagement.svg")).toExternalForm());
 
-        ClientName.setText(name);
-        CardnumberLabel.setText(CardNumber);
-        AccountNumberLabel.setText(AccountNumber);
-        BalanceLabel.setText(Balance);
+        ClientName.setText(client.getFirstName()+" "+client.getLastName());
+        CardnumberLabel.setText(client.getCardNumber());
+        AccountNumberLabel.setText(client.getAccountNumber());
+        BalanceLabel.setText(String.valueOf(client.getBalance()));
 
     }
 
