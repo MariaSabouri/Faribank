@@ -1,7 +1,13 @@
 package ir.ac.kntu.faribank.Controller.client.transfer;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
+import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -54,7 +60,14 @@ public class PaymentConfirmationController implements Initializable {
 
     private void submitButtonHandler() {
         stage=(Stage) submitButton.getScene().getWindow();
-        //todo
+        try {
+            HomeController.getClient().transfer(TransferAmount,contactChosen);
+        } catch (NotFoundException|InsufficientFundsException|InvalidInputException|InvalidAmountException e) {
+            e.printStackTrace();
+            Alert.showingError(e.getMessage());
+        }
+    }
+    public static void changeSceneToTransferTYransaction(){
         ProjectFX.changingscene(stage,"clientFXML/transfer/TransferTransaction.fxml");
     }
 
