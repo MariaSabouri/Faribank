@@ -18,18 +18,36 @@ import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
 public class Client extends Person {
+    private String password;
     private String nationalCodeID;
     private String adminAuthenText;
     private String cardNumber;
     private String accountNumber;
     private Double balance = 0.0;
+    
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) throws InvalidInputException, NotFoundException {
-        super(firstName, lastName, phoneNumber, password);
+        super(firstName, lastName, phoneNumber);
+        setPassword(password);
         setNationalCodeID(nationalCodeID);
+    }
+
+    public void setPassword(String password) throws InvalidInputException {
+        if (password.matches("\\s")) {
+            throw new InvalidInputException("Invalid password, because it has space (' ') character.");
+        } else if (!password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\W_]).+$")) {
+            throw new InvalidInputException(
+                    "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
+        }
+        
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setNationalCodeID(String nationalCodeID) throws InvalidInputException {
@@ -101,7 +119,7 @@ public class Client extends Person {
 
         contacts.add(contact);
         System.out.println("New Contact added successfully!");
-        System.err.println(contact);
+        System.out.println(contact);
     }
 
     public void addRecentContact(Contact contact) {
@@ -207,7 +225,7 @@ public class Client extends Person {
                 return true;
 
             if (otherCustomer.getNationalCodeID().equals("")) {
-                if (getPassword().equals(otherCustomer.getPassword()))
+                if (password.equals(otherCustomer.getPassword()))
                     return true;
             } else {
                 if (nationalCodeID.equals(otherCustomer.getNationalCodeID()))
@@ -221,13 +239,13 @@ public class Client extends Person {
     public String toString() {
         return "Client{" +
                 "\nphoneNumber: '" + getPhoneNumber() +
-                "\'\npassword: '" + getPassword() +
+                "\'\npassword: '" + password +
                 "\'\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
-                "\'\nnationalCodeID: '" + getNationalCodeID() +
-                "\'\nadminAuthenText: '" + getAdminAuthenText() +
-                "\'\ncardNumber: '" + getCardNumber() +
-                "\'\naccountNumber: '" + getAccountNumber() +
+                "\'\nnationalCodeID: '" + nationalCodeID +
+                "\'\nadminAuthenText: '" + adminAuthenText +
+                "\'\ncardNumber: '" + cardNumber +
+                "\'\naccountNumber: '" + accountNumber +
                 "\'\n}";
     }
 }

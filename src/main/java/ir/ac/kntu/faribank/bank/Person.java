@@ -8,13 +8,11 @@ public abstract class Person {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String password;
 
-    public Person(String firstName, String lastName, String phoneNumber, String password) throws InvalidInputException, NotFoundException {
+    public Person(String firstName, String lastName, String phoneNumber) throws InvalidInputException, NotFoundException {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
-        setPassword(password);
     }
 
     public void setFirstName(String firstName) throws InvalidInputException {
@@ -53,24 +51,9 @@ public abstract class Person {
         return phoneNumber;
     }
 
-    public void setPassword(String password) throws InvalidInputException {
-        if (password.matches("\\s")) {
-            throw new InvalidInputException("Invalid password, because it has space (' ') character.");
-        } else if (!password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\W_]).+$")) {
-            throw new InvalidInputException(
-                    "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
-        }
-        
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, phoneNumber, password);
+        return Objects.hash(firstName, lastName, phoneNumber);
     }
 
     @Override
