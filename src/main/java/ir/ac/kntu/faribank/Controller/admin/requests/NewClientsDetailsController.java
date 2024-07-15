@@ -84,6 +84,6 @@ public class NewClientsDetailsController implements Initializable {
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfAllContacts.fxml");
+        ProjectFX.changingscene(stage,"adminFXML/requests/ListOfNewClients.fxml");
     }
 }
