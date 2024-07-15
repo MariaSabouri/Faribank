@@ -138,7 +138,6 @@ public class Client extends Person {
 
     public void addRecentContact(Contact contact) {
         if (!recentContacts.contains(contact)) {
-            contact.setDate();
             recentContacts.add(contact);
             System.out.println("\"Contact added to recentContacts successfully!\"");
             System.out.println("RecentContact: " + contact);
@@ -146,11 +145,11 @@ public class Client extends Person {
             int index = recentContacts.indexOf(contact);
 
             recentContacts.remove(index);
-            contact.setDate();
             recentContacts.add(contact);
             System.out.println("\"Contact edited and add to recentContacts successfully!\"");
             System.out.println("RecentContact: " + contact);
         }
+        contact.setDate();
     }
 
     public void transfer(String amountStr, Contact contact)

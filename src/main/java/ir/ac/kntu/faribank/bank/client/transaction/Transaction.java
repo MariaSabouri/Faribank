@@ -19,8 +19,8 @@ public abstract class Transaction implements Comparable<Transaction> {
         return newBalance;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setDate() {
+        this.date = LocalDateTime.now();
     }
 
     public LocalDateTime getDate() {

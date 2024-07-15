@@ -1,12 +1,16 @@
 package ir.ac.kntu.faribank.bank.client.support;
 
-public class Request {
+import java.time.LocalDateTime;
+
+public class Request implements Comparable<Request> {
     private Feature feature;
     private StateOfRequest stateOfRequest;
     private String feedbackText;
     private String requestText;
+    private LocalDateTime date;
 
     public Request(Feature feature, String feedbackText) {
+        date = LocalDateTime.now();
         setFeature(feature);
         setFeedbackText(feedbackText);
     }
@@ -43,6 +47,14 @@ public class Request {
         return requestText;
     }
 
+    public void setDate() {
+        this.date = LocalDateTime.now();
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return "Request{" +
@@ -51,5 +63,10 @@ public class Request {
         "\'\nfeedbackText: '" + feedbackText +
         "\'\nrequestText: '" + requestText +
         "\'\n}";
+    }
+
+    @Override
+    public int compareTo(Request request) {
+        return request.getDate().compareTo(this.date);
     }
 }
