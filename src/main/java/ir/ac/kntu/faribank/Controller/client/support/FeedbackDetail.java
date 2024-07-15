@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.client.support;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.bank.client.support.Request;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,9 +27,17 @@ public class FeedbackDetail implements Initializable {
     private Label stateLabel;
 
     private static Stage stage;
+
+    private static Request request;
+
+    public static void setRequest(Request request) {
+        FeedbackDetail.request=request;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
+
         //todo
 
     }

@@ -1,7 +1,14 @@
 package ir.ac.kntu.faribank.Controller.client.support;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.FXML_Loader;
+import ir.ac.kntu.faribank.bank.client.support.Feature;
+import ir.ac.kntu.faribank.bank.client.support.Request;
+import ir.ac.kntu.faribank.bank.client.support.StateOfRequest;
+import ir.ac.kntu.faribank.util.Alert;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +21,8 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -56,7 +65,7 @@ public class feedbackController implements Initializable {
     private TextArea TextArea;
 
     @FXML
-    private ChoiceBox<?> feedbackChoicebox;
+    private ChoiceBox<String> feedbackChoicebox;
 
     private static Stage stage;
 
@@ -80,12 +89,49 @@ public class feedbackController implements Initializable {
         BackButton.setOnMouseClicked(mouseEvent -> BackButtonHandler());
         submitButton.setOnMouseClicked(mouseEvent -> submitButtonHandler());
 
-        //todo
+        ArrayList<Request> requests=HomeController.getClient().getRequests();
+        Collections.sort(requests);
+
+        feedbackChoicebox.getItems().add("");
+        for (Request request: requests){
+
+            feedbackChoicebox.getItems().add(request.getDate().toString());
+            feedbackChoicebox.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    stage=(Stage) feedbackChoicebox.getScene().getWindow();
+                    FeedbackDetail.setRequest(request);
+                    ProjectFX.changingscene(stage,"clientFXML/support/feedbackDetail.fxml");
+                }
+            });
+
+        }
     }
 
     private void submitButtonHandler() {
         stage=(Stage) submitButton.getScene().getWindow();
-        //todo
+
+        if (sectionfeedbackLabel.getText().isEmpty()){
+            Alert.showingError("Please Select a section among Transfer,Setting,Contacts,Deposit");
+        }
+
+        Request request;
+        switch (sectionfeedbackLabel.getText()){
+            case "Transfer" -> {
+                request = new Request(Feature.TRANSFER, TextArea.getText());
+            } case "Setting" -> {
+                request = new Request(Feature.SETTINGS, TextArea.getText());
+            } case "Contacts" -> {
+                request = new Request(Feature.CONTACTS, TextArea.getText());
+            } default -> {
+                request = new Request(Feature.DEPOSIT, TextArea.getText());
+            }
+        }
+
+        HomeController.getClient().addRequest(request);
+
+        ProjectFX.changingscene(stage,"clientFXML/support/feedbackDetail.fxml");
+
     }
 
     private void BackButtonHandler() {
