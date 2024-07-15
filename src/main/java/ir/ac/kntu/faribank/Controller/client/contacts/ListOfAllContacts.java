@@ -58,6 +58,6 @@ public class ListOfAllContacts implements Initializable {
 
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
     }
 }

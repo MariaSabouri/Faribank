@@ -57,7 +57,7 @@ public class TransferDetailsController implements Initializable {
 
     private void ButtonHomeHandler() {
         stage=(Stage) ButtonHome.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
     }
 
     private void backButtonHandler() {

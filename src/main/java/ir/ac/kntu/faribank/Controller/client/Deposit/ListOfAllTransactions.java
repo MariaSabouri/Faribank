@@ -84,7 +84,7 @@ public class ListOfAllTransactions implements Initializable {
 
     private void HomeButtonHandler() {
         stage=(Stage) HomeButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
     }
 
     private void backButtonHandler() {

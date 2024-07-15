@@ -105,7 +105,7 @@ public class LoginController implements Initializable {
     }
 
     public static void changeSceneToHome() {
-        ProjectFX.changingscene(stage, "clientFXML/ClentHomePage.fxml");
+        ProjectFX.changingscene(stage, "clientFXML/ClientHomePage.fxml");
     }
 
     public static void changeSceneToAuthen() {

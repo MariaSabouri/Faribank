@@ -66,7 +66,7 @@ public class AddContactsController implements Initializable {
 
     private void homeButtonHandler() {
         stage=(Stage) homeButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/ClentHomePage.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
     }
 
     private void backButtonHandler() {
