@@ -46,7 +46,12 @@ public class TransferTransactionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HomeButton.setOnMouseClicked(mouseEvent -> HomeButtonHandler());
-        //todo
+        DateLabel.setText(tTransfer.getDate().toString());
+        FromLabel.setText(tTransfer.getFrom());
+        ToLabel.setText(tTransfer.getTo());
+        IssueTrackingLabel.setText(tTransfer.getTrackingCode());
+        DestinationAccountLabel.setText(tTransfer.getToAccountNumber());
+        ProvenanceAccountLabel.setText(tTransfer.getFromAccountNumber());
     }
 
     private void HomeButtonHandler() {
