@@ -19,8 +19,8 @@ public class BankApplication {
         }
 
         try {
-            FariBank.getInstance().addAdmin(new Admin("Kamyar", "Sabouri", "11111111111", "K@2k"));
-            FariBank.getInstance().addAdmin(new Admin("nana", "Bighou", "22222222222", "K@2k"));
+            FariBank.getInstance().addAdmin(new Admin("Kamyar", "Sabouri", "11111111111", "1"));
+            FariBank.getInstance().addAdmin(new Admin("nana", "Bighou", "22222222222", "2"));
         } catch (InvalidInputException | NotFoundException e) {
             e.printStackTrace();
         }

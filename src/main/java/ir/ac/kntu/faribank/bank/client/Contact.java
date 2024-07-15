@@ -5,55 +5,28 @@ import java.util.Objects;
 
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.FariBank;
+import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 
-public class Contact implements Comparable<Contact> {
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
+public class Contact extends Person implements Comparable<Contact> {
     private String accountNumber;
     private LocalDateTime date;
 
     public Contact(String firstName, String lastName, String phoneNumber, String accountNumber) throws NumberFormatException, InvalidInputException, NotFoundException {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNumber(phoneNumber);
+        super(firstName, lastName, phoneNumber);
         setAccountNumber(accountNumber);
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
+    @Override
     public void setPhoneNumber(String phoneNumber) throws InvalidInputException, NotFoundException {
-        if (phoneNumber.length() != 11) {
-            throw new InvalidInputException("Phone Number'length must be 11 digits.");
-        } else if (!phoneNumber.matches("[0-9]{11}")) {
-            throw new InvalidInputException("Phone Number should only contain digits (0-9).");
-        } else if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
+        if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
         } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
             throw new InvalidInputException("You can't add your account info.");
         }
 
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+        super.setPhoneNumber(phoneNumber);
     }
 
     public void setAccountNumber(String accountNumber) throws InvalidInputException {
@@ -78,7 +51,7 @@ public class Contact implements Comparable<Contact> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, phoneNumber);
+        return Objects.hash(super.hashCode(), accountNumber, date);
     }
 
     @Override
@@ -88,7 +61,7 @@ public class Contact implements Comparable<Contact> {
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Contact otherCustomer) {
-            if (phoneNumber.equals(otherCustomer.getPhoneNumber()))
+            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                 return true;
         }
         return false;
@@ -97,11 +70,11 @@ public class Contact implements Comparable<Contact> {
     @Override
     public String toString() {
         return "Contact{" +
-        "\nfirstName: " + firstName +
-        "\nlastName: " + lastName +
-        "\nphoneNumber: '" + phoneNumber +
-        "\'\naccountNumber: " + accountNumber +
-        "\n\ndate: " + date +
+        "\nfirstName: " + getFirstName() +
+        "\nlastName: " + getLastName() +
+        "\nphoneNumber: '" + getPhoneNumber() +
+        "\'\naccountNumber: " + getAccountNumber() +
+        "\n\ndate: " + getDate() +
         "\'\n}";
     }
 
