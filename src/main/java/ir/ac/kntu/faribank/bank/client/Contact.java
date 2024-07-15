@@ -24,17 +24,24 @@ public class Contact extends Person implements Comparable<Contact> {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
         } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
             throw new InvalidInputException("You can't add your account info.");
-        }
+        } 
 
         super.setPhoneNumber(phoneNumber);
     }
 
-    public void setAccountNumber(String accountNumber) throws InvalidInputException {
+    public void setAccountNumber(String accountNumber) throws InvalidInputException, NotFoundException {
         if (accountNumber.length() != 10) {
             throw new InvalidInputException("Account Number's digits must be 10.");
         }
 
-        this.accountNumber = accountNumber;
+        for (Client client : FariBank.getInstance().getClients()) {
+            if (client.getAccountNumber().equals(accountNumber)) {
+                this.accountNumber = accountNumber;
+                return;
+            }
+        }
+        
+        throw new NotFoundException("Account Number does not exist in FariBank.");
     }
 
     public String getAccountNumber() {
