@@ -14,9 +14,6 @@ import java.util.ResourceBundle;
 public class TransferTransactionController implements Initializable {
 
     @FXML
-    private Button HomeButton;
-
-    @FXML
     private Label DateLabel;
 
     @FXML
@@ -26,6 +23,9 @@ public class TransferTransactionController implements Initializable {
     private Label FromLabel;
 
     @FXML
+    private Button HomeButton;
+
+    @FXML
     private Label IssueTrackingLabel;
 
     @FXML
@@ -33,6 +33,15 @@ public class TransferTransactionController implements Initializable {
 
     @FXML
     private Label ToLabel;
+
+    @FXML
+    private Label bankfeeLabel;
+
+    @FXML
+    private Label newBalanceLabel;
+
+    @FXML
+    private Label transferLabel;
 
     private static Stage stage;
 
@@ -52,6 +61,7 @@ public class TransferTransactionController implements Initializable {
         IssueTrackingLabel.setText(tTransfer.getTrackingCode());
         DestinationAccountLabel.setText(tTransfer.getToAccountNumber());
         ProvenanceAccountLabel.setText(tTransfer.getFromAccountNumber());
+
     }
 
     private void HomeButtonHandler() {
