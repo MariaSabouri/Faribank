@@ -128,6 +128,7 @@ public class HomeController implements Initializable {
 
     private void SupportBorderHandler() {
         stage=(Stage) SupportBorder.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/support/Feedback.fxml");
     }
 
     private void SettingsBorderHandler() {

@@ -76,7 +76,7 @@ public class feedbackController implements Initializable {
         SettingWebView.setPageFill(Color.TRANSPARENT);
         TransferWebView.setPageFill(Color.TRANSPARENT);
 
-        depositWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/deposit.svg")).toExternalForm());
+        depositWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/deposit2.svg")).toExternalForm());
         ContactsWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Contacts.svg")).toExternalForm());
         SettingWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Settings.svg")).toExternalForm());
         TransferWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/Transfer.svg").toExternalForm()));

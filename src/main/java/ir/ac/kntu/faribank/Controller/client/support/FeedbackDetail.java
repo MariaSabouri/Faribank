@@ -26,6 +26,10 @@ public class FeedbackDetail implements Initializable {
     @FXML
     private Label stateLabel;
 
+
+    @FXML
+    private Label SectionLabel;
+
     private static Stage stage;
 
     private static Request request;
@@ -38,7 +42,12 @@ public class FeedbackDetail implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
 
-        //todo
+        stateLabel.setText(request.getStateOfRequest().name());
+        SectionLabel.setText(request.getFeature().toString());
+        adminFeedText.setTextContent(request.getFeedbackText());
+        ClientfeedText.setTextContent(request.getRequestText());
+
+
 
     }
 
