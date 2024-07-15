@@ -93,16 +93,19 @@ public class feedbackController implements Initializable {
         Collections.sort(requests);
 
         feedbackChoicebox.getItems().add("");
+        System.out.println("TEST Requests: " + requests);
+
         for (Request request: requests){
 
             feedbackChoicebox.getItems().add(request.getDate().toString());
+
             feedbackChoicebox.setOnAction(event -> {
                 String value=feedbackChoicebox.getValue();
+                System.out.println("Click: -> " + request + value + event.getTarget());
+
                 if (!value.equals("")){
                     stage=(Stage) feedbackChoicebox.getScene().getWindow();
-
                     FeedbackDetail.setRequest(request);
-
                     ProjectFX.changingscene(stage,"clientFXML/support/feedbackDetail.fxml");
                 }
             });

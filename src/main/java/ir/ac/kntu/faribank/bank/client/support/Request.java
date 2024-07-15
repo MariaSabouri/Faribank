@@ -62,7 +62,8 @@ public class Request implements Comparable<Request> {
         "\'\nstateOfRequest: '" + stateOfRequest +
         "\'\nfeedbackText: '" + feedbackText +
         "\'\nrequestText: '" + requestText +
-        "\'\n}";
+        "\'\ndate: " + date +
+        "\n}";
     }
 
     @Override

@@ -41,7 +41,6 @@ public class FeedbackDetail implements Initializable {
     private static Request request;
 
     public static void setRequest(Request request) {
-        System.out.println("TEST" + request);
         FeedbackDetail.request=request;
     }
 
