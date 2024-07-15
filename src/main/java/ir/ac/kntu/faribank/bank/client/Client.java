@@ -102,6 +102,10 @@ public class Client extends Person {
         return contacts;
     }
 
+    public ArrayList<Contact> getRecentContacts() {
+        return recentContacts;
+    }
+
     public void editContact(Contact editedContact) throws NotFoundException, InvalidInputException {
         int index = contacts.indexOf(editedContact);
         if (index == -1) {
