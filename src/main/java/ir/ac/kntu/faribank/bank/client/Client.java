@@ -210,6 +210,9 @@ public class Client extends Person {
 
     public void addRequest(Request request) {
         requests.add(request);
+
+        System.out.println("New request added successfully!");
+        System.out.println(request);
     }
 
     @Override
