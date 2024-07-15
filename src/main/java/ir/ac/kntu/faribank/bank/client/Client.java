@@ -143,8 +143,6 @@ public class Client extends Person {
             System.out.println("\"Contact edited and add to recentContacts successfully!\"");
             System.out.println("RecentContact: " + contact);
         }
-
-        // Collections.sort() ??
     }
 
     // public void transfer(String amountStr, String accountNumber)
@@ -215,9 +213,12 @@ public class Client extends Person {
                         .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
                     client.addAmountToBalance(amount);
                     balance -= (amount + Bank.wage);
-                    TTransfer tTransfer = new TTransfer(amount, client.getFirstName() + " " + client.getLastName(),
-                            contact.getFirstName() + " " + contact.getLastName(), balance);
+
+                    TTransfer tTransfer = new TTransfer(amount, this, client, balance);
                     transactions.add(tTransfer);
+
+                    // DepositTransactionController.setValuesOfPage(tDeposit);
+                    // DepositController.changeSceneToDisposeTransaction();
 
                     System.out.println("New Transaction added successfully!");
                     System.out.println(tTransfer);

@@ -33,7 +33,7 @@ public class FariBank implements Bank {
         if (clients.contains(newClient)) {
             throw new DuplicatedItemException("Duplicated Account has found! this (Phone Number or National ID) has already been taken.");
         } else if (newClients.contains(newClient)) {
-            throw new DuplicatedItemException("This Account has already been created with (Phone Number or National ID). Please wait until admin authenticates your account.");
+            throw new DuplicatedItemException("This Account has already been created with (Phone Number or National ID).\nPlease wait until admin authenticates your account.");
         }
 
         newClients.add(newClient);
