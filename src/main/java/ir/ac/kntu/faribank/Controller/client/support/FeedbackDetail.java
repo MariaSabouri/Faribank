@@ -6,35 +6,42 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FeedbackDetail implements Initializable {
-    @FXML
-    private Text ClientfeedText;
+
+
 
     @FXML
-    private Text adminFeedText;
+    private Label SectionLabel;
+
+    @FXML
+    private Text adminComment;
 
     @FXML
     private Button backButton;
 
     @FXML
-    private Label stateLabel;
-
+    private Text clientComment;
 
     @FXML
-    private Label SectionLabel;
+    private Label stateLabel;
 
     private static Stage stage;
 
     private static Request request;
 
     public static void setRequest(Request request) {
+        System.out.println("TEST" + request);
         FeedbackDetail.request=request;
     }
 
@@ -42,10 +49,31 @@ public class FeedbackDetail implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
 
-        stateLabel.setText(request.getStateOfRequest().name());
-        SectionLabel.setText(request.getFeature().toString());
-        adminFeedText.setTextContent(request.getFeedbackText());
-        ClientfeedText.setTextContent(request.getRequestText());
+        try {
+            stateLabel.setText(request.getStateOfRequest().toString());
+        } catch (Exception e) {
+            stateLabel.setText("-");
+        }
+
+        try {
+            SectionLabel.setText(request.getFeature().toString());
+        } catch (Exception e) {
+            SectionLabel.setText("-");
+        }
+
+        try {
+            adminComment.setText(request.getFeedbackText());
+        } catch (Exception e) {
+            adminComment.setText("-");
+        }
+
+        try {
+            clientComment.setText(request.getRequestText());
+        } catch (Exception e) {
+            clientComment.setText("-");
+        }
+
+
 
 
 

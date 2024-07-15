@@ -96,15 +96,16 @@ public class feedbackController implements Initializable {
         for (Request request: requests){
 
             feedbackChoicebox.getItems().add(request.getDate().toString());
-            feedbackChoicebox.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+            feedbackChoicebox.setOnAction(event -> {
+                String value=feedbackChoicebox.getValue();
+                if (!value.equals("")){
                     stage=(Stage) feedbackChoicebox.getScene().getWindow();
+
                     FeedbackDetail.setRequest(request);
+
                     ProjectFX.changingscene(stage,"clientFXML/support/feedbackDetail.fxml");
                 }
             });
-
         }
     }
 
@@ -113,25 +114,23 @@ public class feedbackController implements Initializable {
 
         if (sectionfeedbackLabel.getText().isEmpty()){
             Alert.showingError("Please Select a section among Transfer,Setting,Contacts,Deposit");
-        }
-
-        Request request;
-        switch (sectionfeedbackLabel.getText()){
-            case "Transfer" -> {
-                request = new Request(Feature.TRANSFER, TextArea.getText());
-            } case "Setting" -> {
-                request = new Request(Feature.SETTINGS, TextArea.getText());
-            } case "Contacts" -> {
-                request = new Request(Feature.CONTACTS, TextArea.getText());
-            } default -> {
-                request = new Request(Feature.DEPOSIT, TextArea.getText());
+        } else {
+            Request request;
+            switch (sectionfeedbackLabel.getText()){
+                case "Transfer" -> {
+                    request = new Request(Feature.TRANSFER, TextArea.getText());
+                } case "Setting" -> {
+                    request = new Request(Feature.SETTINGS, TextArea.getText());
+                } case "Contacts" -> {
+                    request = new Request(Feature.CONTACTS, TextArea.getText());
+                } default -> {
+                    request = new Request(Feature.DEPOSIT, TextArea.getText());
+                }
             }
+
+            HomeController.getClient().addRequest(request);
+            ProjectFX.changingscene(stage, "clientFXML/support/Feedback.fxml");
         }
-
-        HomeController.getClient().addRequest(request);
-
-        ProjectFX.changingscene(stage,"clientFXML/support/feedbackDetail.fxml");
-
     }
 
     private void BackButtonHandler() {
