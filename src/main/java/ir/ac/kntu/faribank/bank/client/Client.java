@@ -264,14 +264,11 @@ public class Client extends Person {
             return false;
         if (other instanceof Client otherCustomer) {
 
-            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
-                return true;
-
-            if (otherCustomer.getNationalCodeID().equals("")) {
-                if (password.equals(otherCustomer.getPassword()))
+            if (otherCustomer.getAccountNumber() != null) {
+                if (password.equals(otherCustomer.getPassword()) && getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                     return true;
             } else {
-                if (nationalCodeID.equals(otherCustomer.getNationalCodeID()))
+                if (nationalCodeID.equals(otherCustomer.getNationalCodeID()) || getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
                     return true;
             }
         }
