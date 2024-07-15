@@ -66,6 +66,7 @@ public class NewClientsDetailsController implements Initializable {
         NationslidLabel.setText(ClientDetail.getNationalCodeID());
         PhoneNumberLabel.setText(ClientDetail.getPhoneNumber());
         PasswordLabel.setText(ClientDetail.getPassword());
+        AdmincommentsTextField.setText(ClientDetail.getAdminAuthenText());
     }
 
     private void RejectButtonHandler() {
