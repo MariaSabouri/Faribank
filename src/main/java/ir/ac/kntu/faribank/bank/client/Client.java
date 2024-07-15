@@ -27,12 +27,15 @@ public class Client extends Person {
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
 
-    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) {
+    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) throws InvalidInputException, NotFoundException {
         super(firstName, lastName, phoneNumber, password);
         setNationalCodeID(nationalCodeID);
     }
 
-    public void setNationalCodeID(String nationalCodeID) {
+    public void setNationalCodeID(String nationalCodeID) throws InvalidInputException {
+        if (nationalCodeID.isEmpty()) {
+            throw new InvalidInputException("National ID is empty.");
+        }
         this.nationalCodeID = nationalCodeID;
     }
 

@@ -3,6 +3,7 @@ package ir.ac.kntu.faribank.Controller.client;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.menu.client.MSignUp;
@@ -76,11 +77,8 @@ public class SignUpController implements Initializable {
         try {
             MSignUp.getInstance().handle(new Client(phoneNumber, password, firstName, lastName, nationalID));
 
-        } catch (InvalidInputException e) {
-            Alert.showingError(e.getMessage());
-            System.out.println(e.getMessage());
-
-        } catch (DuplicatedItemException e) {
+        } catch (DuplicatedItemException | InvalidInputException | NotFoundException e) {
+            e.printStackTrace();
             Alert.showingError(e.getMessage());
 
         }finally {
