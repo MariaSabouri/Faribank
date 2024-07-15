@@ -13,9 +13,10 @@ public class Contact extends Person implements Comparable<Contact> {
     private String accountNumber;
     private LocalDateTime date;
 
-    public Contact(String firstName, String lastName, String phoneNumber, String accountNumber) throws NumberFormatException, InvalidInputException, NotFoundException {
+    public Contact(String firstName, String lastName, String phoneNumber, String accountNumber)
+            throws NumberFormatException, InvalidInputException, NotFoundException {
         super(firstName, lastName, phoneNumber);
-        setAccountNumber(accountNumber);
+        setAccountNumber(accountNumber, phoneNumber);
     }
 
     @Override
@@ -23,25 +24,26 @@ public class Contact extends Person implements Comparable<Contact> {
         if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
         } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
-            throw new InvalidInputException("You can't add your account info.");
-        } 
+            throw new InvalidInputException("It's your account info.");
+        }
 
         super.setPhoneNumber(phoneNumber);
     }
 
-    public void setAccountNumber(String accountNumber) throws InvalidInputException, NotFoundException {
+    public void setAccountNumber(String accountNumber, String phoneNumber)
+            throws InvalidInputException, NotFoundException {
         if (accountNumber.length() != 10) {
             throw new InvalidInputException("Account Number's digits must be 10.");
         }
 
         for (Client client : FariBank.getInstance().getClients()) {
-            if (client.getAccountNumber().equals(accountNumber)) {
+            if (client.getAccountNumber().equals(accountNumber) && client.getPhoneNumber().equals(phoneNumber)) {
                 this.accountNumber = accountNumber;
                 return;
             }
         }
-        
-        throw new NotFoundException("Account Number does not exist in FariBank.");
+
+        throw new NotFoundException("This account number was not created with this phone number.");
     }
 
     public String getAccountNumber() {
@@ -49,7 +51,8 @@ public class Contact extends Person implements Comparable<Contact> {
     }
 
     public void setDate() {
-        this.date = LocalDateTime.now();;
+        this.date = LocalDateTime.now();
+        ;
     }
 
     public LocalDateTime getDate() {
@@ -64,12 +67,12 @@ public class Contact extends Person implements Comparable<Contact> {
     @Override
     public String toString() {
         return "Contact{" +
-        "\nfirstName: " + getFirstName() +
-        "\nlastName: " + getLastName() +
-        "\nphoneNumber: '" + getPhoneNumber() +
-        "\'\naccountNumber: " + getAccountNumber() +
-        "\n\ndate: " + getDate() +
-        "\'\n}";
+                "\nfirstName: " + getFirstName() +
+                "\nlastName: " + getLastName() +
+                "\nphoneNumber: '" + getPhoneNumber() +
+                "\'\naccountNumber: " + getAccountNumber() +
+                "\n\ndate: " + getDate() +
+                "\'\n}";
     }
 
     @Override

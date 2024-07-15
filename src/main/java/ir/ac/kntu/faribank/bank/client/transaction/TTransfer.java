@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.bank.client.transaction;
 
+import ir.ac.kntu.faribank.bank.Bank;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.util.GenerateUniqueNumber;
 
@@ -10,6 +11,7 @@ public class TTransfer extends Transaction {
     private String trackingCode;
     private String fromAccountNumber;
     private String toAccountNumber;
+    private Double bankFee = Bank.fee;
 
     public TTransfer(Double transfer, Client fromClient, Client toClient, Double newBalance) {
         super(newBalance);
@@ -48,7 +50,7 @@ public class TTransfer extends Transaction {
     public void setTrackingCode(String trackingCode) {
         this.trackingCode = trackingCode;
     }
-    
+
     public String getTrackingCode() {
         return trackingCode;
     }
@@ -69,15 +71,26 @@ public class TTransfer extends Transaction {
         return toAccountNumber;
     }
 
+    public void setBankFee(Double bankFee) {
+        this.bankFee = bankFee;
+    }
+
+    public Double getBankFee() {
+        return bankFee;
+    }
+
     @Override
     public String toString() {
         return "TTransfer{" +
-        "\ndate: " + getDate() +
-        "\ntransfer: " + getTransfer() +
-        "\nfrom: '" + getFrom() +
-        "\'\nto: '" + getTo() +
-        "\'\n\nnew balance: " + getNewBalance() +
-        "\'\n}";
+                "\nfromAccountNumber: " + fromAccountNumber +
+                "\ntoAccountNumber: " + toAccountNumber +
+                "\nfrom: '" + getFrom() +
+                "\'\nto: '" + getTo() +
+                "\ntransfer: -->" + getTransfer() +
+                "\nbank fee: -" + bankFee +
+                "\'\n\nnew balance: " + getNewBalance() +
+                "\ndate: " + getDate() +
+                "\n}";
     }
-    
+
 }

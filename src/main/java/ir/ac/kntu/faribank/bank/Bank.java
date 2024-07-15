@@ -5,9 +5,11 @@ import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
 
 public interface Bank {
-    Double wage = 100.0;
-    
+    Double fee = 100.0;
+
     void addNewClient(Client newClient) throws DuplicatedItemException;
+
     void addClient(Client client);
+
     void addAdmin(Admin admin);
 }

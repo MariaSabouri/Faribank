@@ -6,6 +6,8 @@ import java.util.Objects;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
+import ir.ac.kntu.faribank.Controller.client.transfer.PaymentConfirmationController;
+import ir.ac.kntu.faribank.Controller.client.transfer.TransferTransactionController;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.Bank;
 import ir.ac.kntu.faribank.bank.FariBank;
@@ -152,7 +154,7 @@ public class Client extends Person {
 
     //     if (amount < 0) {
     //         throw new InvalidAmountException();
-    //     } else if (balance < (amount + Bank.wage)) {
+    //     } else if (balance < (amount + Bank.fee)) {
     //         throw new InsufficientFundsException();
     //     }
 
@@ -176,7 +178,7 @@ public class Client extends Person {
     //             if (client.geContacts()
     //                     .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
     //                 client.addAmountToBalance(amount);
-    //                 balance -= (amount + Bank.wage);
+    //                 balance -= (amount + Bank.fee);
 
     //                 TTransfer tTransfer = new TTransfer(amount, client.getFirstName() + " " + client.getLastName(),
     //                         contact.getFirstName() + " " + contact.getLastName(), balance);
@@ -201,7 +203,7 @@ public class Client extends Person {
 
         if (amount < 0) {
             throw new InvalidAmountException();
-        } else if (balance < (amount + Bank.wage)) {
+        } else if (balance < (amount + Bank.fee)) {
             throw new InsufficientFundsException();
         }
 
@@ -209,20 +211,21 @@ public class Client extends Person {
         // its contacts
         for (Client client : FariBank.getInstance().getClients()) {
             if (client.getPhoneNumber().equals(contact.getPhoneNumber())) {
-                if (client.geContacts()
-                        .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
-                    client.addAmountToBalance(amount);
-                    balance -= (amount + Bank.wage);
-
-                    TTransfer tTransfer = new TTransfer(amount, this, client, balance);
-                    transactions.add(tTransfer);
-
-                    // DepositTransactionController.setValuesOfPage(tDeposit);
-                    // DepositController.changeSceneToDisposeTransaction();
-
-                    System.out.println("New Transaction added successfully!");
-                    System.out.println(tTransfer);
-                    return;
+                for (Contact toContact : client.geContacts()) {
+                    if (toContact.getPhoneNumber().equals(HomeController.getClient().getPhoneNumber())) {
+                        client.addAmountToBalance(amount);
+                        balance -= (amount + Bank.fee);
+    
+                        TTransfer tTransfer = new TTransfer(amount, this, client, balance);
+                        transactions.add(tTransfer);
+    
+                        TransferTransactionController.settTransfer(tTransfer);
+                        PaymentConfirmationController.changeSceneToTransferTYransaction();
+    
+                        System.out.println("New Transaction added successfully!");
+                        System.out.println(tTransfer);
+                        return;
+                    }
                 }
             }
         }
