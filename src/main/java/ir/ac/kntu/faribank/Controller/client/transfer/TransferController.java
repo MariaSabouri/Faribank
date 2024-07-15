@@ -7,6 +7,7 @@ import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
+import ir.ac.kntu.faribank.util.Alert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,8 +59,8 @@ public class TransferController implements Initializable {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
         submitButton.setOnMouseClicked(mouseEvent -> submitButtonHandler());
 
-        ListOfRecentContactsChoiceBox.getItems().add("Select destination");
-        contactListChoiceBox.getItems().add("Select destination");
+        ListOfRecentContactsChoiceBox.getItems().add("");
+        contactListChoiceBox.getItems().add("");
 
 
         //recent contacts list
@@ -71,7 +72,8 @@ public class TransferController implements Initializable {
 
             ListOfRecentContactsChoiceBox.setOnAction(event -> {
                 String value=ListOfRecentContactsChoiceBox.getValue();
-                if (!value.equals("Select destination")){
+                contactListChoiceBox.setValue("");
+                if (!value.equals("")){
                     SelectDestinationAccount.setText(contact.getAccountNumber());
                     setContactChosen(contact);
                 }else {
@@ -89,7 +91,8 @@ public class TransferController implements Initializable {
 
             contactListChoiceBox.setOnAction(event -> {
                 String value = contactListChoiceBox.getValue();
-                if (!value.equals("Select destination")) {
+                ListOfRecentContactsChoiceBox.setValue("");
+                if (!value.equals("")) {
                     SelectDestinationAccount.setText(contact.getAccountNumber());
                     setContactChosen(contact);
                 }else {
@@ -102,11 +105,16 @@ public class TransferController implements Initializable {
     private void submitButtonHandler() {
         stage=(Stage) submitButton.getScene().getWindow();
 
-        String destinationAccount =SelectDestinationAccount.getText();
-        String TransferAmount=TransferAmountTextField.getText();
-        PaymentConfirmationController.setContctChosen(destinationAccount,TransferAmount,contactChosen);
+        if (SelectDestinationAccount.getText()==""){
+            Alert.showingError("Please choose a contact");
+        }else {
+            String destinationAccount =SelectDestinationAccount.getText();
+            String TransferAmount=TransferAmountTextField.getText();
+            PaymentConfirmationController.setContctChosen(destinationAccount,TransferAmount,contactChosen);
 
-        ProjectFX.changingscene(stage,"clientFXML/transfer/PaymentConfirmation.fxml");
+            ProjectFX.changingscene(stage,"clientFXML/transfer/PaymentConfirmation.fxml");
+        }
+
     }
 
     private void backButtonHandler() {
