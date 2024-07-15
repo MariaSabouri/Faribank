@@ -24,12 +24,13 @@ public class Client extends Person {
     private String cardNumber;
     private String accountNumber;
     private Double balance = 0.0;
-    
+
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
 
-    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID) throws InvalidInputException, NotFoundException {
+    public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID)
+            throws InvalidInputException, NotFoundException {
         super(firstName, lastName, phoneNumber);
         setPassword(password);
         setNationalCodeID(nationalCodeID);
@@ -42,7 +43,7 @@ public class Client extends Person {
             throw new InvalidInputException(
                     "The password should be have at least one Uppercase letter, one Lowercase letter, and one Special Character.");
         }
-        
+
         this.password = password;
     }
 
@@ -85,8 +86,8 @@ public class Client extends Person {
         return accountNumber;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void addAmountToBalance(Double amount) {
+        this.balance += amount;
     }
 
     public Double getBalance() {
@@ -142,48 +143,67 @@ public class Client extends Person {
     }
 
     public void transfer(String amountStr, String accountNumber)
-            throws InvalidAmountException, InsufficientFundsException, NumberFormatException, NotFoundException {
+            throws InvalidAmountException, InsufficientFundsException, NumberFormatException, NotFoundException,
+            InvalidInputException {
         double amount = Double.parseDouble(amountStr);
 
         if (amount < 0) {
             throw new InvalidAmountException();
-        } else if (balance < amount + Bank.wage) {
+        } else if (balance < (amount + Bank.wage)) {
             throw new InsufficientFundsException();
         }
 
-        // boolean accountNumberFound = false;
-        // int index = 0;
-        // for (Client client : FariBank.getInstance().getClients()) {
-        //     if (client.getAccountNumber().equals(accountNumber)) {
-        //         // if (client.geContacts().contains(new Contact("","",HomeController.getClient().getPhoneNumber(),""))) {
-        //         //     System.out.println();
-        //         // }
-        //         accountNumberFound = true;
-        //         break;
-        //     }
-        //     index++;
-        // }
+        boolean pass1 = false, pass2 = false;
+        // Check it in my contacts
+        for (Contact contact : HomeController.getClient().geContacts()) {
+            if (contact.getAccountNumber().equals(accountNumber)) {
+                pass1 = true;
+                break;
+            }
+        }
 
-        // if (!accountNumberFound) {
-        //     throw new NotFoundException("This account number does not exist in the bank.");
-        // }
+        if (!pass1) {
+            throw new NotFoundException("This account number does not exist in your contacts");
+        }
 
-        balance -= amount;
-        // TODO
+        // check it in my destination client'contacts, do he/she have my accountNum in its contacts
+        for (Client client : FariBank.getInstance().getClients()) {
+            if (client.getAccountNumber().equals(accountNumber)) {
+                if (client.geContacts()
+                        .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
+                    client.addAmountToBalance(amount);
+                    balance -= (amount + Bank.wage);
+                    return;
+                }
+            }
+        }
+
+        if (!pass2) {
+            throw new NotFoundException("The destination user does not have you in its contacts.");
+        }
     }
 
-    public void transfer(Contact contact)
-            throws InvalidAmountException, InsufficientFundsException, NumberFormatException {
-        // double amount = Double.parseDouble(amountStr);
+    public void transfer(String amountStr, Contact contact)
+            throws InvalidAmountException, InsufficientFundsException, NumberFormatException, InvalidInputException, NotFoundException {
+        double amount = Double.parseDouble(amountStr);
 
-        // if (amount < 0) {
-        //     throw new InvalidAmountException();
-        // } else if (balance < amount) {
-        //     throw new InsufficientFundsException();
-        // }
+        if (amount < 0) {
+            throw new InvalidAmountException();
+        } else if (balance < (amount + Bank.wage)) {
+            throw new InsufficientFundsException();
+        }
 
-        // balance -= amount;
-        // TODO
+        // check it in my destination client'contacts, do he/she have my accountNum in its contacts
+        for (Client client : FariBank.getInstance().getClients()) {
+            if (client.getPhoneNumber().equals(contact.getPhoneNumber())) {
+                if (client.geContacts()
+                        .contains(new Contact("-", "-", HomeController.getClient().getPhoneNumber(), "----------"))) {
+                    client.addAmountToBalance(amount);
+                    balance -= (amount + Bank.wage);
+                    return;
+                }
+            }
+        }
     }
 
     public void confirm(Contact contact) {
