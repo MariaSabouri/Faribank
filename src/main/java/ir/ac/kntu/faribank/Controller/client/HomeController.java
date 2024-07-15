@@ -13,6 +13,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -102,10 +103,22 @@ public class HomeController implements Initializable {
                 .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Accountmanagement.svg")).toExternalForm());
 
         ClientName.setText(client.getFirstName()+" "+client.getLastName());
+
+        String cardnumber=fixCardNumberStyle(client.getCardNumber());
+
         CardnumberLabel.setText(client.getCardNumber());
-        AccountNumberLabel.setText(client.getAccountNumber());
+        AccountNumberLabel.setText(cardnumber);
         BalanceLabel.setText(String.valueOf(client.getBalance()));
 
+    }
+
+    private String fixCardNumberStyle(String cardNumber) {
+        String resultCardNumberStyle;
+        resultCardNumberStyle=cardNumber.substring(0,4)+" "
+                +cardNumber.substring(4,8)+" "
+                +cardNumber.substring(8,12)+" "
+                +cardNumber.substring(12,16)+" ";
+        return resultCardNumberStyle;
     }
 
     private void TransferBorderHandler() {

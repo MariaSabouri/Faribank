@@ -36,8 +36,10 @@ public class ListOfNewClientsController implements Initializable {
 
         for (Client neclient:FariBank.getInstance().getNewClients()){
             BorderPane borderPane=new BorderPane();
+
             Label Name=new Label(neclient.getFirstName()+" "+neclient.getLastName());
             Label phonenumber=new Label(neclient.getPhoneNumber());
+
             borderPane.setLeft(Name);
             borderPane.setRight(phonenumber);
             RequestsLIstview.getItems().add(borderPane);
