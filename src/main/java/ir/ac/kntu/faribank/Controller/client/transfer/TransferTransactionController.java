@@ -61,6 +61,9 @@ public class TransferTransactionController implements Initializable {
         IssueTrackingLabel.setText(tTransfer.getTrackingCode());
         DestinationAccountLabel.setText(tTransfer.getToAccountNumber());
         ProvenanceAccountLabel.setText(tTransfer.getFromAccountNumber());
+        bankfeeLabel.setText(String.valueOf(tTransfer.getBankFee()));
+        newBalanceLabel.setText(String.valueOf(tTransfer.getNewBalance()));
+        transferLabel.setText(String.valueOf(tTransfer.getTransfer()));
 
     }
 
