@@ -2,7 +2,6 @@ package ir.ac.kntu.faribank.Controller.client.contacts;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
-import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.client.Contact;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -51,13 +49,10 @@ public class ListOfAllContacts implements Initializable {
                 }
             });
         }
-
-
     }
 
     private void AddButtonHandler() {
         stage=(Stage) AddButton.getScene().getWindow();
-        //todo
         ProjectFX.changingscene(stage,"clientFXML/contacts/AddContacts.fxml");
     }
 

@@ -55,19 +55,6 @@ public class Contact extends Person implements Comparable<Contact> {
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (other == null || getClass() != other.getClass())
-            return false;
-        if (other instanceof Contact otherCustomer) {
-            if (getPhoneNumber().equals(otherCustomer.getPhoneNumber()))
-                return true;
-        }
-        return false;
-    }
-
-    @Override
     public String toString() {
         return "Contact{" +
         "\nfirstName: " + getFirstName() +
