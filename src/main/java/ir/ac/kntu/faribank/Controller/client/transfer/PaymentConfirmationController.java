@@ -26,7 +26,7 @@ public class PaymentConfirmationController implements Initializable {
 
     private void submitButtonHandler() {
         stage=(Stage) submitButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/transfer/PaymentInvoice.fxml");
+        ProjectFX.changingscene(stage,"clientFXML/transfer/TransferTransaction.fxml");
     }
 
     private void backButtonHandler() {
