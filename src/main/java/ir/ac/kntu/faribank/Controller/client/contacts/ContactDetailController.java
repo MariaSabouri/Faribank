@@ -97,7 +97,6 @@ public class ContactDetailController implements Initializable {
 
     }
 
-
     private void backButtonHandler() {
         stage=(Stage) backButton.getScene().getWindow();
         ProjectFX.changingscene(stage,"clientFXML/contacts/ListOfAllContacts.fxml");
