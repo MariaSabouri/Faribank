@@ -105,9 +105,9 @@ public class HomeController implements Initializable {
         ClientName.setText(client.getFirstName()+" "+client.getLastName());
 
         String cardnumber=fixCardNumberStyle(client.getCardNumber());
+        CardnumberLabel.setText(cardnumber);
 
-        CardnumberLabel.setText(client.getCardNumber());
-        AccountNumberLabel.setText(cardnumber);
+        AccountNumberLabel.setText(client.getAccountNumber());
         BalanceLabel.setText(String.valueOf(client.getBalance()));
 
     }
@@ -123,6 +123,7 @@ public class HomeController implements Initializable {
 
     private void TransferBorderHandler() {
         stage=(Stage) TransferBorder.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/transfer/Transfer.fxml");
     }
 
     private void SupportBorderHandler() {
