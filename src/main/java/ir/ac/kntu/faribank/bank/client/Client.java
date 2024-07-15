@@ -16,6 +16,7 @@ import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.client.support.Request;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.TTransfer;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
@@ -31,6 +32,7 @@ public class Client extends Person {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
+    private ArrayList<Request> requests = new ArrayList<Request>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID)
             throws InvalidInputException, NotFoundException {
@@ -107,6 +109,10 @@ public class Client extends Person {
 
     public ArrayList<Contact> getRecentContacts() {
         return recentContacts;
+    }
+
+    public ArrayList<Request> getRequests() {
+        return requests;
     }
 
     public void editContact(Contact editedContact) throws NotFoundException, InvalidInputException {
@@ -203,6 +209,10 @@ public class Client extends Person {
         System.out.println(tDeposit);
     }
 
+    public void addRequest(Request request) {
+        requests.add(request);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText, cardNumber, accountNumber);
@@ -215,7 +225,6 @@ public class Client extends Person {
         if (other == null || getClass() != other.getClass())
             return false;
         if (other instanceof Client otherCustomer) {
-
             if (otherCustomer.getAccountNumber() != null) {
                 // Login
                 if (password.equals(otherCustomer.getPassword())
@@ -234,9 +243,9 @@ public class Client extends Person {
     @Override
     public String toString() {
         return "Client{" +
-                "\'\nfirstName: '" + getFirstName() +
+                "\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
-                "\nphoneNumber: '" + getPhoneNumber() +
+                "\'\nphoneNumber: '" + getPhoneNumber() +
                 "\'\npassword: '" + password +
                 "\'\nnationalCodeID: '" + nationalCodeID +
                 "\'\nadminAuthenText: '" + adminAuthenText +
