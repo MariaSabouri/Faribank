@@ -173,20 +173,16 @@ public class Client extends Person {
                         TransferTransactionController.settTransfer(tTransfer);
                         PaymentConfirmationController.changeSceneToTransferTYransaction();
 
+                        addRecentContact(contact);
                         System.out.println("New Transaction added successfully!");
                         System.out.println(tTransfer);
                         return;
                     }
                 }
-
             }
         }
 
-        throw new NotFoundException();
-    }
-
-    public void confirm(Contact contact) {
-
+        throw new NotFoundException("The destination client'contacts does not have you.");
     }
 
     public void deposit(String amountStr) throws InvalidAmountException, NumberFormatException {

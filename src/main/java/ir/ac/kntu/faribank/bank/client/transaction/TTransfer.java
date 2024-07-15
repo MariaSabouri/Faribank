@@ -86,7 +86,7 @@ public class TTransfer extends Transaction {
                 "\ntoAccountNumber: " + toAccountNumber +
                 "\nfrom: '" + getFrom() +
                 "\'\nto: '" + getTo() +
-                "\ntransfer: -->" + getTransfer() +
+                "\ntransfer: -" + getTransfer() +
                 "\nbank fee: -" + bankFee +
                 "\'\n\nnew balance: " + getNewBalance() +
                 "\ndate: " + getDate() +
