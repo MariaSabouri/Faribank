@@ -9,10 +9,10 @@ public class Request implements Comparable<Request> {
     private String requestText;
     private LocalDateTime date;
 
-    public Request(Feature feature, String feedbackText) {
+    public Request(Feature feature, String requestText) {
         date = LocalDateTime.now();
         setFeature(feature);
-        setFeedbackText(feedbackText);
+        setRequestText(requestText);
     }
 
     public void setFeature(Feature feature) {
