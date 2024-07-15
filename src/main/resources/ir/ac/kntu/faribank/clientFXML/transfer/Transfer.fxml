@@ -43,7 +43,7 @@
                <children>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="Select destination account:" textFill="#bdcdff">
+                        <Label text="Destination account:" textFill="#bdcdff">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
@@ -52,7 +52,11 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                      <children>
-                        <TextField fx:id="SelectDestinationAccount" prefHeight="26.0" prefWidth="202.0" />
+                        <Label fx:id="SelectDestinationAccount" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -71,7 +75,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
-                        <Label text="List of recent contacts:" textFill="#bdcdff">
+                        <Label text="Recent contacts list:" textFill="#bdcdff">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -80,7 +84,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                      <children>
-                        <Label text="contact list:" textFill="#bdcdff">
+                        <Label text="Contact list:" textFill="#bdcdff">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>

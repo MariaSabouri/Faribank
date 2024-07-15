@@ -1,6 +1,7 @@
 package ir.ac.kntu.faribank.Controller.client.transfer;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.bank.client.transaction.TTransfer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,6 +35,14 @@ public class TransferTransactionController implements Initializable {
     private Label ToLabel;
 
     private static Stage stage;
+
+    private static TTransfer tTransfer;
+
+    public static void settTransfer(TTransfer tTransfer){
+        TransferTransactionController.tTransfer=tTransfer;
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HomeButton.setOnMouseClicked(mouseEvent -> HomeButtonHandler());
