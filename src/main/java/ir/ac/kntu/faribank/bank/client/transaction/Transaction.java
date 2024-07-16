@@ -2,8 +2,6 @@ package ir.ac.kntu.faribank.bank.client.transaction;
 
 import java.time.LocalDateTime;
 
-import org.json.JSONObject;
-
 import ir.ac.kntu.faribank.bank.Json;
 
 public abstract class Transaction implements Comparable<Transaction>, Json {    

@@ -2,8 +2,6 @@ package ir.ac.kntu.faribank.bank;
 
 import java.util.Objects;
 
-import org.json.JSONObject;
-
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 

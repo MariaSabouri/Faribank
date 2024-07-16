@@ -44,7 +44,7 @@ public class BankApplication {
                     client.setAdminAuthenText(clientJson.getString("adminAuthenText"));
                     client.setCardNumber(clientJson.getString("cardNumber"));
                     client.setAccountNumber(clientJson.getString("accountNumber"));
-                    client.addAmountToBalance(clientJson.getDouble("balance"));
+                    client.addBalance(clientJson.getDouble("balance"));
 
                     // Transaction
                     JSONObject transactionsObject = clientJson.getJSONObject("transactions");
