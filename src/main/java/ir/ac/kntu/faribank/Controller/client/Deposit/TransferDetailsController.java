@@ -30,9 +30,6 @@ public class TransferDetailsController implements Initializable {
     private Label TransferLabel;
 
     @FXML
-    private Button backButton;
-
-    @FXML
     private Button ButtonHome;
 
     private static Stage stage;
@@ -44,7 +41,6 @@ public class TransferDetailsController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
         ButtonHome.setOnMouseClicked(mouseEvent -> ButtonHomeHandler());
 
         TTransfer tTransfer=(TTransfer)transaction;
@@ -60,8 +56,4 @@ public class TransferDetailsController implements Initializable {
         ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
     }
 
-    private void backButtonHandler() {
-        stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/ListOfAllTransactions.fxml");
-    }
 }

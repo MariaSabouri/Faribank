@@ -262,6 +262,10 @@ public class Client extends Person {
         if (funds.contains(fund)) {
             throw new DuplicatedItemException("Your contact is already in the contact list.");
         }
+
+        funds.add(fund);
+        System.out.println("New fund added successfully!");
+        System.out.println(fund);
     }
 
     @Override

@@ -1,11 +1,16 @@
 package ir.ac.kntu.faribank.Controller.client.Fund;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
+import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.FXML_Loader;
+import ir.ac.kntu.faribank.bank.client.fund.*;
+import ir.ac.kntu.faribank.util.Alert;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
@@ -66,7 +71,20 @@ public class FundChoiceController implements Initializable {
         RemainWebview.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/remain.svg")).toExternalForm());
         savingWebview.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/saving.svg")).toExternalForm());
 
-        //todo
+        System.out.println(HomeController.getClient().getFunds());
+
+        for (Fund fund: HomeController.getClient().getFunds()){
+            ListView.getItems().add(fund.getType().toString());
+
+             ListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                 @Override
+                 public void handle(MouseEvent mouseEvent) {
+                     stage=(Stage) ListView.getScene().getWindow();
+                     detailController.setFundDetails(fund);
+                     ProjectFX.changingscene(stage,"clientFXML/fund/detail.fxml");
+                 }
+             });
+        }
 
 
     }
@@ -84,8 +102,23 @@ public class FundChoiceController implements Initializable {
     }
 
     private void CreationButtonHandler() {
+        System.out.println("salam");
         stage=(Stage) CreationButton.getScene().getWindow();
-        //todo
+        Fund fund;
+        if (fundTypeLabel.getText().equals("Savings fund")){
+            fund=new Savings(FundType.SAVINGS,HomeController.getClient());
+        } else if (fundTypeLabel.getText().equals("Remaining fund")) {
+            fund=new Remaining(FundType.REMAINING,HomeController.getClient());
+        }else {
+            fund=new Bonus(FundType.BONUS,HomeController.getClient());
+        }
+        try {
+            HomeController.getClient().addFund(fund);
+        }catch (Exception e){
+            e.printStackTrace();
+            Alert.showingError(e.getMessage());
+        }
+
     }
 
     private void backButtonHandler() {
