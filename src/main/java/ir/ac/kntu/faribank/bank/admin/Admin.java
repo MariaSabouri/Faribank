@@ -36,10 +36,5 @@ public class Admin extends Person {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toJson'");
     }
-
-    @Override
-    public void parse(JSONObject jsonObject) throws InvalidInputException, NotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'parse'");
-    }
+    
 }

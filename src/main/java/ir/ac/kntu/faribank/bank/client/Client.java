@@ -21,7 +21,6 @@ import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.client.support.Request;
-import ir.ac.kntu.faribank.bank.client.support.StateOfRequest;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.TTransfer;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
@@ -108,6 +107,10 @@ public class Client extends Person {
         return transactions;
     }
 
+    public void addTransactions(Transaction transaction) {
+        transactions.add(transaction);
+    }
+
     public ArrayList<Contact> geContacts() {
         return contacts;
     }
@@ -186,7 +189,8 @@ public class Client extends Person {
                         client.addAmountToBalance(amount);
                         balance -= (amount + Bank.fee);
 
-                        TTransfer tTransfer = new TTransfer(amount, this, client, balance);
+                        TTransfer tTransfer = new TTransfer(amount, this.getFirstName() + " " + this.getLastName(),
+                            client.getFirstName() + " " + client.getLastName(), this.getAccountNumber(), client.getAccountNumber(), balance);
                         transactions.add(tTransfer);
 
                         TransferTransactionController.settTransfer(tTransfer);
@@ -232,34 +236,37 @@ public class Client extends Person {
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("firstName", getFirstName());
-        jsonObject.put("lastName", getLastName());
-        jsonObject.put("phoneNumber", getPhoneNumber());
-        jsonObject.put("password", password);
-        jsonObject.put("nationalCodeID", nationalCodeID);
-        jsonObject.put("adminAuthenText", adminAuthenText);
-        jsonObject.put("cardNumber", cardNumber);
-        jsonObject.put("accountNumber", accountNumber);
-        jsonObject.put("balance", balance);
+        jsonObject.put("firstName", getFirstName()); //
+        jsonObject.put("lastName", getLastName()); //
+        jsonObject.put("phoneNumber", getPhoneNumber()); //
+        jsonObject.put("password", password); //
+        jsonObject.put("nationalCodeID", nationalCodeID); //
+        jsonObject.put("adminAuthenText", adminAuthenText); //
+        jsonObject.put("cardNumber", cardNumber); //
+        jsonObject.put("accountNumber", accountNumber); //
+        jsonObject.put("balance", balance); //
 
-        jsonObject.put("transactions", new JSONArray(transactions.stream().map((transaction) -> {
-            if (transaction instanceof TTransfer tTransfer) {
-                return tTransfer.toJson();
-            } else if (transaction instanceof TDeposit tDeposit) {
-                return tDeposit.toJson();
-            }
-            return new JSONObject();
-        }).toArray()));
+        JSONArray tDepositArray = new JSONArray();
+        transactions.stream()
+                    .filter(transaction -> transaction instanceof TDeposit)
+                    .map(transaction -> ((TDeposit) transaction).toJson())
+                    .forEach(tDepositArray::put);
+
+        JSONArray tTransactionArray = new JSONArray();
+        transactions.stream()
+                    .filter(transaction -> transaction instanceof TTransfer)
+                    .map(transaction -> ((TTransfer) transaction).toJson())
+                    .forEach(tTransactionArray::put);
+
+        jsonObject.put("transactions", new JSONObject()
+                                            .put("tDeposit", tDepositArray)
+                                            .put("tTransaction", tTransactionArray));
+
         jsonObject.put("contacts", new JSONArray(contacts.stream().map(Contact::toJson).toArray()));
         jsonObject.put("recentContacts", new JSONArray(recentContacts.stream().map(Contact::toJson).toArray()));
         jsonObject.put("requests", new JSONArray(requests.stream().map(Request::toJson).toArray()));
 
         return jsonObject;
-    }
-
-    @Override
-    public void parse(JSONObject jsonObject) {
-        
     }
 
     @Override

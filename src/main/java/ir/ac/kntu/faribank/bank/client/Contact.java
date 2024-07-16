@@ -3,7 +3,6 @@ package ir.ac.kntu.faribank.bank.client;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import ir.ac.kntu.faribank.Controller.client.HomeController;
@@ -26,10 +25,12 @@ public class Contact extends Person implements Comparable<Contact> {
     public void setPhoneNumber(String phoneNumber) throws InvalidInputException, NotFoundException {
         if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
-        } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
-            throw new InvalidInputException("It's your account info.");
+        } else if (HomeController.getClient() != null) {
+            if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
+                throw new InvalidInputException("It's your account info.");
+            }
         }
-
+        
         super.setPhoneNumber(phoneNumber);
     }
 
@@ -78,14 +79,14 @@ public class Contact extends Person implements Comparable<Contact> {
         return jsonObject;
     }
 
-    @Override
-    public void parse(JSONObject jsonObject) throws JSONException, InvalidInputException, NotFoundException {
-        setFirstName(jsonObject.getString("firstName"));
-        setLastName(jsonObject.getString("lastName"));
-        setPhoneNumber(jsonObject.getString("phoneNumber"));
-        accountNumber = jsonObject.getString("accountNumber");
-        setDate(LocalDateTime.parse(jsonObject.getString("date")));
-    }
+    // @Override
+    // public void parse(JSONObject jsonObject) throws JSONException, InvalidInputException, NotFoundException {
+    //     setFirstName(jsonObject.getString("firstName"));
+    //     setLastName(jsonObject.getString("lastName"));
+    //     setPhoneNumber(jsonObject.getString("phoneNumber"));
+    //     accountNumber = jsonObject.getString("accountNumber");
+    //     setDate(LocalDateTime.parse(jsonObject.getString("date")));
+    // }
 
     @Override
     public int hashCode() {

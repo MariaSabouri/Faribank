@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 
 import org.json.JSONObject;
 
-public class Request implements Comparable<Request> {
+import ir.ac.kntu.faribank.bank.Json;
+
+public class Request implements Comparable<Request>, Json {
     private Feature feature;
     private StateOfRequest stateOfRequest;
     private String feedbackText;
@@ -61,6 +63,7 @@ public class Request implements Comparable<Request> {
         return date;
     }
 
+    @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
 
@@ -73,13 +76,13 @@ public class Request implements Comparable<Request> {
         return jsonObject;
     }
 
-    public void parse(JSONObject jsonObject) {
-        setFeature(Feature.valueOf(jsonObject.getString("feature")));
-        setStateOfRequest(StateOfRequest.valueOf(jsonObject.getString("stateOfRequest")));
-        setFeedbackText(jsonObject.getString("feedbackText"));
-        setRequestText(jsonObject.getString("requestText"));
-        setDate(LocalDateTime.parse(jsonObject.getString("date")));
-    }
+    // public void parse(JSONObject jsonObject) {
+    //     setFeature(Feature.valueOf(jsonObject.getString("feature")));
+    //     setStateOfRequest(StateOfRequest.valueOf(jsonObject.getString("stateOfRequest")));
+    //     setFeedbackText(jsonObject.getString("feedbackText"));
+    //     setRequestText(jsonObject.getString("requestText"));
+    //     setDate(LocalDateTime.parse(jsonObject.getString("date")));
+    // }
 
     @Override
     public String toString() {
