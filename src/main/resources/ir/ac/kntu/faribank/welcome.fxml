@@ -35,7 +35,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BanckAssistantButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" style="-fx-background-color: #7DA3FF;" text="BankAssistant">
+                  <Button fx:id="BanckAssistantButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: #7DA3FF;" text="Bank assistant">
                      <font>
                         <Font name="Arial Bold Italic" size="16.0" />
                      </font>
