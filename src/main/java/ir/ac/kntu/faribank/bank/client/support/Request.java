@@ -2,6 +2,8 @@ package ir.ac.kntu.faribank.bank.client.support;
 
 import java.time.LocalDateTime;
 
+import org.json.JSONObject;
+
 public class Request implements Comparable<Request> {
     private Feature feature;
     private StateOfRequest stateOfRequest;
@@ -53,6 +55,18 @@ public class Request implements Comparable<Request> {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("feature", feature);
+        jsonObject.put("stateOfRequest", stateOfRequest);
+        jsonObject.put("feedbackText", feedbackText);
+        jsonObject.put("requestText", requestText);
+        jsonObject.put("date", date);
+
+        return jsonObject;
     }
 
     @Override

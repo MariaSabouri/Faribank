@@ -1,13 +1,17 @@
 package ir.ac.kntu.faribank.bank.client;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+
+import org.json.JSONObject;
 
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
+import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
 public class Contact extends Person implements Comparable<Contact> {
     private String accountNumber;
@@ -57,6 +61,15 @@ public class Contact extends Person implements Comparable<Contact> {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("accountNumber", accountNumber);
+        jsonObject.put("date", date);
+
+        return jsonObject;
     }
 
     @Override

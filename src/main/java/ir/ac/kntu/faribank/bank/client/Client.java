@@ -3,6 +3,9 @@ package ir.ac.kntu.faribank.bank.client;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import ir.ac.kntu.faribank.Controller.client.HomeController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactionController;
@@ -214,6 +217,32 @@ public class Client extends Person {
         System.out.println("New request added successfully!");
         System.out.println(request);
     }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("firstName", getFirstName());
+        jsonObject.put("lastName", getLastName());
+        jsonObject.put("phoneNumber", getPhoneNumber());
+        jsonObject.put("password", password);
+        jsonObject.put("nationalCodeID", nationalCodeID);
+        jsonObject.put("adminAuthenText", adminAuthenText);
+        jsonObject.put("cardNumber", cardNumber);
+        jsonObject.put("accountNumber", accountNumber);
+        jsonObject.put("balance", balance);
+
+        jsonObject.put("transactions", new
+        JSONArray(transactions.stream().map(Transaction::toJson).toArray()));
+        jsonObject.put("contacts", new
+        JSONArray(contacts.stream().map(Contact::toJson).toArray()));
+        jsonObject.put("recentContacts", new
+        JSONArray(recentContacts.stream().map(Contact::toJson).toArray()));
+        jsonObject.put("requests", new
+        JSONArray(requests.stream().map(Request::toJson).toArray()));
+
+        return jsonObject;
+    }
+
+    
 
     @Override
     public int hashCode() {

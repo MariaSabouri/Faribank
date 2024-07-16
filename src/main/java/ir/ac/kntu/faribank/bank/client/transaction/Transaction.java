@@ -2,6 +2,8 @@ package ir.ac.kntu.faribank.bank.client.transaction;
 
 import java.time.LocalDateTime;
 
+import org.json.JSONObject;
+
 public abstract class Transaction implements Comparable<Transaction> {    
     private Double newBalance;
     private LocalDateTime date;
@@ -27,8 +29,18 @@ public abstract class Transaction implements Comparable<Transaction> {
         return date;
     }
 
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("newBalance", newBalance);
+        jsonObject.put("date", date);
+
+        return jsonObject;
+    }
+
     @Override
     public int compareTo(Transaction transaction) {
         return transaction.getDate().compareTo(this.date);
     }
+
 }
