@@ -91,6 +91,7 @@ public class HomeController implements Initializable {
         SettingsBorder.setOnMouseClicked(mouseEvent -> SettingsBorderHandler());
         SupportBorder.setOnMouseClicked(mouseEvent -> SupportBorderHandler());
         TransferBorder.setOnMouseClicked(mouseEvent -> TransferBorderHandler());
+        BankFundBorderPane.setOnMouseClicked(mouseEvent -> BankFundBorderPaneHandler());
 
         FundWebView.setPageFill(Color.TRANSPARENT);
         TransferWeb.setPageFill(Color.TRANSPARENT);
@@ -118,6 +119,11 @@ public class HomeController implements Initializable {
         AccountNumberLabel.setText(client.getAccountNumber());
         BalanceLabel.setText(String.valueOf(client.getBalance()));
 
+    }
+
+    private void BankFundBorderPaneHandler() {
+        stage=(Stage) BankFundBorderPane.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/fund/FundChoice.fxml");
     }
 
     private String fixCardNumberStyle(String cardNumber) {
