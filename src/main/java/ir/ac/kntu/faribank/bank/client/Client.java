@@ -1,6 +1,5 @@
 package ir.ac.kntu.faribank.bank.client;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,6 +19,8 @@ import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
+import ir.ac.kntu.faribank.bank.client.fund.Fund;
+import ir.ac.kntu.faribank.bank.client.fund.Remaining;
 import ir.ac.kntu.faribank.bank.client.support.Request;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.TTransfer;
@@ -37,6 +38,7 @@ public class Client extends Person {
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ArrayList<Contact> recentContacts = new ArrayList<Contact>();
     private ArrayList<Request> requests = new ArrayList<Request>();
+    private ArrayList<Fund> funds = new ArrayList<Fund>();
 
     public Client(String phoneNumber, String password, String firstName, String lastName, String nationalCodeID)
             throws InvalidInputException, NotFoundException {
@@ -95,8 +97,16 @@ public class Client extends Person {
         return accountNumber;
     }
 
-    public void addAmountToBalance(Double amount) {
+    public void addBalance(Double amount) {
         this.balance += amount;
+    }
+
+    public void reduceBalance(Double amount) {
+        this.balance -= amount;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 
     public Double getBalance() {
@@ -121,6 +131,10 @@ public class Client extends Person {
 
     public ArrayList<Request> getRequests() {
         return requests;
+    }
+
+    public ArrayList<Fund> getFunds() {
+        return funds;
     }
 
     public void editContact(Contact editedContact) throws NotFoundException, InvalidInputException {
@@ -186,7 +200,7 @@ public class Client extends Person {
 
                 for (Contact toContact : client.geContacts()) {
                     if (toContact.getPhoneNumber().equals(HomeController.getClient().getPhoneNumber())) {
-                        client.addAmountToBalance(amount);
+                        client.addBalance(amount);
                         balance -= (amount + Bank.fee);
 
                         TTransfer tTransfer = new TTransfer(amount, this.getFirstName() + " " + this.getLastName(),
@@ -199,6 +213,17 @@ public class Client extends Person {
                         addRecentContact(contact);
                         System.out.println("New Transaction added successfully!");
                         System.out.println(tTransfer);
+
+                        // Remaining Fund
+                        funds.forEach((fund) -> {
+                            if (fund instanceof Remaining remaining) {
+                                try {
+                                    remaining.remain(balance);
+                                } catch (InvalidAmountException | InsufficientFundsException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }); 
                         return;
                     }
                 }
@@ -231,6 +256,12 @@ public class Client extends Person {
 
         System.out.println("New request added successfully!");
         System.out.println(request);
+    }
+
+    public void addFund(Fund fund) throws DuplicatedItemException {
+        if (funds.contains(fund)) {
+            throw new DuplicatedItemException("Your contact is already in the contact list.");
+        }
     }
 
     @Override
