@@ -4,11 +4,9 @@ import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.bank.client.support.Request;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -18,8 +16,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FeedbackDetail implements Initializable {
+    @FXML
+    private ScrollPane adminscroll;
 
-
+    @FXML
+    private ScrollPane clientscroll;
 
     @FXML
     private Label SectionLabel;
@@ -48,6 +49,7 @@ public class FeedbackDetail implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
 
+
         try {
             stateLabel.setText(request.getStateOfRequest().toString());
         } catch (Exception e) {
@@ -71,11 +73,6 @@ public class FeedbackDetail implements Initializable {
         } catch (Exception e) {
             clientComment.setText("-");
         }
-
-
-
-
-
     }
 
     private void backButtonHandler() {
