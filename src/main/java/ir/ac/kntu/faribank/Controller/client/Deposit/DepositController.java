@@ -18,6 +18,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DepositController implements Initializable {
+
+    @FXML
+    private Button ListOfAllTransactionsButton;
+
     @FXML
     private Button depositButton;
 
@@ -26,17 +30,25 @@ public class DepositController implements Initializable {
 
     @FXML
     private WebView depositWebView;
+
     @FXML
     private Button backButton;
 
     private static Stage stage;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ListOfAllTransactionsButton.setOnMouseClicked(mouseEvent -> ListOfAllTransactionsButtonHandler());
         depositButton.setOnMouseClicked(mouseEvent -> depositButtonHandler());
         backButton.setOnMouseClicked(mouseEvent -> backButtonHandler());
 
+
         depositWebView.setPageFill(Color.TRANSPARENT);
         depositWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/deposit.svg")).toExternalForm());
+    }
+
+    private void ListOfAllTransactionsButtonHandler() {
+        stage=(Stage) ListOfAllTransactionsButton.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/deposit/ListOfAllTransactions.fxml");
     }
 
     public static void changeSceneToDisposeTransaction(){

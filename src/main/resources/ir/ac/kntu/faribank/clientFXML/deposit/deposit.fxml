@@ -24,16 +24,16 @@
    <center>
       <AnchorPane prefHeight="262.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane alignment="CENTER" layoutX="123.0" layoutY="14.0" prefHeight="91.0" prefWidth="354.0">
+            <GridPane alignment="CENTER" layoutX="70.0" layoutY="14.0" prefHeight="150.0" prefWidth="460.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.60003662109375" minWidth="10.0" prefWidth="51.99998779296875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.80002441406253" minWidth="10.0" prefWidth="261.6000122070313" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.20001220703125" minWidth="10.0" prefWidth="71.59999999999997" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="50.400000000000006" minHeight="10.0" prefHeight="50.400000000000006" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="25.60001220703124" minHeight="10.0" prefHeight="10.399999999999991" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="76.79999999999998" minHeight="10.0" prefHeight="76.79999999999998" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.60001220703124" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Deposit:" textFill="WHITE" GridPane.rowIndex="1">
@@ -46,6 +46,11 @@
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ListOfAllTransactionsButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="335.0" style="-fx-background-color: #37a671;" text="Show lis of all transactions" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="17.0" />
                      </font>

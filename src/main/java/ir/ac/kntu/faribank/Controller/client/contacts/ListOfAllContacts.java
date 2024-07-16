@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.Controller.client.contacts;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.client.HomeController;
+import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.client.Contact;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -74,7 +75,11 @@ public class ListOfAllContacts implements Initializable {
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == buttonContinue) {
-                        //todo
+                        try {
+                            HomeController.getClient().deleteContact(contact);
+                        }catch (NotFoundException e){
+                            ir.ac.kntu.faribank.util.Alert.showingError(e.getMessage());
+                        }
                     }
                     borderPane.setStyle("-fx-background-color:  #D46262;");
                     DeleteButton.setVisible(false);

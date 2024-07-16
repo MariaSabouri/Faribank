@@ -20,10 +20,10 @@ import java.util.ResourceBundle;
 
 public class ListOfAllTransactions implements Initializable {
     @FXML
-    private ListView<BorderPane> LIstview;
+    private Button backButton;
 
     @FXML
-    private Button backButton;
+    private ListView<BorderPane> LIstview;
 
     @FXML
     private Button HomeButton;
@@ -82,13 +82,13 @@ public class ListOfAllTransactions implements Initializable {
 
     }
 
+    private void backButtonHandler() {
+        stage=(Stage) backButton.getScene().getWindow();
+        ProjectFX.changingscene(stage,"clientFXML/deposit/deposit.fxml");
+    }
+
     private void HomeButtonHandler() {
         stage=(Stage) HomeButton.getScene().getWindow();
         ProjectFX.changingscene(stage,"clientFXML/ClientHomePage.fxml");
-    }
-
-    private void backButtonHandler() {
-        stage=(Stage) backButton.getScene().getWindow();
-        ProjectFX.changingscene(stage,"clientFXML/deposit/DepositTransaction.fxml");
     }
 }
