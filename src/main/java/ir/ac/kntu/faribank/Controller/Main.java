@@ -24,12 +24,13 @@ public class Main extends Application {
         launch();
         // Exit: Update DB
         try {
-            FileWriter fileWriter = new FileWriter("./student.json", true);
+            FileWriter fileWriter = new FileWriter("./fariBank.json", false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
             JSONObject jsonObject = new JSONObject();
 
             jsonObject.put("clients", new JSONArray(FariBank.getInstance().getClients().stream().map(Client::toJson).toArray()));
+            jsonObject.put("newClients", new JSONArray(FariBank.getInstance().getNewClients().stream().map(Client::toJson).toArray()));
 
             printWriter.write(jsonObject.toString());
             printWriter.flush();

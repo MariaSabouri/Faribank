@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import org.json.JSONObject;
 
 import ir.ac.kntu.faribank.bank.Bank;
-import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.util.GenerateUniqueNumber;
 
 public class TTransfer extends Transaction {
@@ -17,13 +16,13 @@ public class TTransfer extends Transaction {
     private String toAccountNumber;
     private Double bankFee = Bank.fee;
 
-    public TTransfer(Double transfer, Client fromClient, Client toClient, Double newBalance) {
+    public TTransfer(Double transfer, String from, String to, String fromAccountNumber, String toAccountNumber, Double newBalance) {
         super(newBalance);
         setTransfer(transfer);
-        setFrom(fromClient.getFirstName() + " " + fromClient.getLastName());
-        setTo(toClient.getFirstName() + " " + toClient.getLastName());
-        setFromAccountNumber(fromClient.getAccountNumber());
-        setToAccountNumber(toClient.getAccountNumber());
+        setFrom(from);
+        setTo(to);
+        setFromAccountNumber(fromAccountNumber);
+        setToAccountNumber(toAccountNumber);
         setTrackingCode(GenerateUniqueNumber.generate(6));
     }
 
@@ -87,14 +86,14 @@ public class TTransfer extends Transaction {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("newBalance", getNewBalance());
+        jsonObject.put("newBalance", getNewBalance());//
         jsonObject.put("date", getDate());
-        jsonObject.put("from", from);
-        jsonObject.put("to", to);
-        jsonObject.put("transfer", transfer);
+        jsonObject.put("from", from);//
+        jsonObject.put("to", to);//
+        jsonObject.put("transfer", transfer);//
         jsonObject.put("trackingCode", trackingCode);
-        jsonObject.put("fromAccountNumber", fromAccountNumber);
-        jsonObject.put("toAccountNumber", toAccountNumber);
+        jsonObject.put("fromAccountNumber", fromAccountNumber);//
+        jsonObject.put("toAccountNumber", toAccountNumber);//
         jsonObject.put("bankFee", bankFee);
 
         return jsonObject;

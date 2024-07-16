@@ -26,10 +26,12 @@ public class Contact extends Person implements Comparable<Contact> {
     public void setPhoneNumber(String phoneNumber) throws InvalidInputException, NotFoundException {
         if (!FariBank.getInstance().getClients().contains(new Client(phoneNumber, "K@2k", "-", "-", "-"))) {
             throw new NotFoundException("This Phone number has not a FariBank account yet.");
-        } else if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
-            throw new InvalidInputException("It's your account info.");
+        } else if (HomeController.getClient() != null) {
+            if (HomeController.getClient().getPhoneNumber().equals(phoneNumber)) {
+                throw new InvalidInputException("It's your account info.");
+            }
         }
-
+        
         super.setPhoneNumber(phoneNumber);
     }
 
