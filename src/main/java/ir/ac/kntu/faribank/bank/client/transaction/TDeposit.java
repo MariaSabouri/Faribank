@@ -31,12 +31,12 @@ public class TDeposit extends Transaction {
         return jsonObject;
     }
 
-    @Override
-    public void parse(JSONObject jsonObject) {
-        setNewBalance(jsonObject.getDouble("newBalance"));
-        setDate(LocalDateTime.parse(jsonObject.getString("date")));
-        setDeposit(jsonObject.getDouble("deposit"));
-    }
+    // @Override
+    // public void parse(JSONObject jsonObject) {
+    //     setNewBalance(jsonObject.getDouble("newBalance"));
+    //     setDate(LocalDateTime.parse(jsonObject.getString("date")));
+    //     setDeposit(jsonObject.getDouble("deposit"));
+    // }
 
     @Override
     public String toString() {

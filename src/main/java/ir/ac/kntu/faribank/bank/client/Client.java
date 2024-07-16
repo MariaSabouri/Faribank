@@ -270,11 +270,6 @@ public class Client extends Person {
     }
 
     @Override
-    public void parse(JSONObject jsonObject) {
-        
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), nationalCodeID, adminAuthenText, cardNumber, accountNumber);
     }

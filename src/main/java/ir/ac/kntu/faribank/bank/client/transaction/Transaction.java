@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 
 import org.json.JSONObject;
 
-public abstract class Transaction implements Comparable<Transaction> {    
+import ir.ac.kntu.faribank.bank.Json;
+
+public abstract class Transaction implements Comparable<Transaction>, Json {    
     private Double newBalance;
     private LocalDateTime date;
 
@@ -32,10 +34,6 @@ public abstract class Transaction implements Comparable<Transaction> {
     public LocalDateTime getDate() {
         return date;
     }
-
-    public abstract JSONObject toJson();
-    
-    public abstract void parse(JSONObject jsonObject);
 
     @Override
     public int compareTo(Transaction transaction) {

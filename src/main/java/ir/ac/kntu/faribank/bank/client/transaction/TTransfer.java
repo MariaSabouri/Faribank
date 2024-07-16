@@ -99,18 +99,18 @@ public class TTransfer extends Transaction {
         return jsonObject;
     }
     
-    @Override
-    public void parse(JSONObject jsonObject) {
-        setNewBalance(jsonObject.getDouble("newBalance"));
-        setDate(LocalDateTime.parse(jsonObject.getString("date")));
-        setFrom(jsonObject.getString("from"));
-        setTo(jsonObject.getString("to"));
-        setTransfer(jsonObject.getDouble("transfer"));
-        setTrackingCode(jsonObject.getString("trackingCode"));
-        setFromAccountNumber(jsonObject.getString("fromAccountNumber"));
-        setToAccountNumber(jsonObject.getString("fromAccountNumber"));
-        setBankFee(jsonObject.getDouble("bankFee"));
-    }
+    // @Override
+    // public void parse(JSONObject jsonObject) {
+    //     setNewBalance(jsonObject.getDouble("newBalance"));
+    //     setDate(LocalDateTime.parse(jsonObject.getString("date")));
+    //     setFrom(jsonObject.getString("from"));
+    //     setTo(jsonObject.getString("to"));
+    //     setTransfer(jsonObject.getDouble("transfer"));
+    //     setTrackingCode(jsonObject.getString("trackingCode"));
+    //     setFromAccountNumber(jsonObject.getString("fromAccountNumber"));
+    //     setToAccountNumber(jsonObject.getString("fromAccountNumber"));
+    //     setBankFee(jsonObject.getDouble("bankFee"));
+    // }
 
     @Override
     public String toString() {

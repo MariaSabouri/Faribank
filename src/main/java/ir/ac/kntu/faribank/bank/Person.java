@@ -2,13 +2,12 @@ package ir.ac.kntu.faribank.bank;
 
 import java.util.Objects;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 
-public abstract class Person {
+public abstract class Person implements Json {
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -54,10 +53,6 @@ public abstract class Person {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
-    public abstract JSONObject toJson();
-    
-    public abstract void parse(JSONObject jsonObject) throws InvalidInputException, NotFoundException;
 
     @Override
     public int hashCode() {
