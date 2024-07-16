@@ -2,6 +2,7 @@ package ir.ac.kntu.faribank.Controller.client;
 
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.commonControllers.LoginController;
+import ir.ac.kntu.faribank.Database;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
@@ -20,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
@@ -73,7 +75,7 @@ public class SignUpController implements Initializable {
         String phoneNumber = PhoneNumber.getText();
         String password = passwordField.getText();
 
-        
+
         try {
             MSignUp.getInstance().handle(new Client(phoneNumber, password, firstName, lastName, nationalID));
 

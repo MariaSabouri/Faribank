@@ -1,6 +1,9 @@
 package ir.ac.kntu.faribank.bank;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
+
+import ir.ac.kntu.faribank.Database;
 import ir.ac.kntu.faribank.bank.Errors.DuplicatedItemException;
 import ir.ac.kntu.faribank.bank.admin.Admin;
 import ir.ac.kntu.faribank.bank.client.Client;
@@ -49,6 +52,24 @@ public class FariBank implements Bank {
         clients.add(newClient);
         System.out.println("Client added successfully!\nNow Client has Account number and Card number.");
         System.out.println(newClient);
+
+        String sql = "INSERT INTO public.\"clientInfo\"(\"firstName\", \"lastName\", \"password\",\"nationalcode\", \"phoneNumber\",\"cardNumber\",\"accountNumber\") \n" +
+                "VALUES (?, ?, ?, ?,?,?,?);";
+        try {
+            PreparedStatement pstmt = Database.getConn().prepareStatement(sql);
+            pstmt.setString(1, newClient.getFirstName());
+            pstmt.setString(2, newClient.getLastName());
+            pstmt.setString(3, newClient.getPassword());
+            pstmt.setString(4,newClient.getNationalCodeID());
+            pstmt.setString(5,newClient.getPhoneNumber());
+            pstmt.setString(6,newClient.getCardNumber());
+            pstmt.setString(7,newClient.getAccountNumber());
+            pstmt.executeUpdate();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("Record newUser inserted successfully.");
     }
 
     @Override
