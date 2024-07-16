@@ -43,7 +43,7 @@
                         <Font name="Arial Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ListOfAllTransactionsButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="335.0" style="-fx-background-color: #37a671;" text="Show lits of all transactions" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="ListOfAllTransactionsButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="335.0" style="-fx-background-color: #37a671;" text="Show lists of all transactions" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="17.0" />
                      </font>
