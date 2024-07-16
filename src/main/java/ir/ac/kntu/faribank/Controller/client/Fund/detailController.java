@@ -3,7 +3,10 @@ package ir.ac.kntu.faribank.Controller.client.Fund;
 import ir.ac.kntu.faribank.Controller.ProjectFX;
 import ir.ac.kntu.faribank.Controller.client.Deposit.DepositTransactioWithoutListOfTransactionBtnController;
 import ir.ac.kntu.faribank.Controller.client.Deposit.TransferDetailsController;
+import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
+import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.client.fund.Fund;
+import ir.ac.kntu.faribank.bank.client.fund.Savings;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 import ir.ac.kntu.faribank.util.Alert;
 import javafx.event.EventHandler;
@@ -99,7 +102,12 @@ public class detailController implements Initializable {
         if (AmountTextField.getText().isEmpty()){
             Alert.showingError("Please enter an amount");
         }else {
-            //todo
+            try {
+                fund.deposit(AmountTextField.getText());
+            } catch (InsufficientFundsException|InvalidAmountException e) {
+                e.printStackTrace();
+                Alert.showingError(e.getMessage());
+            }
         }
     }
 
@@ -107,7 +115,12 @@ public class detailController implements Initializable {
         if (AmountTextField.getText().isEmpty()){
             Alert.showingError("Please enter an amount");
         }else {
-            //todo
+            try {
+                fund.transfer(AmountTextField.getText());
+            } catch (InsufficientFundsException|InvalidAmountException e) {
+                e.printStackTrace();
+                Alert.showingError(e.getMessage());
+            }
         }
     }
 

@@ -63,7 +63,7 @@ public abstract class Fund {
         return transactions;
     }
 
-    void transfer(String amountStr) throws InvalidAmountException, InsufficientFundsException {
+    public void transfer(String amountStr) throws InvalidAmountException, InsufficientFundsException {
         double amount = Double.parseDouble(amountStr);
 
         if (amount < 0) {
@@ -84,7 +84,7 @@ public abstract class Fund {
         System.out.println(tDeposit);
     }
 
-    void deposit(String amountStr) throws InvalidAmountException, InsufficientFundsException {
+    public void deposit(String amountStr) throws InvalidAmountException, InsufficientFundsException {
         double amount = Double.parseDouble(amountStr);
 
         if (amount < 0) {
