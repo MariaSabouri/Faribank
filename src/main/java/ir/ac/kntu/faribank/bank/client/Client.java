@@ -142,7 +142,7 @@ public class Client extends Person {
     }
 
     public void deleteContact(Contact contact) throws NotFoundException {
-        if (contacts.contains(contact)) {
+        if (!contacts.contains(contact)) {
             throw new NotFoundException();
         }
 
