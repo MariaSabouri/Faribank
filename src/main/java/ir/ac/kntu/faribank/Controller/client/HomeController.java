@@ -21,7 +21,19 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
+    private BorderPane AccountManagementBorder;
+
+    @FXML
+    private WebView AccountManagerWeb;
+
+    @FXML
     private Label AccountNumberLabel;
+
+    @FXML
+    private Label BalanceLabel;
+
+    @FXML
+    private BorderPane BankFundBorderPane;
 
     @FXML
     private Label CardnumberLabel;
@@ -30,40 +42,34 @@ public class HomeController implements Initializable {
     private Label ClientName;
 
     @FXML
-    private Label BalanceLabel;
-
-    @FXML
-    private Button LogOutButton;
-
-    @FXML
-    private BorderPane AccountManagementBorder;
-
-    @FXML
     private BorderPane ContactBorder;
-
-    @FXML
-    private BorderPane SettingsBorder;
-
-    @FXML
-    private BorderPane SupportBorder;
-
-    @FXML
-    private BorderPane TransferBorder;
 
     @FXML
     private WebView ContactsWeb;
 
     @FXML
+    private WebView FundWebView;
+
+    @FXML
+    private Button LogOutButton;
+
+    @FXML
+    private BorderPane SettingsBorder;
+
+    @FXML
     private WebView SettingsWeb;
+
+    @FXML
+    private BorderPane SupportBorder;
 
     @FXML
     private WebView SupportWeb;
 
     @FXML
-    private WebView TransferWeb;
+    private BorderPane TransferBorder;
 
     @FXML
-    private WebView AccountManagerWeb;
+    private WebView TransferWeb;
 
     private static Stage stage;
 
@@ -86,12 +92,14 @@ public class HomeController implements Initializable {
         SupportBorder.setOnMouseClicked(mouseEvent -> SupportBorderHandler());
         TransferBorder.setOnMouseClicked(mouseEvent -> TransferBorderHandler());
 
+        FundWebView.setPageFill(Color.TRANSPARENT);
         TransferWeb.setPageFill(Color.TRANSPARENT);
         SettingsWeb.setPageFill(Color.TRANSPARENT);
         SupportWeb.setPageFill(Color.TRANSPARENT);
         ContactsWeb.setPageFill(Color.TRANSPARENT);
         AccountManagerWeb.setPageFill(Color.TRANSPARENT);
 
+        FundWebView.getEngine().load(Objects.requireNonNull(FXML_Loader.loadURL("images/BankFund.svg")).toExternalForm());
         TransferWeb.getEngine()
                 .load(Objects.requireNonNull(FXML_Loader.loadURL("images/Transfer.svg")).toExternalForm());
         SettingsWeb.getEngine()
