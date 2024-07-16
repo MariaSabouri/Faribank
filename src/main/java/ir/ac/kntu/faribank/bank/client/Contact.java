@@ -1,9 +1,9 @@
 package ir.ac.kntu.faribank.bank.client;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import ir.ac.kntu.faribank.Controller.client.HomeController;
@@ -11,7 +11,6 @@ import ir.ac.kntu.faribank.bank.FariBank;
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
-import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
 public class Contact extends Person implements Comparable<Contact> {
     private String accountNumber;
@@ -54,22 +53,38 @@ public class Contact extends Person implements Comparable<Contact> {
         return accountNumber;
     }
 
-    public void setDate() {
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setDateNow() {
         this.date = LocalDateTime.now();
-        ;
     }
 
     public LocalDateTime getDate() {
         return date;
     }
 
+    @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("firstName", getFirstName());
+        jsonObject.put("lastName", getLastName());
+        jsonObject.put("phoneNumber", getPhoneNumber());
         jsonObject.put("accountNumber", accountNumber);
         jsonObject.put("date", date);
 
         return jsonObject;
+    }
+
+    @Override
+    public void parse(JSONObject jsonObject) throws JSONException, InvalidInputException, NotFoundException {
+        setFirstName(jsonObject.getString("firstName"));
+        setLastName(jsonObject.getString("lastName"));
+        setPhoneNumber(jsonObject.getString("phoneNumber"));
+        accountNumber = jsonObject.getString("accountNumber");
+        setDate(LocalDateTime.parse(jsonObject.getString("date")));
     }
 
     @Override

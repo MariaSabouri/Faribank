@@ -1,5 +1,7 @@
 package ir.ac.kntu.faribank.bank.admin;
 
+import org.json.JSONObject;
+
 import ir.ac.kntu.faribank.bank.Person;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.Errors.NotFoundException;
@@ -27,5 +29,17 @@ public class Admin extends Person {
                 "\'\nfirstName: '" + getFirstName() +
                 "\'\nlastName: '" + getLastName() +
                 "\'\n}";
+    }
+
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+    }
+
+    @Override
+    public void parse(JSONObject jsonObject) throws InvalidInputException, NotFoundException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'parse'");
     }
 }

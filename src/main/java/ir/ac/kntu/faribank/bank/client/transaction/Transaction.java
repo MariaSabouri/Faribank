@@ -21,7 +21,11 @@ public abstract class Transaction implements Comparable<Transaction> {
         return newBalance;
     }
 
-    public void setDate() {
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setDateNow() {
         this.date = LocalDateTime.now();
     }
 
@@ -29,14 +33,9 @@ public abstract class Transaction implements Comparable<Transaction> {
         return date;
     }
 
-    public JSONObject toJson() {
-        JSONObject jsonObject = new JSONObject();
-
-        jsonObject.put("newBalance", newBalance);
-        jsonObject.put("date", date);
-
-        return jsonObject;
-    }
+    public abstract JSONObject toJson();
+    
+    public abstract void parse(JSONObject jsonObject);
 
     @Override
     public int compareTo(Transaction transaction) {

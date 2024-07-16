@@ -1,5 +1,9 @@
 package ir.ac.kntu.faribank.bank.client.transaction;
 
+import java.time.LocalDateTime;
+
+import org.json.JSONObject;
+
 import ir.ac.kntu.faribank.bank.Bank;
 import ir.ac.kntu.faribank.bank.client.Client;
 import ir.ac.kntu.faribank.util.GenerateUniqueNumber;
@@ -77,6 +81,36 @@ public class TTransfer extends Transaction {
 
     public Double getBankFee() {
         return bankFee;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("newBalance", getNewBalance());
+        jsonObject.put("date", getDate());
+        jsonObject.put("from", from);
+        jsonObject.put("to", to);
+        jsonObject.put("transfer", transfer);
+        jsonObject.put("trackingCode", trackingCode);
+        jsonObject.put("fromAccountNumber", fromAccountNumber);
+        jsonObject.put("toAccountNumber", toAccountNumber);
+        jsonObject.put("bankFee", bankFee);
+
+        return jsonObject;
+    }
+    
+    @Override
+    public void parse(JSONObject jsonObject) {
+        setNewBalance(jsonObject.getDouble("newBalance"));
+        setDate(LocalDateTime.parse(jsonObject.getString("date")));
+        setFrom(jsonObject.getString("from"));
+        setTo(jsonObject.getString("to"));
+        setTransfer(jsonObject.getDouble("transfer"));
+        setTrackingCode(jsonObject.getString("trackingCode"));
+        setFromAccountNumber(jsonObject.getString("fromAccountNumber"));
+        setToAccountNumber(jsonObject.getString("fromAccountNumber"));
+        setBankFee(jsonObject.getDouble("bankFee"));
     }
 
     @Override

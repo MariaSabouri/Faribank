@@ -1,5 +1,6 @@
 package ir.ac.kntu.faribank.bank.client;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ import ir.ac.kntu.faribank.bank.Errors.InsufficientFundsException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidAmountException;
 import ir.ac.kntu.faribank.bank.Errors.InvalidInputException;
 import ir.ac.kntu.faribank.bank.client.support.Request;
+import ir.ac.kntu.faribank.bank.client.support.StateOfRequest;
 import ir.ac.kntu.faribank.bank.client.transaction.TDeposit;
 import ir.ac.kntu.faribank.bank.client.transaction.TTransfer;
 import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
@@ -139,6 +141,15 @@ public class Client extends Person {
         System.out.println(contact);
     }
 
+    public void deleteContact(Contact contact) throws NotFoundException {
+        if (contacts.contains(contact)) {
+            throw new NotFoundException();
+        }
+
+        contacts.remove(contact);
+        System.out.println("Contact deleted successfully!");
+    }
+
     public void addRecentContact(Contact contact) {
         if (!recentContacts.contains(contact)) {
             recentContacts.add(contact);
@@ -152,7 +163,7 @@ public class Client extends Person {
             System.out.println("\"Contact edited and add to recentContacts successfully!\"");
             System.out.println("RecentContact: " + contact);
         }
-        contact.setDate();
+        contact.setDateNow();
     }
 
     public void transfer(String amountStr, Contact contact)
@@ -218,6 +229,7 @@ public class Client extends Person {
         System.out.println(request);
     }
 
+    @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("firstName", getFirstName());
@@ -230,19 +242,25 @@ public class Client extends Person {
         jsonObject.put("accountNumber", accountNumber);
         jsonObject.put("balance", balance);
 
-        jsonObject.put("transactions", new
-        JSONArray(transactions.stream().map(Transaction::toJson).toArray()));
-        jsonObject.put("contacts", new
-        JSONArray(contacts.stream().map(Contact::toJson).toArray()));
-        jsonObject.put("recentContacts", new
-        JSONArray(recentContacts.stream().map(Contact::toJson).toArray()));
-        jsonObject.put("requests", new
-        JSONArray(requests.stream().map(Request::toJson).toArray()));
+        jsonObject.put("transactions", new JSONArray(transactions.stream().map((transaction) -> {
+            if (transaction instanceof TTransfer tTransfer) {
+                return tTransfer.toJson();
+            } else if (transaction instanceof TDeposit tDeposit) {
+                return tDeposit.toJson();
+            }
+            return new JSONObject();
+        }).toArray()));
+        jsonObject.put("contacts", new JSONArray(contacts.stream().map(Contact::toJson).toArray()));
+        jsonObject.put("recentContacts", new JSONArray(recentContacts.stream().map(Contact::toJson).toArray()));
+        jsonObject.put("requests", new JSONArray(requests.stream().map(Request::toJson).toArray()));
 
         return jsonObject;
     }
 
-    
+    @Override
+    public void parse(JSONObject jsonObject) {
+        
+    }
 
     @Override
     public int hashCode() {

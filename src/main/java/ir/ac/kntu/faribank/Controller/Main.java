@@ -22,8 +22,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
-        // Update
-        System.out.println("Shut Down");
+        // Exit: Update DB
         try {
             FileWriter fileWriter = new FileWriter("./student.json", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

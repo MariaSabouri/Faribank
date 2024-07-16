@@ -49,8 +49,12 @@ public class Request implements Comparable<Request> {
         return requestText;
     }
 
-    public void setDate() {
+    public void setDateNow() {
         this.date = LocalDateTime.now();
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public LocalDateTime getDate() {
@@ -67,6 +71,14 @@ public class Request implements Comparable<Request> {
         jsonObject.put("date", date);
 
         return jsonObject;
+    }
+
+    public void parse(JSONObject jsonObject) {
+        setFeature(Feature.valueOf(jsonObject.getString("feature")));
+        setStateOfRequest(StateOfRequest.valueOf(jsonObject.getString("stateOfRequest")));
+        setFeedbackText(jsonObject.getString("feedbackText"));
+        setRequestText(jsonObject.getString("requestText"));
+        setDate(LocalDateTime.parse(jsonObject.getString("date")));
     }
 
     @Override
