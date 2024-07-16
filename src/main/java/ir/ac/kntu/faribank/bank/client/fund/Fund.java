@@ -13,7 +13,7 @@ import ir.ac.kntu.faribank.bank.client.transaction.Transaction;
 
 public abstract class Fund {
     private FundType type;
-    private Double save;
+    private Double save = 0.0;
     private Client client;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
